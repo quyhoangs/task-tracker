@@ -20,6 +20,7 @@ class ProjectsTest extends TestCase
             'title'=>$this->faker->sentence,
             'description'=>$this->faker->paragraph
         ];
+
         //Kiểm tra có thể gửi 1 yêu cầu post tới url localhost/project và insert các cột vào db không (tạo Modal Project trước khi test khai báo route)
         $this->post('/projects', $attributes)->assertRedirect('/projects');
 
@@ -38,6 +39,19 @@ class ProjectsTest extends TestCase
 
         //Gửi 1 yêu cầu post để lưu vào db, trường hợp nếu title chưa validate ở Controller sẻ báo lỗi
         $this->post('/projects', $attributes)->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    public function test_a_user_can_view_a_project()
+    {
+        $this->withoutExceptionHandling();
+
+        $project= Project::factory()->create();
+
+        //Đảm bảo có thể gửi 1 yêu cầu get tới url /projects/{projectID} lúc này nó sẻ response html về và assertSee sẻ đảm bảo ta có thể  thấy title và description trong phản hồi html (tức là cần phải tạo router ,controller và view)
+        $this->get($project->path())
+            ->assertSee($project->title)
+            ->assertSee($project->description);
     }
 
     /** @test */

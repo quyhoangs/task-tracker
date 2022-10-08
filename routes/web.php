@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 //ProjectsController laravel 8
 Route::post('/projects', [ProjectsController::class,'store']);
+Route::get('/projects/{project}', [ProjectsController::class,'show']);
 Route::get('/projects', [ProjectsController::class,'index']);
