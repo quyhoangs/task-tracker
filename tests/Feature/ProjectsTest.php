@@ -2,19 +2,34 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
+use App\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Project;
 
 class ProjectsTest extends TestCase
 {
     use WithFaker,RefreshDatabase;
 
     /** @test */
+    public function test_a_project_requires_an_owner()
+    {
+        //Tắt xử lý ngoại lệ để có thể nhìn thấy lỗi
+
+         $this->withoutExceptionHandling();
+
+        $attributes=Project::factory()->raw();
+
+        $this->post('/projects', $attributes)->assertRedirect('login');
+
+    }
+
+    /** @test */
     public function test_a_user_can_create_a_project()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
+
 
         $attributes=[
             'title'=>$this->faker->sentence,
@@ -34,6 +49,9 @@ class ProjectsTest extends TestCase
     /** @test */
     public function test_a_project_requires_a_title()
     {
+        //Tạo 1 User mới và đặt nó làm người dùng đã xác thực
+
+
         //Tạo các thuộc tính với factory, field title rỗng và không lưu vào db
         $attributes= Project::factory()->raw(['title'=>'']); //raw() trả về mảng || make() trả về 1 object || create() trả về object và save db
 
@@ -44,7 +62,7 @@ class ProjectsTest extends TestCase
     /** @test */
     public function test_a_user_can_view_a_project()
     {
-        $this->withoutExceptionHandling();
+
 
         $project= Project::factory()->create();
 
@@ -57,22 +75,12 @@ class ProjectsTest extends TestCase
     /** @test */
     public function test_a_project_requires_a_description()
     {
+
+
         $attributes=Project::factory()->raw(['description'=>'']);
 
         $this->post('/projects', $attributes)->assertSessionHasErrors('description');
     }
 
-   /** @test */
-    public function test_a_project_requires_an_owner()
-    {
-        //nhận thông báo ngoại lệ đầy đủ
-        // $this->withoutExceptionHandling();
 
-        //tạo một Project và  ghi đè owner_id thành null hoặc rỗng để test
-        $attributes=Project::factory()->raw(['owner_id' => '']);
-
-        //khẳng định rằng session có lỗi đối với owner_id khi nó null hoặc rỗng là đúng
-        //tức test pass khi owner_id null hoặc rỗng và fail khi owner_id có giá trị
-        $this->post('/projects', $attributes)->assertSessionHasErrors('owner_id');
-    }
 }

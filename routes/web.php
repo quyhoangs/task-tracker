@@ -8,6 +8,10 @@ Route::get('/', function () {
 });
 
 //ProjectsController laravel 8
-Route::post('/projects', [ProjectsController::class,'store']);
 Route::get('/projects/{project}', [ProjectsController::class,'show']);
 Route::get('/projects', [ProjectsController::class,'index']);
+Route::post('/projects', [ProjectsController::class,'store'])->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
