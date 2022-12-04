@@ -8,10 +8,14 @@ Route::get('/', function () {
 });
 
 //ProjectsController laravel 8
-Route::get('/projects/{project}', [ProjectsController::class,'show']);
-Route::get('/projects', [ProjectsController::class,'index']);
-Route::post('/projects', [ProjectsController::class,'store'])->middleware('auth');
+
+// group middleware auth
+Route::middleware(['auth'])->group(function () {
+    Route::get('/projects/{project}', [ProjectsController::class,'show']);
+    Route::get('/projects', [ProjectsController::class,'index']);
+    Route::post('/projects', [ProjectsController::class,'store']);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

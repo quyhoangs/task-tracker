@@ -13,14 +13,29 @@ class ProjectsTest extends TestCase
     use WithFaker,RefreshDatabase;
 
     /** @test */
-    public function test_a_project_requires_an_owner()
+    public function test_guests_cannot_create_projects()
     {
         //Tắt xử lý ngoại lệ để có thể nhìn thấy lỗi
-        $this->withoutExceptionHandling();
-        $this->actingAs(User::factory()->create());
         $attributes=Project::factory()->raw();
 
         $this->post('/projects', $attributes)->assertRedirect('login');
+
+    }
+
+    /** @test */
+    public function test_guests_cannot_view_projects()
+    {
+        $this->get('/projects')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function test_guests_cannot_view_a_single_project()
+    {
+        $project = Project::factory()->create();
+
+        // This test asserts that a user must be logged in to view a project,
+        // and is redirected to the login page if not.
+        $this->get($project->path())->assertRedirect('login');
 
     }
 
@@ -45,9 +60,24 @@ class ProjectsTest extends TestCase
         $this->get('/projects')->assertSee($attributes['title']);
     }
 
+    public function test_an_authenticated_user_cannot_view_the_projects_of_others()
+    {
+        $this->be(User::factory()->create());
+
+        // $this->withoutExceptionHandling();
+
+        $project = Project::factory()->create();
+
+        // This test attempts to access the show method of the ProjectController
+        // without being authenticated. The test expects a 403 status code.
+        $this->get($project->path())->assertStatus(403);
+
+    }
+
     /** @test */
     public function test_a_project_requires_a_title()
     {
+
         //Tạo 1 User mới và đặt nó làm người dùng đã xác thực
         $this->actingAs(User::factory()->create());
 
@@ -59,13 +89,16 @@ class ProjectsTest extends TestCase
     }
 
     /** @test */
-    public function test_a_user_can_view_a_project()
+    public function test_a_user_can_view_their_project()
     {
-        $this->actingAs(User::factory()->create());
+        // Creates a user and logs them in.
+        $this->be(User::factory()->create());
 
-        $project= Project::factory()->create();
+        $this->withoutExceptionHandling();
+        $project = Project::factory()->create(['owner_id' => auth()->id()]);
 
-        //Đảm bảo có thể gửi 1 yêu cầu get tới url /projects/{projectID} lúc này nó sẻ response html về và assertSee sẻ đảm bảo ta có thể  thấy title và description trong phản hồi html (tức là cần phải tạo router ,controller và view)
+        //Đảm bảo có thể gửi 1 yêu cầu get tới url /projects/{projectID} lúc này nó sẻ response html về
+        //và assertSee sẻ đảm bảo ta có thể  thấy title và description trong phản hồi html (tức là cần phải tạo router ,controller và view)
         $this->get($project->path())
             ->assertSee($project->title)
             ->assertSee($project->description);
@@ -78,6 +111,7 @@ class ProjectsTest extends TestCase
 
         $attributes=Project::factory()->raw(['description'=>'']);
 
+        // Expect an error when the description is not provided.
         $this->post('/projects', $attributes)->assertSessionHasErrors('description');
     }
 
