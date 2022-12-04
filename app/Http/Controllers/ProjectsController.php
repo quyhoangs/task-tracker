@@ -24,11 +24,11 @@ class ProjectsController extends Controller
             'title'=>'required',
             'description'=>'required',
         ]);
+        //Thay vì phải chỉ định id của owner,
+        // $attributes['owner_id'] = auth()->id();
 
-
-        $attributes['owner_id'] = auth()->id();
-
-        Project::create($attributes);
+        //ta có thể sử dụng auth() để lấy id của user hiện tại mà không cần trỏ tới id
+        auth()->user()->projects()->create($attributes);
 
         return redirect('/projects');
     }

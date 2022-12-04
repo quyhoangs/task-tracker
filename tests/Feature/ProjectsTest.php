@@ -16,9 +16,8 @@ class ProjectsTest extends TestCase
     public function test_a_project_requires_an_owner()
     {
         //Tắt xử lý ngoại lệ để có thể nhìn thấy lỗi
-
-         $this->withoutExceptionHandling();
-
+        $this->withoutExceptionHandling();
+        $this->actingAs(User::factory()->create());
         $attributes=Project::factory()->raw();
 
         $this->post('/projects', $attributes)->assertRedirect('login');
@@ -29,7 +28,7 @@ class ProjectsTest extends TestCase
     public function test_a_user_can_create_a_project()
     {
         $this->withoutExceptionHandling();
-
+        $this->actingAs(User::factory()->create());
 
         $attributes=[
             'title'=>$this->faker->sentence,
@@ -42,7 +41,7 @@ class ProjectsTest extends TestCase
         //khẳng định rằng cơ sở dữ liệu có một project bao gồm các thuộc tính là $attributes
         $this->assertDatabaseHas('projects', $attributes);
 
-        // //Khẳng định có thể gửi 1 yêu cầu get và thấy các thuộc tính đã tạo trên
+         //Khẳng định có thể gửi 1 yêu cầu get và thấy các thuộc tính đã tạo trên
         $this->get('/projects')->assertSee($attributes['title']);
     }
 
@@ -50,7 +49,7 @@ class ProjectsTest extends TestCase
     public function test_a_project_requires_a_title()
     {
         //Tạo 1 User mới và đặt nó làm người dùng đã xác thực
-
+        $this->actingAs(User::factory()->create());
 
         //Tạo các thuộc tính với factory, field title rỗng và không lưu vào db
         $attributes= Project::factory()->raw(['title'=>'']); //raw() trả về mảng || make() trả về 1 object || create() trả về object và save db
@@ -62,7 +61,7 @@ class ProjectsTest extends TestCase
     /** @test */
     public function test_a_user_can_view_a_project()
     {
-
+        $this->actingAs(User::factory()->create());
 
         $project= Project::factory()->create();
 
@@ -75,7 +74,7 @@ class ProjectsTest extends TestCase
     /** @test */
     public function test_a_project_requires_a_description()
     {
-
+        $this->actingAs(User::factory()->create());
 
         $attributes=Project::factory()->raw(['description'=>'']);
 
