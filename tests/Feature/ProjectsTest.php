@@ -14,7 +14,7 @@ class ProjectsTest extends TestCase
     /** @test */
     public function test_a_user_can_create_a_project()
     {
-        $this->withoutExceptionHandling(); //không Xử lý Ngoại lệ để test
+        // $this->withoutExceptionHandling();
 
         $attributes=[
             'title'=>$this->faker->sentence,
@@ -37,7 +37,7 @@ class ProjectsTest extends TestCase
         //Tạo các thuộc tính với factory, field title rỗng và không lưu vào db
         $attributes= Project::factory()->raw(['title'=>'']); //raw() trả về mảng || make() trả về 1 object || create() trả về object và save db
 
-        //Gửi 1 yêu cầu post để lưu vào db, trường hợp nếu title chưa validate ở Controller sẻ báo lỗi
+        //Gửi 1 yêu cầu post để lưu vào db, trường hợp nếu title chưa validate ở Controller sẻ báo lỗi do ta đã giả sử title rỗng
         $this->post('/projects', $attributes)->assertSessionHasErrors('title');
     }
 
@@ -60,5 +60,19 @@ class ProjectsTest extends TestCase
         $attributes=Project::factory()->raw(['description'=>'']);
 
         $this->post('/projects', $attributes)->assertSessionHasErrors('description');
+    }
+
+   /** @test */
+    public function test_a_project_requires_an_owner()
+    {
+        //nhận thông báo ngoại lệ đầy đủ
+        // $this->withoutExceptionHandling();
+
+        //tạo một Project và  ghi đè owner_id thành null hoặc rỗng để test
+        $attributes=Project::factory()->raw(['owner_id' => '']);
+
+        //khẳng định rằng session có lỗi đối với owner_id khi nó null hoặc rỗng là đúng
+        //tức test pass khi owner_id null hoặc rỗng và fail khi owner_id có giá trị
+        $this->post('/projects', $attributes)->assertSessionHasErrors('owner_id');
     }
 }
