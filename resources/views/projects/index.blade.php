@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birdboard</title>
-</head>
-<body>
-    <h1>Task Managermant</h1>
-    <ul>
+@extends('layouts.app')
+@section('content')
+    <h1 class="text-3xl font-bold underline">Task Managermant</h1>
+    <ul >
         @forelse($projects as $project)
             <li>
                 <a href="{{$project->path()}}">{{ $project->title }}</a>
@@ -17,6 +10,4 @@
             <li>Nothing show</li>
         @endforelse
     </ul>
-</body>
-
-</html>
+@endsection
