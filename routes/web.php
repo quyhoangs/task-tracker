@@ -11,6 +11,7 @@ Route::get('/login',[LoginController::class,'index'])->name('login');
 
 Route::controller(ProjectsController::class)->middleware(['auth'])->group(function () {
     Route::prefix('projects')->group(function() {
+        Route::get('/create','create');
         Route::get('/{project}','show');
         Route::get('/','index');
         Route::post('/','store');
