@@ -1,23 +1,18 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProjectsController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/register',[RegisterController::class,'create'])->name('register');
+Route::post('/register',[RegisterController::class,'store']);
+Route::get('/login',[LoginController::class,'index'])->name('login');
+
+Route::controller(ProjectsController::class)->middleware(['auth'])->group(function () {
+    Route::prefix('projects')->group(function() {
+        Route::get('/{project}','show');
+        Route::get('/','index');
+        Route::post('/','store');
+    });
 });
-
-//ProjectsController laravel 8
-
-// group middleware auth
-Route::group(['middleware'=>'auth'],function () {
-    Route::get('/projects', [ProjectsController::class,'index']);
-    Route::get('/projects/create', [ProjectsController::class,'create']);
-    Route::get('/projects/{project}', [ProjectsController::class,'show']);
-    Route::post('/projects', [ProjectsController::class,'store']);
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-});
-
-Auth::routes();
