@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\ConfirmRegister;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use App\Models\UserVerify;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -20,7 +25,10 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.register', [
+            'name' => old('name'),
+            'email' => old('email'),
+        ]);
     }
 
     /**
@@ -32,59 +40,65 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request)
     {
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        DB::beginTransaction();
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        Auth::login($user);
+            // event(new Registered($user));
+            $token = Str::random(64);
 
-        return redirect(RouteServiceProvider::HOME);
+            //for send mail
+            $data['token'] = $token;
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
+
+            $userVerify = UserVerify::create([
+                'user_id' => $user->id,
+                'token' => $token
+              ]);
+
+            event(new ConfirmRegister($data));
+
+            DB::commit();
+
+            return view('email.email-verification-email', compact('data'));
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            report($e);
+            return redirect()->back()->with('errors', _tr('alert.process_failed'));
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function verifyAccount($token){
+        $userVerify = UserVerify::where('token', $token)->first();
+        if($userVerify){
+            $user = $userVerify->user;
+
+            if($user->is_email_verified == INACTIVE){
+                $this ->__setExpireToken($userVerify);
+                $user->is_email_verified = ACTIVE;
+                $user->save();
+                Auth::login($user);
+                return redirect(RouteServiceProvider::HOME);
+            }else{
+                return redirect('/login')->with('alreadyVerifiedNeedLogin','You are already verified, please login');
+            }
+        }else{
+            abort(404);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function __setExpireToken($userVerify){
+        $timeExpired = $userVerify->created_at->diffInMinutes(now());
+        if($timeExpired > 1){
+            $userVerify->user->delete();
+            $userVerify->delete();
+            return redirect('/register')->with('tokenExpired','Token expired, please register again');
+        }
     }
 }
