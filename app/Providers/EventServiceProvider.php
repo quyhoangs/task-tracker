@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\ConfirmRegister;
+use App\Events\ForgetPassword;
 use App\Listeners\SendEmailAfterConfirmRegister;
+use App\Listeners\SendEmailGetLinkChangePassword;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ConfirmRegister::class => [
             SendEmailAfterConfirmRegister::class,
+        ],
+        ForgetPassword::class => [
+            SendEmailGetLinkChangePassword::class,
         ],
     ];
 

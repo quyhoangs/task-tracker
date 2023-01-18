@@ -39,29 +39,15 @@ class RegisterController extends Controller
      */
     public function store(RegisterRequest $request)
     {
-
         DB::beginTransaction();
         try {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
+            $user = $this->__createUser($request);
 
-            // event(new Registered($user));
-            $token = Str::random(64);
+            $token = $this->__createToken($user);
 
-            //for send mail
-            $data['token'] = $token;
-            $data['name'] = $request->name;
-            $data['email'] = $request->email;
+            $data = $this->__prepareData($request, $token);
 
-            $userVerify = UserVerify::create([
-                'user_id' => $user->id,
-                'token' => $token
-              ]);
-
-            event(new ConfirmRegister($data));
+            $this->__sendVerificationEmail($data);
 
             DB::commit();
 
@@ -74,31 +60,63 @@ class RegisterController extends Controller
         }
     }
 
+    protected function __createUser($request)
+    {
+        return User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+    }
+
+    protected function __createToken($user)
+    {
+        return Str::random(64);
+    }
+
+    protected function __prepareData($request, $token)
+    {
+        return [
+            'token' => $token,
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+    }
+
+    protected function __sendVerificationEmail($data)
+    {
+        event(new ConfirmRegister($data));
+    }
+
     public function verifyAccount($token){
         $userVerify = UserVerify::where('token', $token)->first();
         if($userVerify){
-            $user = $userVerify->user;
-
-            if($user->is_email_verified == INACTIVE){
-                $this ->__setExpireToken($userVerify);
-                $user->is_email_verified = ACTIVE;
-                $user->save();
-                Auth::login($user);
-                return redirect(RouteServiceProvider::HOME);
-            }else{
-                return redirect('/login')->with('alreadyVerifiedNeedLogin','You are already verified, please login');
-            }
+            $this->__verifyUser($userVerify);
         }else{
             abort(404);
         }
     }
 
-    public function __setExpireToken($userVerify){
+    public function __verifyUser($userVerify){
+        $user = $userVerify->user;
+
+        if($user->is_email_verified == INACTIVE){
+            $this->__verifyUserExpire($userVerify, $user);
+        }else{
+            return redirect('/login')->with('alreadyVerifiedNeedLogin','You are already verified, please login');
+        }
+    }
+
+    public function __verifyUserExpire($userVerify, $user){
         $timeExpired = $userVerify->created_at->diffInMinutes(now());
         if($timeExpired > 1){
             $userVerify->user->delete();
             $userVerify->delete();
             return redirect('/register')->with('tokenExpired','Token expired, please register again');
         }
+        $user->is_email_verified = ACTIVE;
+        $user->save();
+        Auth::login($user);
+        return redirect(RouteServiceProvider::HOME);
     }
 }

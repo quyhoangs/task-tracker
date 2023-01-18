@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProjectsController;
@@ -19,6 +20,12 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/logout','logout');
 });
 
+Route::controller(ForgotPasswordController::class)->middleware(['is_verify_email'])->group(function () {
+    Route::get('/forget-password','showForgetPasswordForm');
+    Route::post('/forget-password','submitForgetPasswordForm')->middleware('throttle:3,1');
+    Route::get('/reset-password/{token}','showResetPasswordForm')->name('reset-password')->middleware('throttle:3,1');
+    Route::post('/reset-password','submitResetPasswordForm')->name('reset-password-post');
+});
 
 Route::controller(ProjectsController::class)->middleware(['auth','is_verify_email'])->group(function () {
     Route::prefix('projects')->group(function() {
