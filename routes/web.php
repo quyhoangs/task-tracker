@@ -12,7 +12,13 @@ Route::controller(RegisterController::class)->group(function () {
         Route::get('/verify-account/{token}', 'verifyAccount')->name('verify');
     });
 });
-Route::get('/login',[LoginController::class,'index'])->name('login');
+
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login','index')->name('login');
+    Route::post('/login','postLogin');
+    Route::get('/logout','logout');
+});
+
 
 Route::controller(ProjectsController::class)->middleware(['auth','is_verify_email'])->group(function () {
     Route::prefix('projects')->group(function() {

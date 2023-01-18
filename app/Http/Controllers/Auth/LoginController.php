@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,73 +16,65 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
+        return view('auth.login', [
+            'email' => old('email'),
+            'password' => old('password'),
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * For check login
      *
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
-    public function create()
+    public function postLogin(LoginRequest $request)
     {
-
-
+        if ($this->checkIfAuthAttemptIsSuccessful($request)) {
+            $this->regenerateSession($request);
+            return redirect()->intended('projects');
+        }
+        return redirect('/login')->with('message','The provided credentials do not match our records');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * checkIfAuthAttemptIsSuccessful
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
-    public function store(Request $request)
+    private function checkIfAuthAttemptIsSuccessful($request)
     {
-        //
+        $remember_me = $request->has('remember_me') ? true : false;
+        return Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember_me);
     }
 
     /**
-     * Display the specified resource.
+     * regenerateSession
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
-    public function show($id)
+    private function regenerateSession($request)
     {
-        //
+        $request->session()->regenerate();
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * logout
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
-    public function edit($id)
+    public function logout(Request $request)
     {
-        //
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

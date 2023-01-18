@@ -26,33 +26,49 @@
               </div>
             @endif
 
+            @if (session('message'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Important!</strong>
+                <span class="block sm:inline">{{ session('message') }}.
+                </span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                </span>
+            </div>
+        @endif
 
             <div class="w-full h-100">
 
                 <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
 
-                <form class="mt-6" action="#" method="POST">
+                <form class="mt-6" action="/login" method="POST">
+                    @csrf
                     <div>
                         <label class="block text-gray-700">Email Address</label>
-                        <input type="email" name="" id="" placeholder="Enter Email Address"
+                        <input type="email" name="email" id="" placeholder="Enter Email Address"
                             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                            autofocus autocomplete required>
+                            autofocus autocomplete required
+                            value="{{ old('email') }}"
+                            >
                     </div>
 
                     <div class="mt-4">
                         <label class="block text-gray-700">Password</label>
-                        <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                      focus:bg-white focus:outline-none" required>
+                        <input type="password" name="password" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                      focus:bg-white focus:outline-none" required
+                      value="{{ old('password') }}"
+                      >
                     </div>
 
                     <div class="text-right mt-2">
                         <div class="mt-4 flex items-center text-gray-500">
-                            <input type="checkbox" id="remember" name="remember" class="mr-3" />
-                            <label for="remember" class="ml-2">Remember me</label>
+                            <input type="checkbox" id="remember_me" name="remember_me" class="mr-3" />
+                            <label for="remember_me" class="ml-2">Remember me</label>
                         </div>
                         <a href="#"
-                            class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
-                            Password?</a>
+                            class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
+                            Forgot Password?
+                        </a>
                     </div>
 
                     <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
