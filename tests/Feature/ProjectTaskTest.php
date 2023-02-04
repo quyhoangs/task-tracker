@@ -13,7 +13,29 @@ class ProjectTaskTest extends TestCase
 {
     use WithFaker,RefreshDatabase;
 
-        /** @test */
+    /** @test */
+    public function test_gust_cannot_add_task_to_project()
+    {
+        $project = Project::factory()->create();
+
+        $this->post($project->path() . '/tasks')->assertRedirect('login');
+    }
+
+    /** @test */
+    public function test_only_the_owner_of_a_project_may_add_task()
+    {
+        $this->signInWithConfirmedEmail();
+
+        $project = Project::factory()->create();
+
+        // It attempts to post a task to a project that does not
+        // belong to the signed in user. Then we assert that the status code is 403 (Forbidden).
+        $this->post($project->path() . '/tasks', ['body' => 'Test Task'])->assertStatus(403);
+
+        $this->assertDatabaseMissing('tasks', ['body' => 'Test Task']);
+    }
+
+    /** @test */
     public function test_a_project_can_have_task()
     {
         // $this->withoutExceptionHandling();
