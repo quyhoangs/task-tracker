@@ -31,8 +31,7 @@ class ManageProjectsTest extends TestCase
     public function test_a_user_can_create_a_project()
     {
         $this->withoutExceptionHandling();
-        $this->actingAs(User::factory()->create());
-
+        $this->signInWithConfirmedEmail();
         //Kiểm tra có thể gửi 1 yêu cầu get tới url localhost/project/create và nhận được status 200 không
         //Test này khẳng định form tạo project có thể được hiển thị
         //Chỉ kiểm tra form có tạo được không thành công hay không ,không cần kiểm tra request cho nó fill vào gì
@@ -55,7 +54,7 @@ class ManageProjectsTest extends TestCase
 
     public function test_an_authenticated_user_cannot_view_the_projects_of_others()
     {
-        $this->be(User::factory()->create());
+        $this->signInWithConfirmedEmail();
 
         // $this->withoutExceptionHandling();
 
@@ -71,8 +70,8 @@ class ManageProjectsTest extends TestCase
     public function test_a_project_requires_a_title()
     {
 
-        //Tạo 1 User mới và đặt nó làm người dùng đã xác thực
-        $this->actingAs(User::factory()->create());
+        //Tạo 1 User mới và đã xác nhận email đặt nó làm người dùng đã xác thực
+        $this->signInWithConfirmedEmail();
 
         //Tạo các thuộc tính với factory, field title rỗng và không lưu vào db
         $attributes= Project::factory()->raw(['title'=>'']); //raw() trả về mảng || make() trả về 1 object || create() trả về object và save db
@@ -85,7 +84,7 @@ class ManageProjectsTest extends TestCase
     public function test_a_user_can_view_their_project()
     {
         // Creates a user and logs them in.
-        $this->be(User::factory()->create());
+        $this->signInWithConfirmedEmail();
 
         $this->withoutExceptionHandling();
         $project = Project::factory()->create(['owner_id' => auth()->id()]);
@@ -100,7 +99,7 @@ class ManageProjectsTest extends TestCase
     /** @test */
     public function test_a_project_requires_a_description()
     {
-        $this->actingAs(User::factory()->create());
+        $this->signInWithConfirmedEmail();
 
         $attributes=Project::factory()->raw(['description'=>'']);
 

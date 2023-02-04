@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\ProjectTaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(RegisterController::class)->group(function () {
@@ -33,5 +34,11 @@ Route::controller(ProjectsController::class)->middleware(['auth','is_verify_emai
         Route::get('/{project}','show');
         Route::get('/','index');
         Route::post('/','store');
+    });
+});
+
+Route::controller(ProjectTaskController::class)->middleware(['auth','is_verify_email'])->group(function () {
+    Route::prefix('projects')->group(function() {
+        Route::post('/{project}/tasks','store');
     });
 });
