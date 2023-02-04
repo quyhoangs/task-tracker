@@ -19,6 +19,12 @@
                         @foreach ($project->tasks as $task)
                             <div class="card mb-3">{{ \Illuminate\Support\Str::limit(  $task->body ,100 ) }}</div>
                         @endforeach
+                            <div class="card mb-3">
+                                <form action="{{ $project->path() . '/tasks' }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="body" class="w-full" placeholder="Add a new task">
+                                </form>
+                             </div>
                 </div>
 
                 <div>

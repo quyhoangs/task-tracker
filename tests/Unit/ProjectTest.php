@@ -28,7 +28,8 @@ class ProjectTest extends TestCase
       {
          $project = Project::factory()->create();
 
-         $this->assertInstanceOf('App\User', $project->owner);
+         // Checks that the owner of the project is an instance of the User class.
+         $this->assertInstanceOf('App\Models\User', $project->owner);
       }
 
       /** @test */
