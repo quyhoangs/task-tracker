@@ -30,7 +30,7 @@ class ManageProjectsTest extends TestCase
     /** @test */
     public function test_a_user_can_create_a_project()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $this->signInWithConfirmedEmail();
         //Kiểm tra có thể gửi 1 yêu cầu get tới url localhost/project/create và nhận được status 200 không
         //Test này khẳng định form tạo project có thể được hiển thị
@@ -42,8 +42,11 @@ class ManageProjectsTest extends TestCase
             'description'=>$this->faker->paragraph
         ];
 
-        //Kiểm tra có thể gửi 1 yêu cầu post tới url localhost/project và insert các cột vào db không (tạo Modal Project trước khi test khai báo route)
-        $this->post('/projects', $attributes)->assertRedirect('/projects');
+        $response = $this->post('/projects', $attributes);
+
+        $project = Project::where($attributes)->first();
+
+        $response->assertRedirect($project->path());
 
         //khẳng định rằng cơ sở dữ liệu có một project bao gồm các thuộc tính là $attributes
         $this->assertDatabaseHas('projects', $attributes);
