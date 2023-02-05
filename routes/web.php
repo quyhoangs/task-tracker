@@ -28,17 +28,14 @@ Route::controller(ForgotPasswordController::class)->middleware(['is_verify_email
     Route::post('/reset-password','submitResetPasswordForm')->name('reset-password-post');
 });
 
-Route::controller(ProjectsController::class)->middleware(['auth','is_verify_email'])->group(function () {
+Route::middleware(['auth','is_verify_email'])->group(function () {
     Route::prefix('projects')->group(function() {
-        Route::get('/create','create');
-        Route::get('/{project}','show');
-        Route::get('/','index');
-        Route::post('/','store');
-    });
-});
+        Route::get('/create',[ProjectsController::class, 'create']);
+        Route::get('/{project}',[ProjectsController::class, 'show']);
+        Route::get('/',[ProjectsController::class, 'index']);
+        Route::post('/',[ProjectsController::class, 'store']);
 
-Route::controller(ProjectTaskController::class)->middleware(['auth','is_verify_email'])->group(function () {
-    Route::prefix('projects')->group(function() {
-        Route::post('/{project}/tasks','store');
+        Route::post('/{project}/tasks',[ProjectTaskController::class, 'store']);
+        Route::patch('/{project}/tasks/{task}',[ProjectTaskController::class, 'update']);
     });
 });
