@@ -52,7 +52,7 @@ class ProjectTaskTest extends TestCase
     /** @test */
     public function test_a_task_can_be_updated()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $this->signInWithConfirmedEmail();
 
         $project = auth()->user()->projects()->create(

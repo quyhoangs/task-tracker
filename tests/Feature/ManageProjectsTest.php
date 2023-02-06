@@ -39,7 +39,8 @@ class ManageProjectsTest extends TestCase
 
         $attributes=[
             'title'=>$this->faker->sentence,
-            'description'=>$this->faker->paragraph
+            'description'=>$this->faker->sentence,
+            'notes'=>'General notes here.'
         ];
 
         $response = $this->post('/projects', $attributes);
@@ -52,7 +53,24 @@ class ManageProjectsTest extends TestCase
         $this->assertDatabaseHas('projects', $attributes);
 
          //Khẳng định có thể gửi 1 yêu cầu get và thấy các thuộc tính đã tạo trên
-        $this->get('/projects')->assertSee($attributes['title']);
+        $this->get($project->path())
+            ->assertSee($attributes['title'])
+            ->assertSee($attributes['description'])
+            ->assertSee($attributes['notes']);
+    }
+
+    /** @test */
+    public function test_a_user_can_update_a_project(){
+
+        $this->signInWithConfirmedEmail();
+
+        $project = Project::factory()->create(['owner_id'=>auth()->id()]);
+
+        $this->patch($project->path(),[
+            'notes'=>'Changed'
+        ])->assertRedirect($project->path());
+
+        $this->assertDatabaseHas('projects',['notes'=>'Changed']);
     }
 
     public function test_an_authenticated_user_cannot_view_the_projects_of_others()
@@ -66,6 +84,17 @@ class ManageProjectsTest extends TestCase
         // This test attempts to access the show method of the ProjectController
         // without being authenticated. The test expects a 403 status code.
         $this->get($project->path())->assertStatus(403);
+
+    }
+
+    /** @test */
+    public function test_an_authenticated_user_cannot_update_the_projects_of_others()
+    {
+        $this->signInWithConfirmedEmail();
+
+        $project = Project::factory()->create();
+
+        $this->patch($project->path(),[])->assertStatus(403);
 
     }
 
