@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex justify-between items-end mb-5">
     <h2 class="text-gray-500 text-sm font-normal">My Project</h2>
-    <a href="/project/create" class="button">New Project</a>
+    <a href="/projects/create" class="button">New Project</a>
 </div>
 
 <div class="lg:flex lg:flex-wrap ">

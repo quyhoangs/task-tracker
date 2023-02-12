@@ -32,6 +32,7 @@ Route::middleware(['auth','is_verify_email'])->group(function () {
     Route::prefix('projects')->group(function() {
         Route::get('/create',[ProjectsController::class, 'create']);
         Route::get('/{project}',[ProjectsController::class, 'show']);
+        Route::get('/{project}/edit',[ProjectsController::class, 'edit']);
         Route::patch('/{project}',[ProjectsController::class, 'update']);
         Route::get('/',[ProjectsController::class, 'index']);
         Route::post('/',[ProjectsController::class, 'store']);

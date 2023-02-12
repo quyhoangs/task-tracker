@@ -20,6 +20,7 @@ class ManageProjectsTest extends TestCase
         $this->get('/projects')->assertRedirect('login');
 
         $this->get('/projects/create')->assertRedirect('login');
+        $this->get('/projects/edit')->assertRedirect('login');
         // This test asserts that a user must be logged in to view a project,
         // and is redirected to the login page if not.
         $this->get($project->path())->assertRedirect('login');
@@ -66,11 +67,15 @@ class ManageProjectsTest extends TestCase
 
         $project = Project::factory()->create(['owner_id'=>auth()->id()]);
 
-        $this->patch($project->path(),[
-            'notes'=>'Changed'
+        $this->patch($project->path(),$attributes = [
+            'title'=>'Changed',
+            'notes'=>'Changed',
+            'description'=>'Changed'
         ])->assertRedirect($project->path());
 
-        $this->assertDatabaseHas('projects',['notes'=>'Changed']);
+        $this->get($project->path().'/edit')->assertOk();
+
+        $this->assertDatabaseHas('projects',$attributes);
     }
 
     public function test_an_authenticated_user_cannot_view_the_projects_of_others()
