@@ -50,7 +50,9 @@
                             placeholder="Anything special that you want to make a note of?"
                         >{{ $project->notes }}
                         </textarea>
-                    <button type="submit" class="button">Save</button>
+                        <button type="submit" class="button">Save</button>
+                        <x-form.error/>
+                    </form>
                 </div>
             </div>
 
