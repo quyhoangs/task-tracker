@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Activity;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,5 +32,10 @@ class Project extends Model
     public function addTask($body)
     {
         return $this->tasks()->create($body);
+    }
+
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
     }
 }
