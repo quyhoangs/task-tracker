@@ -64,6 +64,30 @@ class ProjectTaskTest extends TestCase
 
         //updates the task,
         $this->patch($task->path(), [
+            'body' => 'changed'
+        ]);
+
+        //and then asserts that the task has been updated
+        $this->assertDatabaseHas('tasks', [
+            'body' => 'changed'
+        ]);
+    }
+
+    /** @test */
+    public function test_a_task_can_be_completed()
+    {
+        // $this->withoutExceptionHandling();
+        $this->signInWithConfirmedEmail();
+
+        $project = auth()->user()->projects()->create(
+            Project::factory()->raw()
+        );
+
+        // Create a new task for the project
+        $task = $project->addTask(['body' => 'Test Task']);
+
+        //updates the task,
+        $this->patch($task->path(), [
             'body' => 'changed',
             'completed' => true
         ]);
@@ -72,6 +96,44 @@ class ProjectTaskTest extends TestCase
         $this->assertDatabaseHas('tasks', [
             'body' => 'changed',
             'completed' => true
+        ]);
+    }
+
+    /** @test */
+    public function test_a_task_can_be_marked_as_incomplete()
+    {
+        // $this->withoutExceptionHandling();
+        $this->signInWithConfirmedEmail();
+
+        $project = auth()->user()->projects()->create(
+            Project::factory()->raw()
+        );
+
+        // Create a new task for the project
+        $task = $project->addTask(['body' => 'Test Task']);
+
+        //updates the task,
+        $this->patch($task->path(), [
+            'body' => 'changed',
+            'completed' => true
+        ]);
+
+        //and then asserts that the task has been updated
+        $this->assertDatabaseHas('tasks', [
+            'body' => 'changed',
+            'completed' => true
+        ]);
+
+        //updates the task,
+        $this->patch($task->path(), [
+            'body' => 'changed',
+            'completed' => false
+        ]);
+
+        //and then asserts that the task has been updated
+        $this->assertDatabaseHas('tasks', [
+            'body' => 'changed',
+            'completed' => false
         ]);
     }
 
