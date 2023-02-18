@@ -24,18 +24,6 @@ class Task extends Model
     //Nếu không khai báo, khi lấy dữ liệu từ database, Laravel sẽ trả về dữ liệu kiểu integer (0 hoặc 1) cho trường completed
     protected $casts = ['completed' => 'boolean'];
 
-    //Creating a new task will records project activity
-    //Nó cũng là một cách tiếp cận khác để thực hiện việc này, thay vì sử dụng Observer
-    protected static function boot()
-    {
-        parent::boot(); //automatically called when the model is booted up.
-
-        static::created(function ($task) {
-            $task->project->recordActivity('created_task');
-        });
-
-    }
-
     /**
      * Mark the task as complete.
      */
@@ -49,6 +37,7 @@ class Task extends Model
      */
     public function incomplete(){
         $this->update(['completed' => false]);
+        $this->project->recordActivity('incompleted_task');
     }
 
     public function project()

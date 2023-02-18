@@ -6,12 +6,12 @@ use App\Models\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ActivityFeedTest extends TestCase
+class TriggerActivityTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function test_creating_a_project_records_activity()
+    public function test_creating_a_project()
     {
         $this->signInWithConfirmedEmail();
 
@@ -28,7 +28,7 @@ class ActivityFeedTest extends TestCase
     }
 
     /** @test */
-    public function test_updating_a_project_records_activity()
+    public function test_updating_a_project()
     {
         $this->signInWithConfirmedEmail();
         $project = Project::factory()->create(['owner_id'=>auth()->id()]);
@@ -39,7 +39,7 @@ class ActivityFeedTest extends TestCase
     }
 
     /** @test */
-    public function test_creating_a_new_task_records_project_activity()
+    public function test_creating_a_new_task()
     {
         $this->signInWithConfirmedEmail();
         $project = Project::factory()->create(['owner_id'=>auth()->id()]);
@@ -51,7 +51,7 @@ class ActivityFeedTest extends TestCase
     }
 
     /** @test */
-    public function test_completing_a_task_records_project_activity()
+    public function test_completing_a_task()
     {
         $this->signInWithConfirmedEmail();
 
@@ -74,5 +74,52 @@ class ActivityFeedTest extends TestCase
         $this->assertEquals('completed_task',$project->activity->last()->description);
     }
 
+    /** @test */
+    public function test_incompleting_a_task()
+    {
+        $this->signInWithConfirmedEmail();
 
+        //add 1 project will create 1 record in activity table
+        $project = Project::factory()->create(['owner_id'=>auth()->id()]);
+
+        //add 1 task will create 1 record in activity table
+        $project->addTask(['body' => 'Test Task']);
+
+        //update 1 task will create 1 record in activity table
+        $this->patch($project->tasks[0]->path(),[
+                'body'=>'Some task',
+                'completed'=>true
+            ]);
+
+        //update 1 task will create 1 record in activity table
+        $this->patch($project->tasks[0]->path(),[
+                'body'=>'Some task',
+                'completed'=>false
+            ]);
+
+        //refresh the database to get the latest activity
+        $project->refresh();
+
+        //Assert that the project has 4 activities
+        $this->assertCount(4,$project->activity);
+
+        //Assert that the last activity is completed_task
+        $this->assertEquals('incompleted_task',$project->activity->last()->description);
+    }
+
+    /** @test */
+    public function test_deleting_a_task()
+    {
+        $this->signInWithConfirmedEmail();
+
+        $project = Project::factory()->create(['owner_id'=>auth()->id()]);
+
+        $project->addTask(['body' => 'Test Task']);
+
+        $project->tasks[0]->delete();
+
+        $this->assertCount(3,$project->activity);
+
+        $this->assertEquals('deleted_task',$project->activity->last()->description);
+    }
 }
