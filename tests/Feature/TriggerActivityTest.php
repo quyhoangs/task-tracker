@@ -24,8 +24,14 @@ class TriggerActivityTest extends TestCase
         // Assert that the project has one activity
         $this->assertCount(1,$project->activity);
 
-        // check that the project has an activity with the description "created"
-         $this->assertEquals('created',$project->activity[0]->description);
+
+        tap($project->activity->last(),function ($activity) {
+            // check that the project has an activity with the description "created"
+            $this->assertEquals('created', $activity->description);
+
+            // check that the project has an activity with the changes null
+            $this->assertNull($activity->changes);
+        });
     }
 
     /** @test */
@@ -34,8 +40,24 @@ class TriggerActivityTest extends TestCase
         $this->signInWithConfirmedEmail();
         $project = Project::factory()->create(['owner_id'=>auth()->id()]);
 
+        $originalTitle = $project->title;
+
         $project->update(['title'=>'changed']);
         $this->assertCount(2,$project->activity);
+
+        tap($project->activity->last(),function ($activity) use ($originalTitle) {
+
+            $this->assertEquals('updated',$activity->description);
+
+            $expected = [
+                'before' => ['title' => $originalTitle],
+                'after' => ['title' => 'changed']
+            ];
+
+            $this->assertEquals($expected,$activity->changes);
+
+        });
+
         $this->assertEquals('updated',$project->activity->last()->description);
     }
 
