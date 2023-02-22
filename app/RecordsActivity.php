@@ -50,6 +50,8 @@ trait RecordsActivity
    */
   protected function activityChanges()
   {
+    //wasChanged kiểm tra xem có thay đổi data ở Model hiện tại hay không (nếu có thay đổi thì trả về true)
+    // logic cũ sẻ kiểm tra $description === 'updated' thay vì $this->wasChanged()
     if ($this->wasChanged()) {
       return [
         'before' => Arr::except(array_diff($this->oldAttributes, $this->getAttributes()), 'updated_at'),
