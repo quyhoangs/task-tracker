@@ -27,7 +27,7 @@ class TriggerActivityTest extends TestCase
 
         tap($project->activity->last(),function ($activity) {
             // check that the project has an activity with the description "created"
-            $this->assertEquals('created', $activity->description);
+            $this->assertEquals('created_project', $activity->description);
 
             // check that the project has an activity with the changes null
             $this->assertNull($activity->changes);
@@ -47,7 +47,7 @@ class TriggerActivityTest extends TestCase
 
         tap($project->activity->last(),function ($activity) use ($originalTitle) {
 
-            $this->assertEquals('updated',$activity->description);
+            $this->assertEquals('updated_project',$activity->description);
 
             $expected = [
                 'before' => ['title' => $originalTitle],
@@ -58,7 +58,7 @@ class TriggerActivityTest extends TestCase
 
         });
 
-        $this->assertEquals('updated',$project->activity->last()->description);
+        $this->assertEquals('updated_project',$project->activity->last()->description);
     }
 
     /** @test */

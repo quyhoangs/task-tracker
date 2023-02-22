@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\RecordsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory,RecordsActivity;
 
 
     /*1. protected $guarded = []; means that no field is guarded
@@ -50,16 +51,4 @@ class Task extends Model
         return '/projects/' . $this->project->id . '/tasks/' . $this->id;
     }
 
-    public function recordActivity($description)
-    {
-        $this->activity()->create([
-            'project_id' => $this->project_id,
-            'description' => $description,
-        ]);
-    }
-
-    public function activity()
-    {
-        return $this->morphMany(Activity::class, 'subject')->latest();
-    }
 }
