@@ -1,4 +1,9 @@
 <?php
+// DB::listen(function($query){
+//     echo "<pre>";
+//     echo $query->sql;
+//     echo "</pre>";
+// });
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;

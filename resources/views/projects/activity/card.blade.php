@@ -8,7 +8,7 @@
                 @else
                     {{ $activity->description }}
                 @endif
-                <span class="text-grey">{{ $activity->created_at->diffForHumans(null,null,true) }}</span>
+                <span class="text-gray-500">{{ $activity->created_at->diffForHumans(null,null,true) }}</span>
             </li>
         @endforeach
 
