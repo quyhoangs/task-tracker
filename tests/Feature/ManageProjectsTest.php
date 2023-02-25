@@ -79,6 +79,28 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
+    public function unauthorized_users_cannot_delete_projects(){
+
+        $project = Project::factory()->create();
+        $this->delete($project->path())->assertRedirect('login');
+
+        $this->signInWithConfirmedEmail();
+        //user cannot delete project of another owner
+        $this->delete($project->path())->assertStatus(403);
+    }
+
+    /** @test */
+    public function test_a_user_can_delete_a_project(){
+
+        $this->signInWithConfirmedEmail();
+        $project = Project::factory()->create(['owner_id'=>auth()->id()]);
+
+        $this->delete($project->path())->assertRedirect('/projects');
+
+        $this->assertDatabaseMissing('projects',$project->only('id'));
+    }
+
+    /** @test */
     public function a_user_can_update_a_projects_general_notes(){
 
             $this->signInWithConfirmedEmail();

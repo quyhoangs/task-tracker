@@ -34,6 +34,7 @@ Route::controller(ForgotPasswordController::class)->middleware(['is_verify_email
 });
 
 Route::middleware(['auth','is_verify_email'])->group(function () {
+    // Route::resource('projects', 'ProjectsController');
     Route::prefix('projects')->group(function() {
         Route::get('/create',[ProjectsController::class, 'create']);
         Route::get('/{project}',[ProjectsController::class, 'show']);
@@ -41,6 +42,7 @@ Route::middleware(['auth','is_verify_email'])->group(function () {
         Route::patch('/{project}',[ProjectsController::class, 'update']);
         Route::get('/',[ProjectsController::class, 'index']);
         Route::post('/',[ProjectsController::class, 'store']);
+        Route::delete('/{project}',[ProjectsController::class, 'destroy']);
 
         Route::post('/{project}/tasks',[ProjectTaskController::class, 'store']);
         Route::patch('/{project}/tasks/{task}',[ProjectTaskController::class, 'update']);
