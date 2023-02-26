@@ -44,7 +44,7 @@ class Project extends Model
     {
         // 1 project has many members (1-n)
         // 1 member can be in many projects (n-n)
-        return $this->belongsToMany(User::class,'project_members');
+        return $this->belongsToMany(User::class,'project_members')->withTimestamps();
     }
 
     /** Dùng để ghi đè phương thức cha Laravel 7 Update

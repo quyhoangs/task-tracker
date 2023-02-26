@@ -61,6 +61,21 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
+    public function test_a_user_can_see_all_projects_they_have_been_invited_to_on_their_dashboard()
+    {
+        // Create a user and sign them in to the application
+        $user = User::factory()->create(['is_email_verified' =>  self::ACTIVE ]);
+        $this->actingAs($user);
+
+        //Người dùng khác tạo 1 project và mời bạn vào project đó làm thành viên
+        $project = tap(Project::factory()->create())
+                   ->invite($user);
+
+        //Assert that the user can see the project on their dashboard
+        $this->get('/projects')->assertSee($project->title);
+    }
+
+    /** @test */
     public function test_a_user_can_update_a_project(){
 
         $this->signInWithConfirmedEmail();
