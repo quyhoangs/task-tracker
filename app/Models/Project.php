@@ -34,6 +34,19 @@ class Project extends Model
         return $this->tasks()->create($body);
     }
 
+    public function invite(User $user)
+    {
+        // add member to project
+        return $this->members()->attach($user);
+    }
+
+    public function members()
+    {
+        // 1 project has many members (1-n)
+        // 1 member can be in many projects (n-n)
+        return $this->belongsToMany(User::class,'project_members');
+    }
+
     /** Dùng để ghi đè phương thức cha Laravel 7 Update
      * xử lý định dạng ngày tháng khác nhau khi so sánh định dạng cũ và định dạng mới
      * Prepare a date for array / JSON serialization.

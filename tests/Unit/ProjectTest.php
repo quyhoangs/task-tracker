@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -44,5 +45,15 @@ class ProjectTest extends TestCase
 
          // Asserts that the task is contained in the project's tasks collection
          $this->assertTrue($project->tasks->contains($task));
+      }
+
+      /** @test */
+      public function test_it_can_invite_a_user()
+      {
+         $project = Project::factory()->create();
+
+         $project->invite($user = User::factory()->create());
+
+         $this->assertTrue($project->members->contains($user));
       }
 }

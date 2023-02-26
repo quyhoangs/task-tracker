@@ -11,6 +11,7 @@ class ProjectPolicy
 
     public function update(User $user, $project)
     {
-        return $user->is($project->owner);
+        // Chỉ cho phép chủ sở hữu của dự án hoặc thành viên của dự án thực hiện thao tác
+        return $user->is($project->owner) || $project->members->contains($user);
     }
 }
