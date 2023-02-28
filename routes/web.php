@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProjectTaskController;
+use App\Http\Controllers\ProjectInvitationsController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(RegisterController::class)->group(function () {
@@ -43,6 +44,8 @@ Route::middleware(['auth','is_verify_email'])->group(function () {
         Route::get('/',[ProjectsController::class, 'index']);
         Route::post('/',[ProjectsController::class, 'store']);
         Route::delete('/{project}',[ProjectsController::class, 'destroy']);
+
+        Route::post('/{project}/invitations',[ProjectInvitationsController::class, 'invite']);
 
         Route::post('/{project}/tasks',[ProjectTaskController::class, 'store']);
         Route::patch('/{project}/tasks/{task}',[ProjectTaskController::class, 'update']);
