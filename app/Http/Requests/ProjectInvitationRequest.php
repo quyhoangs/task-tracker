@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 
 class ProjectInvitationRequest extends FormRequest
 {
+    protected $errorBag = 'invitations';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -14,12 +15,13 @@ class ProjectInvitationRequest extends FormRequest
      */
     public function authorize()
     {
-        //điều này là tương đương với $this->authorize('update', $project); trong controller
+
+        //điều này là tương đương với $this->authorize('manage', $project); trong controller
         // Gate là 1 class trong laravel để kiểm tra xem người dùng có quyền thực hiện hành động nào đó hay không
-        // trong trường hợp này là update project hay không
+        // trong trường hợp này là manage project hay không
         // nếu có quyền thì sẻ trả về true và ngược lại là false
         // THam số thứ 2 laravel sử dụng Model binding trong để lấy ra model tương ứng với route hiện tại được gọi đến
-        return Gate::allows('update', $this->route('project'));
+        return Gate::allows('manage', $this->route('project'));
     }
 
     /**

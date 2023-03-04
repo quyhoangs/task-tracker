@@ -13,15 +13,25 @@ class InvitationsTest extends TestCase
 
     /** @test */
     function test_non_owners_may_not_invite_users(){
-
+        // $this->withoutExceptionHandling();
         $this->signInWithConfirmedEmail();
-        $project = Project::factory()->create();
+        $project = Project::factory()->create(['owner_id'=>auth()->id()]);
 
-        $userToInvite = User::factory()->create(['is_email_verified' => 1]);
+        $newUser = User::factory()->create(['is_email_verified' => 1]);
 
-        $this->post($project->path() . '/invitations', [
-            'email' => $userToInvite->email,
-        ])->assertStatus(403);
+        $asserInvalidInvitation = function() use ($project,$newUser){
+            $this->actingAs($newUser)
+                 ->post($project->path() . '/invitations',
+                   ['email' =>  'invte-new-user-you-non-owners-project@gmail.com'])
+                 ->assertStatus(403);
+        };
+        // Người dùng không phải chủ sở hữu của project sẻ không được phép thực hiện lời mời
+        $asserInvalidInvitation();
+
+        $project->invite($newUser);
+
+        // Kể cả Lúc người dùng đố được chủ sở hữu mời vào Project cũng không được phép thực hiện lời mời
+        $asserInvalidInvitation();
     }
 
     /** @test */
@@ -49,7 +59,7 @@ class InvitationsTest extends TestCase
             'email' => 'notauser@example.com'
         ])->assertSessionHasErrors([
             'email' => 'The user you are inviting must have a Birdboard account.'
-       ]);
+       ],null,'invitations');
     }
     /** @test */
     public function test_users_can_update_projects_details()
