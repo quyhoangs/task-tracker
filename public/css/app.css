@@ -655,6 +655,9 @@ video {
 .max-w-xl {
   max-width: 36rem;
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
 .shrink {
   flex-shrink: 1;
 }
@@ -904,13 +907,13 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;
