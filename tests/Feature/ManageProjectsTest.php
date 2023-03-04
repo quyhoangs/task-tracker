@@ -102,6 +102,10 @@ class ManageProjectsTest extends TestCase
         $this->signInWithConfirmedEmail();
         //user cannot delete project of another owner
         $this->delete($project->path())->assertStatus(403);
+
+        $newUser = User::factory()->create(['is_email_verified' => 1]);
+        $project->invite($newUser);
+        $this->actingAs($newUser)->delete($project->path())->assertStatus(403);
     }
 
     /** @test */
