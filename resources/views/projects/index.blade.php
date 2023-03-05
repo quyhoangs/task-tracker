@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="flex justify-between items-end mb-5">
-    <h2 class="text-gray-500 text-sm font-normal">My Project</h2>
+    <h2 class="text-muted text-base font-light">My Projects</h2>
     <a href="/projects/create" class="button">New Project</a>
 </div>
 

@@ -9,6 +9,11 @@ module.exports = {
   theme: {
         textColor: {
           default: 'var(--text-default-color)', // text-default : var(--text-color)
+          accent: 'var(--text-accent-color)', // text-accent : var(--text-accent-color)
+          'accent-light': 'var(--text-accent-light-color)', // text-accent-light : var(--text-accent-light-color)
+          muted: 'var(--text-muted-color)', // text-muted : var(--text-muted-color)
+          'muted-light': 'var(--text-muted-light-color)', // text-muted-light : var(--text-muted-light-color)
+
     },
     backgroundColor: {
       page: 'var(--page-background-color)', // bg-page : var(--page-background-color)
