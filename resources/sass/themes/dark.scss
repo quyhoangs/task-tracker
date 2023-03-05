@@ -1,10 +1,11 @@
 .theme-dark {
     // --page-background-color: #17181e;
     // @apply bg-gradient-to-r from-neutral-900 to-purple-900;
-    @apply bg-gradient-to-r from-purple-900 via-purple-700 to-purple-900;
-      --card-background-color: #2a2929;
+    @apply bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900;
+      --card-background-color: #232121;
       --button-background-color: #59b6f9;
-      --header-background-color: #1f2027;
+      --header-background-color: #634396;
+
 
       --text-default-color: #fff;
       --text-muted-color: rgba(255, 255, 255, 0.5);

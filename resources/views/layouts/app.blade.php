@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="theme-dark bg-page  ">
+<body class="theme-light bg-page  ">
     <div id="app">
         <nav class="bg-header section">
             <div class="container mx-auto">
@@ -42,7 +42,7 @@
 
                     <div>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                        <div class="flex items-center ml-auto">
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
@@ -54,10 +54,12 @@
                                     </li>
                                 @endif
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <theme-switcher></theme-switcher>
+                                    <a id="navbarDropdown" class="flex items-center text-default no-underline" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <img src="{{ gravatar_url(Auth::user()->email) }}" alt="{{ Auth::user()->name }}" class="rounded-full w-8 h-8 mr-2">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
+
 
                                     {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -70,9 +72,8 @@
                                             @csrf
                                         </form>
                                     </div> --}}
-                                </li>
                             @endguest
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>

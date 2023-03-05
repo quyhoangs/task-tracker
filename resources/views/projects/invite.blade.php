@@ -6,7 +6,7 @@
     <footer>
         <form method="POST" action="{{ $project->path() . '/invitations' }}" class="text-right">
             @csrf
-            <input type="email" name="email" class="bg-card text-default selection:border-muted border rounded w-full py-2 px-3" placeholder="Email address">
+            <input type="email" name="email" class="bg-card text-default selection:border-muted border rounded w-full py-2 px-3 mb-5" placeholder="Email address">
             <button type="submit" class="button">Invite</button>
             <x-form.error :bag="'invitations'"/>
         </form>

@@ -535,6 +535,9 @@ video {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
+.mr-8 {
+  margin-right: 2rem;
+}
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -637,11 +640,11 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
-.w-full {
-  width: 100%;
-}
 .w-4 {
   width: 1rem;
+}
+.w-full {
+  width: 100%;
 }
 .w-6 {
   width: 1.5rem;
@@ -692,14 +695,14 @@ video {
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
+.rounded-full {
+  border-radius: 9999px;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
 .rounded {
   border-radius: 0.25rem;
-}
-.rounded-full {
-  border-radius: 9999px;
 }
 .rounded-3xl {
   border-radius: 1.5rem;
@@ -959,15 +962,15 @@ video {
 
 .theme-dark {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  --tw-gradient-from: #581c87;
-  --tw-gradient-to: rgb(88 28 135 / 0);
+  --tw-gradient-from: #111827;
+  --tw-gradient-to: rgb(17 24 39 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: rgb(126 34 206 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), #7e22ce, var(--tw-gradient-to);
-  --tw-gradient-to: #581c87;
-  --card-background-color: #2a2929;
+  --tw-gradient-to: rgb(55 65 81 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), #374151, var(--tw-gradient-to);
+  --tw-gradient-to: #111827;
+  --card-background-color: #232121;
   --button-background-color: #59b6f9;
-  --header-background-color: #1f2027;
+  --header-background-color: #634396;
   --text-default-color: #fff;
   --text-muted-color: rgba(255, 255, 255, 0.5);
   --text-muted-light-color: rgba(255, 255, 255, 0.3);
