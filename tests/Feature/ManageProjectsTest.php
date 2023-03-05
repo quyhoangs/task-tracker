@@ -61,6 +61,23 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
+    function test_tasks_can_be_included_as_part_a_new_project_creation(){
+
+            $this->signInWithConfirmedEmail();
+            $attributes = Project::factory()->raw(['owner_id'=>auth()->id()]);
+
+            $attributes['tasks'] = [
+                ['body'=>'Task 1'],
+                ['body'=>'Task 2'],
+                ['body'=>'Task 3'],
+            ];
+
+            $this->post('/projects',$attributes);
+
+            $this->assertCount(3,Project::first()->tasks);
+    }
+
+    /** @test */
     public function test_a_user_can_see_all_projects_they_have_been_invited_to_on_their_dashboard()
     {
         // Create a user and sign them in to the application
