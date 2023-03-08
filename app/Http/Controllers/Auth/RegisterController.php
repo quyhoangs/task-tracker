@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Events\ConfirmRegister;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\UserVerify;
 use App\Providers\RouteServiceProvider;
@@ -66,6 +67,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => Role::IS_USER,
         ]);
     }
 
