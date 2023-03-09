@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('theme-switcher', require('./components/ThemeSwitcher.vue').default);
 Vue.component('dropdown', require('./components/Dropdown.vue').default);
+Vue.component('left-sidebar', require('./components/LeftSidebar.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
