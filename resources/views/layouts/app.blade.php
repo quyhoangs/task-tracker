@@ -20,8 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="theme-light bg-page  ">
-    <div id="app">
-        <nav class="bg-header section">
+    <div id="app" >
+        <nav class="bg-header section ">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center py-1">
                     <h1>
@@ -81,10 +81,19 @@
                 </div>
             </div>
         </nav>
+        <div class="lg:flex mx-3">
+            <div class="lg:w-1/6 px-3 lg:py-8 bg-button">
+                 <left-sidebar></left-sidebar>
+            </div>
+            <div class="lg:w-5/6 px-3 mb-6 ">
+                <main class="container mx-auto py-4 section ">
+                    @yield('content')
+                </main>
+            </div>
 
-        <main class="container mx-auto py-4 section ">
-            @yield('content')
-        </main>
+        </div>
+
+
     </div>
 </body>
 </html>
