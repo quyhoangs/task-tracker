@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,10 +32,20 @@ class LoginController extends Controller
     public function postLogin(LoginRequest $request)
     {
         if ($this->checkIfAuthAttemptIsSuccessful($request)) {
+
             $this->regenerateSession($request);
-            return redirect()->intended('projects');
+
+            return $this->determineRedirectPath($request);
         }
         return redirect('/login')->with('message','The provided credentials do not match our records');
+    }
+
+    private function determineRedirectPath($request)
+    {
+        if (auth()->user()->role_id == Role::IS_ADMIN) {
+            return redirect()->intended('admin');
+        }
+        return redirect()->intended('projects');
     }
 
     /**

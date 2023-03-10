@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProjectFactory extends Factory
+class RolesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,10 +14,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
-            'description' => $this->faker->sentence,
-            'owner_id' => User::factory()->create(),
-            'notes' => 'General notes here.'
+            //
         ];
     }
 }

@@ -5,6 +5,8 @@
 //     echo "</pre>";
 // });
 
+use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -12,6 +14,12 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\ProjectInvitationsController;
 use Illuminate\Support\Facades\Route;
+
+//defied router admin
+
+Route::prefix('admin')->middleware(['auth','is_admin'])->controller(AdminController::class)->group(function() {
+    Route::get('/', 'dashboard');
+});
 
 Route::controller(RegisterController::class)->group(function () {
     Route::prefix('register')->group(function() {
