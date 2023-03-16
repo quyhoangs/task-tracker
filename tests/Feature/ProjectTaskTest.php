@@ -89,13 +89,13 @@ class ProjectTaskTest extends TestCase
         //updates the task,
         $this->patch($task->path(), [
             'body' => 'changed',
-            'completed' => true
+            'status' => Task::STATUS_COMPLETED
         ]);
 
         //and then asserts that the task has been updated
         $this->assertDatabaseHas('tasks', [
             'body' => 'changed',
-            'completed' => true
+            'status' => Task::STATUS_COMPLETED
         ]);
     }
 
@@ -115,7 +115,7 @@ class ProjectTaskTest extends TestCase
         //updates the task,
         $this->patch($task->path(), [
             'body' => 'changed',
-            'completed' => true
+            'status' => Task::STATUS_COMPLETED
         ]);
 
         //and then asserts that the task has been updated
@@ -124,16 +124,16 @@ class ProjectTaskTest extends TestCase
             'completed' => true
         ]);
 
-        //updates the task,
+        // Update the task status to incomplete
         $this->patch($task->path(), [
             'body' => 'changed',
-            'completed' => false
+            'status' => Task::STATUS_INCOMPLETE
         ]);
 
-        //and then asserts that the task has been updated
+        // Assert that the task has been updated
         $this->assertDatabaseHas('tasks', [
             'body' => 'changed',
-            'completed' => false
+            'status' => Task::STATUS_INCOMPLETE
         ]);
     }
 

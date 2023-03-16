@@ -15,10 +15,17 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('project_id');
+            $table->unsignedBigInteger('project_id');
+            $table->string('title');
+            $table->text('description')->nullable();
             $table->text('body');
-            $table->boolean('completed')->default(false);
+            $table->enum('status', ['open','in_progress', 'resolved', 'completed'])->default('open');
+            // $table->boolean('completed')->default(false);
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+
         });
     }
 

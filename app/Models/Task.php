@@ -5,10 +5,16 @@ namespace App\Models;
 use App\RecordsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use HasFactory,RecordsActivity;
+    use HasFactory,RecordsActivity,SoftDeletes;
+    const STATUS_OPEN = 'open';
+    const STATUS_IN_PROGRESS = 'in_progress';
+    const STATUS_RESOLVED = 'resolved';
+    const STATUS_COMPLETED = 'completed';
+
 
 
     /*1. protected $guarded = []; means that no field is guarded
