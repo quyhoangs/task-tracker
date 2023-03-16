@@ -13,13 +13,16 @@ module.exports = {
           'accent-light': 'var(--text-accent-light-color)', // text-accent-light : var(--text-accent-light-color)
           muted: 'var(--text-muted-color)', // text-muted : var(--text-muted-color)
           'muted-light': 'var(--text-muted-light-color)', // text-muted-light : var(--text-muted-light-color)
-
+          'task-open': 'var(--text-task-open-color)', // text-task-open : var(--task-open-color)
     },
     backgroundColor: {
       page: 'var(--page-background-color)', // bg-page : var(--page-background-color)
       card: 'var(--card-background-color)', // bg-card : var(--card-background-color) in tailwind.config.js -> sass .card
       button: 'var(--button-background-color)', // bg-button : var(--button-background-color)
       header: 'var(--header-background-color)', // bg-header : var(--header-background-color)
+
+      task: 'var(--task-background-color)', // bg-task : var(--task-background-color)
+
     },
     extend: {},
   },
