@@ -1,0 +1,36 @@
+.dropdown {
+  position: relative;
+
+  .dropdown-toggle {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+
+    &.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: block;
+      padding: 0.5rem 1rem;
+      clear: both;
+      font-weight: normal;
+      color: #212529;
+      text-align: inherit;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0;
+
+      &:hover,
+      &:focus {
+        background-color: #f8f9fa;
+        color: #16181b;
+      }
+    }
+  }
+}

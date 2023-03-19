@@ -1,33 +1,17 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+/*
+common: chứa các component dùng chung trong toàn bộ dự án như Header, Footer, Button, Input, Modal, Dropdown, Tooltip, Alert, Badge, Checkbox, Radio, v.v.
+layout: chứa các component layout của trang như Navbar, Sidebar, Breadcrumbs, Pagination, Cards, Tabs, v.v.
+pages: chứa các component được sử dụng trong từng trang cụ thể của dự án như HomePage, LoginPage, RegisterPage, ProfilePage, v.v.
+widgets: chứa các component nhỏ hơn, dùng để hiển thị thông tin như Statistic, Chart, Calendar, v.v.
+*/
 
-require('./bootstrap');
+import './bootstrap';
 
-window.Vue = require('vue').default;
+import { createApp } from 'vue';
+import router from './router.js'
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import GuestLayout from './components/guest/layouts/GuestLayout.vue'
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('theme-switcher', require('./components/ThemeSwitcher.vue').default);
-Vue.component('dropdown', require('./components/Dropdown.vue').default);
-Vue.component('left-sidebar', require('./components/LeftSidebar.vue').default);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-});
+createApp(GuestLayout)
+    .use(router)
+    .mount("#app")

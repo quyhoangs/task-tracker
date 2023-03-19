@@ -5,6 +5,17 @@
 //     echo "</pre>";
 // });
 
+//router init for base url
+Route::get('/{any?}', function () {
+     return view('layouts.app');
+});
+
+
+// Route::get('/home', function () {
+//     return view('layouts.app');
+// });
+
+/*
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -59,3 +70,4 @@ Route::middleware(['auth','is_verify_email'])->group(function () {
         Route::patch('/{project}/tasks/{task}',[ProjectTaskController::class, 'update']);
     });
 });
+*/

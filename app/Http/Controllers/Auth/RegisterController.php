@@ -18,24 +18,10 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('auth.register', [
-            'name' => old('name'),
-            'email' => old('email'),
-        ]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param   \App\Http\Requests\RegisterRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(RegisterRequest $request)
@@ -44,7 +30,11 @@ class RegisterController extends Controller
         try {
             $user = $this->__createUser($request);
 
-            $token = $this->__createToken($user);
+           //Create Token for verify account
+            $token  = Str::random(64);
+
+            //Create Auth Token for API
+            $apiToken  = $user->createToken('api_token')->plainTextToken;
 
             $data = $this->__prepareData($request, $token);
 
@@ -52,12 +42,17 @@ class RegisterController extends Controller
 
             DB::commit();
 
-            return view('email.email-verification-email', compact('data'));
+           return response([
+                'message' => 'Register success please check your email to verify your account',
+                'access_token' => $apiToken,
+             ], CREATED);
 
         } catch (\Exception $e) {
             DB::rollBack();
-            report($e);
-            return redirect()->back()->with('errors', _tr('alert.process_failed'));
+            return response([
+                'message' => 'Register failed',
+                'error' => $e->getMessage(),
+            ], INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -71,10 +66,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function __createToken($user)
-    {
-        return Str::random(64);
-    }
+
 
     protected function __prepareData($request, $token)
     {
@@ -92,6 +84,7 @@ class RegisterController extends Controller
 
     public function verifyAccount($token){
         $userVerify = UserVerify::where('token', $token)->first();
+
         if($userVerify){
             $this->__verifyUser($userVerify);
         }else{
@@ -117,6 +110,8 @@ class RegisterController extends Controller
             return redirect('/register')->with('tokenExpired','Token expired, please register again');
         }
         $user->is_email_verified = ACTIVE;
+        //Create token APi Sanctum for user
+        $user->createToken('myapptoken')->plainTextToken;
         $user->save();
         Auth::login($user);
         return redirect(RouteServiceProvider::HOME);

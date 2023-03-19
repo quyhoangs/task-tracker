@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 
-// Variables
-@import 'variables';
+// // Variables
+// @import 'variables';
 
-@import 'themes/light';
-@import 'themes/dark';
-@import 'components/button';
-@import 'components/card';
+// @import 'themes/light';
+// @import 'themes/dark';
+// @import 'components/button';
+// @import 'components/card';
 
-@import 'components/dropdown';
-// define class for button : class="button" in all blade file
-body,
-button {
-    @apply text-default;
-}
+// @import 'components/dropdown';
+// // define class for button : class="button" in all blade file
+// body,
+// button {
+//     @apply text-default;
+// }
 
-section {
-    @apply px-8;
-}
+// section {
+//     @apply px-8;
+// }
