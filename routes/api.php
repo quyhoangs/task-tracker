@@ -30,8 +30,7 @@ Route::controller(RegisterController::class)->group(function () {
 });
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login','index')->name('login');
-    Route::post('/login','postLogin');
+    Route::post('/login','postLogin')->name('login');
     Route::get('/logout','logout')->middleware('auth:sanctum');
 });
 
