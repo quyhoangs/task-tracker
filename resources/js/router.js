@@ -5,7 +5,13 @@ import AboutLayout from './components/guest/pages/AboutLayout.vue';
 import LoginLayout from './components/guest/pages/LoginLayout.vue';
 import RegisterLayout from './components/guest/pages/RegisterLayout.vue';
 
+import MemberLayout from './components/member/layouts/MemberLayout.vue';
+import ProjectTask from './components/member/view/ProjectTask.vue';
+
+
 const routes = [
+
+    //Router guest
     {
         path : '/home',
         name : 'Home',
@@ -30,7 +36,14 @@ const routes = [
         path : '/register',
         name : 'Register',
         component : RegisterLayout
-    }
+      },
+
+    //ROuter member
+      {
+        path : '/project',
+        name : 'Project',
+        component : ProjectTask,
+    },
 ];
 
 const router = createRouter({

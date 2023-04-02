@@ -10,8 +10,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import router from './router.js'
 
-import GuestLayout from './components/guest/layouts/GuestLayout.vue'
+import MemberLayout from './components/member/layouts/MemberLayout.vue'
 
-createApp(GuestLayout)
+createApp(MemberLayout)
     .use(router)
     .mount("#app")
