@@ -10,7 +10,7 @@
                 </svg>
                 <input
                     class="relative leading-none text-gray-600 bg-white lg:max-w-[452px] w-full outline-none border text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5"
-                    type="text" name="" id="" placeholder="Search Task, File, Comment..." />
+                    type="text" name="" id="" placeholder="Search Task, File, Comment and everything" />
             </div>
 
             <div class="hidden">
