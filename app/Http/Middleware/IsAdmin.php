@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Role;
 use Closure;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class IsAdmin
@@ -21,6 +22,6 @@ class IsAdmin
             return $next($request);
         }
 
-        return redirect('/projects');
+        return Response(['error' => 'Unauthorized.'], 401);
     }
 }

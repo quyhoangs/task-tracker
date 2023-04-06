@@ -42,6 +42,7 @@ class RegisterRequest extends FormRequest
             'role_id.in' => 'The selected role is invalid.',
             'name.required' => 'The name field is required.',
             'email.required' => 'The email field is required.',
+            'email.unique' => 'The email has already been taken, please go to verify your email to activate your account',
             'password.required' => 'The password field is required.',
             'password.confirmed' => 'The password confirmation does not match.',
             'password.min' => 'The password must be at least 8 characters.',

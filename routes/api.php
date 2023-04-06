@@ -2,13 +2,13 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SecretController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\ProjectTaskController;
-use App\Http\Controllers\ProjectInvitationsController;
+use App\Http\Controllers\Api\SecretController;
+use App\Http\Controllers\Api\Auth\ForgotPasswordController;
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\ProjectsController;
+use App\Http\Controllers\Api\ProjectTaskController;
+use App\Http\Controllers\Api\ProjectInvitationsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes

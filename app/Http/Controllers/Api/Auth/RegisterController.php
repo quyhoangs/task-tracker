@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api\Auth;
 
 use App\Events\ConfirmRegister;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Role;
 use App\Models\User;
@@ -29,7 +29,6 @@ class RegisterController extends Controller
         DB::beginTransaction();
         try {
             $user = $this->__createUser($request);
-
            //Create Token for verify account
             $token  = Str::random(64);
 
@@ -88,7 +87,9 @@ class RegisterController extends Controller
         if($userVerify){
             $this->__verifyUser($userVerify);
         }else{
-            abort(404);
+            return response([
+                'message' => 'Token not found',
+            ], NOT_FOUND);
         }
     }
 
@@ -98,7 +99,9 @@ class RegisterController extends Controller
         if($user->is_email_verified == INACTIVE){
             $this->__verifyUserExpire($userVerify, $user);
         }else{
-            return redirect('/login')->with('alreadyVerifiedNeedLogin','You are already verified, please login');
+            return response([
+                'message' => 'Your account has been verified',
+            ], BAD_REQUEST);
         }
     }
 
@@ -107,13 +110,16 @@ class RegisterController extends Controller
         if($timeExpired > 1){
             $userVerify->user->delete();
             $userVerify->delete();
-            return redirect('/register')->with('tokenExpired','Token expired, please register again');
+            return response([
+                'message' => 'Token expired, please register again',
+            ], BAD_REQUEST);
         }
         $user->is_email_verified = ACTIVE;
         //Create token APi Sanctum for user
         $user->createToken('myapptoken')->plainTextToken;
         $user->save();
-        Auth::login($user);
-        return redirect(RouteServiceProvider::HOME);
+        return response([
+            'message' => 'Your account has been verified',
+        ], OK);
     }
 }
