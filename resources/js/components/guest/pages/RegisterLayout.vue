@@ -1,77 +1,168 @@
 <template>
-      <section class="bg-gradient-to-r from-cyan-400 to-blue-400 rounded  ">
+    <GuestLayout> </GuestLayout>
+    <section class="bg-gradient-to-r from-cyan-400 to-blue-400 rounded  ">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <div class="w-full bg-card rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div
+                class="w-full bg-card rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        Create and account
+                        Register an account
                     </h1>
-                    <!-- @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif -->
-
-                    <!-- @if (session('tokenExpired'))
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Important!</strong>
-                            <span class="block sm:inline">{{ session('tokenExpired') }}.
-                            </span>
-                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <title>Close</title>
-                                    <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                                </svg>
-                            </span>
-                        </div>
-                    @endif -->
-
-                    <form class="space-y-4 md:space-y-6" >
+                    <form class="space-y-4 md:space-y-6" @submit.prevent="handleRegister">
                         <!-- @csrf -->
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
-                            <input type="name" name="name" id="name"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="JonhDoe"
-                                   value="">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                name</label>
+                            <input v-model="name" type="name"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="JonhDoe">
                         </div>
 
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                            <input type="email" name="email" id="email"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com"
-                                   value="">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                email</label>
+                            <input v-model="email" type="email"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="name@company.com">
                         </div>
 
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                            <label for="password"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <input v-model="password" type="password" placeholder="••••••••"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div>
-                            <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                            <label for="confirm-password"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
+                                password</label>
+                            <input v-model="password_confirmation" type="password" placeholder="••••••••"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
-                                <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" >
+                                <input id="terms" aria-describedby="terms" type="checkbox"
+                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800">
                             </div>
                             <div class="ml-3 text-sm">
-                                <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
+                                <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a
+                                        class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                        href="#">Terms and Conditions</a></label>
                             </div>
                         </div>
-                        <button type="submit" class="w-full  bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
+                        <button type="submit"
+                            class="w-full bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            Create an account
+                        </button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                            Already have an account? <a href="/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                            Already have an account? <a href="/login"
+                                class="font-medium text-primary-500  hover:underline dark:text-primary-500">Login here</a>
                         </p>
                     </form>
+
+                    <!-- Modal hiển thị thông báo xác thực tài khoản -->
+                    <div :class="{ 'hidden': !isModalVisible }" class=" relative z-10 " aria-labelledby="modal-title"
+                        role="dialog" aria-modal="true">
+                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+                        <div class="fixed inset-0 z-10 overflow-y-auto">
+                            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                                <div
+                                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                        <div class="sm:flex sm:items-start">
+                                            <div
+                                                class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+
+                                                <svg fill="none" stroke="currentColor" stroke-width="1.5"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                    aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                                <h3 class="text-base font-semibold leading-6 text-gray-900"
+                                                    id="modal-title">Register Suscess </h3>
+                                                <div class="mt-2">
+                                                    <p class="text-sm text-gray-500">
+                                                        We have sent you an email to confirm your account.
+                                                        plese check your email and click on the link to verify your account.
+                                                        Thanks for your registration.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                        <button @click="handleModalClosed" type="button"
+                                            class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-800 sm:ml-3 sm:w-auto">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+import GuestLayout from '../layouts/GuestLayout.vue';
+import axios from 'axios'; // Điều này có thể không cần vì Axios đã được đăng ký toàn cục
+
+
+export default {
+    name: 'Register',
+    components: {
+        GuestLayout
+    },
+    data() {
+        return {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            isModalVisible: false // Trạng thái hiển thị modal, ban đầu là ẩn
+        };
+    },
+    methods: {
+        handleRegister() {
+
+            // Gọi API đăng ký
+            axios.post('api/register', {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation
+            })
+                .then(response => {
+                    // Reset dữ liệu của các input
+                    this.name = '';
+                    this.email = '';
+                    this.password = '';
+                    this.password_confirmation = '';
+                    // Xử lý kết quả trả về từ API
+                    console.log(response.data); // Nếu API trả về dữ liệu, bạn có thể xử lý dữ liệu ở đây
+                    this.isModalVisible = true;
+                    // Hoặc chuyển hướng sang trang đăng nhập, hoặc hiển thị thông báo thành công, tùy theo yêu cầu của bạn
+                })
+                .catch(error => {
+                    // Xử lý lỗi nếu có
+                    console.log(error); // Hiển thị lỗi hoặc thực hiện các xử lý khác tùy theo yêu cầu của bạn
+                });
+        },
+        handleModalClosed() {
+            // Xử lý sự kiện khi modal được đóng
+            // Có thể thực hiện chuyển hướng sang trang khác hoặc thực hiện các xử lý khác tùy theo yêu cầu của bạn
+            this.isModalVisible = false;
+        }
+    }
+};
+</script>
+

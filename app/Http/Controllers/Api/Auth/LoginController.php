@@ -1,28 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function index()
-    // {
-    //     return view('auth.login', [
-    //         'email' => old('email'),
-    //         'password' => old('password'),
-    //     ]);
-    // }
 
     /**
      * For check login
@@ -34,12 +23,19 @@ class LoginController extends Controller
     {
         if ($request->expectsJson()) {
                 $user = User::where('email', $request->email)->first();
-                $this->regenerateSession($request);
-                $token = $user->createToken('myapptoken')->plainTextToken;
+
+                if(!$user || !Hash::check($request->password, $user->password)) {
+                    return response([
+                        'message' => 'Bad creds'
+                    ], 401);
+                }
+
+                $token = $user->createToken('token_login')->plainTextToken;
+
                 return response([
                     'status' => 'success',
                     'message' => 'Login successfully',
-                    'data' => auth()->user(),
+                    'data' =>   $user,
                     'token' => $token
                 ]);
             }
@@ -49,36 +45,6 @@ class LoginController extends Controller
             ]);
     }
 
-    // private function determineRedirectPath($request)
-    // {
-    //     if (auth()->user()->role_id == Role::IS_ADMIN) {
-    //         return redirect()->intended('admin');
-    //     }
-    //     return redirect()->intended('projects');
-    // }
-
-    /**
-     * checkIfAuthAttemptIsSuccessful
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    // private function checkIfAuthAttemptIsSuccessful($request)
-    // {
-    //     $remember_me = $request->has('remember_me') ? true : false;
-    //     return Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember_me);
-    // }
-
-    /**
-     * regenerateSession
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    private function regenerateSession($request)
-    {
-        $request->session()->regenerate();
-    }
 
     /**
      * logout

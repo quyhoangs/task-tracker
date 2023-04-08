@@ -35,15 +35,22 @@ class RegisterController extends Controller
             //Create Auth Token for API
             $apiToken  = $user->createToken('api_token')->plainTextToken;
 
-            $data = $this->__prepareData($request, $token);
+            $this->__prepareData($request, $token);
 
-            $this->__sendVerificationEmail($data);
+            //save uer and token to user_verify table
+            UserVerify::create([
+                'user_id' => $user->id,
+                'token' => $token,
+            ]);
+
+            // $this->__sendVerificationEmail($data);
 
             DB::commit();
 
            return response([
                 'message' => 'Register success please check your email to verify your account',
-                'access_token' => $apiToken,
+                'verify_email_token' => $token,
+                'access_token_sanctum' => $apiToken,
              ], CREATED);
 
         } catch (\Exception $e) {
@@ -81,16 +88,16 @@ class RegisterController extends Controller
         event(new ConfirmRegister($data));
     }
 
-    public function verifyAccount($token){
+    public function verifyAccount(){
+        $token = request()->token;
         $userVerify = UserVerify::where('token', $token)->first();
-
-        if($userVerify){
-            $this->__verifyUser($userVerify);
-        }else{
+        if(!$userVerify){
             return response([
                 'message' => 'Token not found',
-            ], NOT_FOUND);
+            ], BAD_REQUEST);
         }
+        return $this->__verifyUser($userVerify);
+
     }
 
     public function __verifyUser($userVerify){
@@ -116,10 +123,10 @@ class RegisterController extends Controller
         }
         $user->is_email_verified = ACTIVE;
         //Create token APi Sanctum for user
-        $user->createToken('myapptoken')->plainTextToken;
+        $user->createToken('token_register_Ok')->plainTextToken;
         $user->save();
         return response([
-            'message' => 'Your account has been verified',
+            'message' => 'Your account has been verified, please login',
         ], OK);
     }
 }

@@ -26,19 +26,20 @@
                                     class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                                     aria-current="page">About
                                 </router-link>
-                                <router-link :to="{ name: 'Login' }"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                                    aria-current="page">Login
-                                </router-link>
-                                <router-link :to="{ name: 'Register' }"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                                    aria-current="page">Register
-                                </router-link>
+
                             </div>
                         </div>
                     </div>
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                        <button type="button"
+                        <router-link :to="{ name: 'Login' }"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                            aria-current="page">Login
+                        </router-link>
+                        <router-link :to="{ name: 'Register' }"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                            aria-current="page">Register
+                        </router-link>
+                        <!-- <button type="button"
                             class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span class="sr-only">View notifications</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -48,7 +49,6 @@
                             </svg>
                         </button>
 
-                        <!-- Profile dropdown -->
                         <div class="relative ml-3">
                             <div>
                                 <button type="button"
@@ -62,7 +62,7 @@
                             </div>
                             <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                                <!-- Active: "bg-gray-100", Not Active: "" -->
+
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                     id="user-menu-item-0">Your Profile</a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
@@ -70,8 +70,10 @@
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                     id="user-menu-item-2">Sign out</a>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div>
+
                 </div>
             </div>
         </nav>

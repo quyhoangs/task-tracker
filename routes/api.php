@@ -26,13 +26,17 @@ Route::get('/secrets',[SecretController::class,'index']);
 
 Route::controller(RegisterController::class)->group(function () {
     Route::post('/register','store');
-    Route::get('/verify-account/{token}', 'verifyAccount')->name('verify');
+    Route::post('/verify-account/{token}', 'verifyAccount')->name('verify');
 });
 
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login','postLogin')->name('login');
     Route::get('/logout','logout')->middleware('auth:sanctum');
 });
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::controller(ForgotPasswordController::class)->middleware(['is_verify_email'])->group(function () {
     Route::get('/forget-password','showForgetPasswordForm');
