@@ -37,7 +37,7 @@
 
                     <button type="submit"
                         class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    px-4 py-3 mt-6">Log
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            px-4 py-3 mt-6">Log
                         In</button>
                 </form>
 
@@ -87,12 +87,8 @@
 
 <script>
 import GuestLayout from '../layouts/GuestLayout.vue';
-import { mapActions, mapMutations, mapGetters } from 'vuex';
-import VueCookies from 'vue-cookies';
-import axios from 'axios';
+import { mapActions } from 'vuex';
 
-// axios.defaults.withCredentials = true;
-// axios.defaults.baseURL = 'http://localhost:8000';
 
 
 export default {
@@ -109,22 +105,12 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['login']), // Kết nối action login từ store vào component
-        ...mapMutations(['setAccessToken']), // Kết nối mutation setAccessToken từ store vào component
-        ...mapGetters(['authentication']), // Kết nối mutation setAccessToken từ store vào component
+        ...mapActions(['login']),
         handleLogin() {
-            this.login(this.formData)
-                .then(response => {
-                    console.log(response);
-                    this.setAccessToken(response.data.token); // Dispatch mutation setAccessToken
-                    this.$store.commit('setIsAuthenticated', true); // Cập nhật trạng thái isAuthenticated trong store
-                    VueCookies.set('isAuthenticated', true); // Ghi giá trị vào cookies khi đăng nhập thành công
-                    this.$router.push({ name: 'Project' });
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
+            this.login(this.formData).then(() => {
+                this.$router.push({ name: 'home' });
+            });
+        },
     }
 };
 </script>

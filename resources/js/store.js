@@ -1,104 +1,51 @@
-import { createStore } from 'vuex';
+import { createStore } from 'vuex'; // Import createStore từ vuex
+import axios from 'axios'; // Import axios để gửi request
 
 const store = createStore({
-  state() {
-    return {
-      user: null, // Đối tượng user
-      isAuthenticated: false, // Trạng thái xác thực
-      isLoading: false, // Trạng thái đang tải
-      error: null, // Lỗi
-      accessToken: null, // Khởi tạo state accessToken
-    };
-  },
-  mutations: {
-    // Mutation để cập nhật trạng thái user
-    updateUser(state, user) {
-      state.user = user;
+    namespaced: true,
+    state: {
+        accessToken: null, // Token của người dùng
+        user: null,
     },
-    // // Mutation để cập nhật trạng thái xác thực
-    setIsAuthenticated(state, isAuthenticated) {
-        state.isAuthenticated = isAuthenticated;
-    },
-    // Mutation để cập nhật trạng thái đang tải
-    updateLoading(state, isLoading) {
-      state.isLoading = isLoading;
-    },
-    // Mutation để cập nhật lỗi
-    updateError(state, error) {
-      state.error = error;
-    },
-    setAccessToken(state, token) {
-        state.accessToken = token; // Cập nhật giá trị accessToken trong state
-        // Lưu token vào localStorage
-        localStorage.setItem('accessToken', token);
-      },
-  },
-  actions: {
-    async registerUser(context, userData) {
-        // Gọi API để đăng ký người dùng
-        try {
-          const response = await axios.post('api/register', userData);
-          // Cập nhật trạng thái dữ liệu trong store
-          context.commit('updateUserData', response.data.user);
-          context.commit('updateIsRegistered', true);
-          context.commit('updateError', null);
-        } catch (error) {
-          context.commit('updateError', error.message);
+    mutations: {
+        SET_TOKEN(state, token) {
+            state.accessToken = token;
+        },
+        SET_USER(state, user) {
+            state.user = user;
         }
-      },
-    // Action để đăng nhập
-    login({ commit }, formData) {
-        return new Promise((resolve, reject) => {
-            //• Chỉ gửi csrf-token trong lần đầu yêu cầu login thành công ,
-            //các lần sau đó axios tự gắn token này vào api mỗi khi bạn gửi lên serve
-          axios.get('/sanctum/csrf-cookie').then(response => {
-            axios.post('/api/login', formData).then(response => {
-              // Lưu token vào Vuex state
-              commit('setAccessToken', response.data.token);
-              resolve(response);
-            }).catch(error => {
-              reject(error);
-            });
-          });
-        });
-      },
-    // Action để đăng xuất
-    async  logout(context) {
-      // Thực hiện xử lý đăng xuất, ví dụ API request
-      context.commit('updateLoading', true);
-      try {
-        // Gọi API để đăng xuất
-        await api.logout();
-        // Cập nhật trạng thái user và xác thực không thành công
-        context.commit('updateUser', null);
-        context.commit('updateAuthentication', false);
-        context.commit('updateError', null);
-      } catch (error) {
-        // Nếu có lỗi, cập nhật trạng thái lỗi
-        context.commit('updateError', error.message);
-      } finally {
-        context.commit('updateLoading', false);
-      }
+    },
+    actions: {
+        async login({ commit }, credentials) {
+            let response = await axios.post('/api/login', credentials);
+          return dispatch('attempt', response.data.token);
+        },
+
+        async attempt({ commit, state }, token) {
+            commit('SET_TOKEN', token);
+            try {
+                let response = await axios.get('/api/user',{
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                });
+                commit('SET_USER', response.data);
+            }
+            catch (e) {
+                commit('SET_TOKEN', null);
+                commit('SET_USER', null);
+            }
+        },
+    },
+    getters: {
+        authenticated(state) {
+            return state.user && state.accessToken;
+        },
+        user(state) {
+            return state.user;
+        }
     }
-  },
-  getters: {
-    // Getter để lấy trạng thái user
-    getUser(state) {
-      return state.user;
-    },
-    // Getter để lấy trạng thái xác thực
-    isAuthenticated(state) {
-        return state.isAuthenticated;
-    },
-    // Getter để lấy trạng thái đang tải
-    getLoading(state) {
-      return state.isLoading;
-    },
-    // Getter để lấy lỗi
-    getError(state) {
-      return state.error;
-    }
-  }
+
 });
 
 export default store;

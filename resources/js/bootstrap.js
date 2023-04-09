@@ -1,4 +1,4 @@
-
+import VueCookies from 'vue-cookies';
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -11,6 +11,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // handle CSRF token , CORS issue
 window.axios.defaults.withCredentials = true;
+
+// Lấy token từ localStorage hoặc từ cookie (tùy theo cách lưu trữ của bạn)
+// const token = localStorage.getItem('token') || VueCookies.get('token');
+
+// // Thêm token vào header của các yêu cầu Axios
+// if (token) {
+//     window.axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+// }
+
+// handle CSRF token, CORS issue
 
 
 /**
