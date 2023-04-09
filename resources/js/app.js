@@ -9,9 +9,11 @@ import './bootstrap';
 
 import { createApp } from 'vue';
 import router from './router.js'
+import store from './store.js' // Import store từ file store.js
 
 import MemberLayout from './components/member/layouts/MemberLayout.vue'
 
 createApp(MemberLayout)
     .use(router)
+    .use(store) // Sử dụng store Vuex
     .mount("#app")

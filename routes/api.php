@@ -20,7 +20,12 @@ use App\Http\Controllers\Api\ProjectInvitationsController;
 |
 */
 
-
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return [
+        'name' => 'John Doe',
+        'email' => 'adsa'
+    ] ;
+});
 
 Route::get('/secrets',[SecretController::class,'index']);
 

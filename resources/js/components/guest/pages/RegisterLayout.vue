@@ -115,7 +115,7 @@
 <script>
 import GuestLayout from '../layouts/GuestLayout.vue';
 import axios from 'axios'; // Điều này có thể không cần vì Axios đã được đăng ký toàn cục
-
+import { mapActions } from 'vuex';
 
 export default {
     name: 'Register',
@@ -132,10 +132,10 @@ export default {
         };
     },
     methods: {
+        ...mapActions(['registerUser']), // Sử dụng mapActions để gọi action registerUser từ store
         handleRegister() {
-
-            // Gọi API đăng ký
-            axios.post('api/register', {
+            // Gọi action đăng ký người dùng từ store
+            this.registerUser({
                 name: this.name,
                 email: this.email,
                 password: this.password,

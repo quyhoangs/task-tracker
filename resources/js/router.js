@@ -8,6 +8,7 @@ import RegisterLayout from './components/guest/pages/RegisterLayout.vue';
 import MemberLayout from './components/member/layouts/MemberLayout.vue';
 import ProjectTask from './components/member/view/ProjectTask.vue';
 
+import authMiddleware from './components/middeware/auth.js';
 
 const routes = [
 
@@ -35,14 +36,17 @@ const routes = [
     {
         path : '/register',
         name : 'Register',
-        component : RegisterLayout
-      },
+        component : () => import('./components/guest/pages/RegisterLayout.vue')
+    },
 
     //ROuter member
-      {
+    {
         path : '/project',
         name : 'Project',
-        component : ProjectTask,
+        component :  () => import('./components/member/view/ProjectTask.vue'),
+        meta: {
+            middleware: [authMiddleware] // Đăng ký middleware auth vào đây
+        }
     },
 ];
 
@@ -50,5 +54,34 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 });
+
+// Đăng ký middleware vào trước khi navigation xảy ra
+router.beforeEach((to, from, next) => {
+    // Lấy danh sách middleware được đăng ký cho route hiện tại
+    const middleware = to.meta.middleware;
+    // Nếu không có middleware nào được đăng ký, cho phép tiếp tục
+    if (!middleware) {
+      return next();
+    }
+    // Thực thi middleware theo thứ tự
+    const context = { to, from, next, router };
+    middleware[0](to, from, next); // Sửa lại đây, truyền to, from, next vào middleware
+});
+
+// Hàm thực thi chuỗi middleware theo thứ tự
+function middlewarePipeline(context, middleware, index) {
+    const nextMiddleware = middleware[index];
+    // Nếu không có middleware nào khác để thực thi, trả về hàm next() của router
+    if (!nextMiddleware) {
+      return context.router.next;
+    }
+    // Thực thi middleware tiếp theo
+    return () => {
+      const nextPipeline = middlewarePipeline(context, middleware, index + 1);
+      nextMiddleware({ ...context, next: nextPipeline });
+    };
+  }
+
+
 
 export default router;

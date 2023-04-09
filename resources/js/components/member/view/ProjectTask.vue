@@ -1,4 +1,4 @@
-<template>
+ư<template>
     <div class="grid grid-cols-5 gap-4 ">
         <div class="col-span-1 w-1/5 ">
             <LeftSidebar> </LeftSidebar>
@@ -72,6 +72,7 @@ import FilterTask from '../common/filter/FilterTask.vue';
 import TabProject from '../common/tabs/TabProject.vue';
 import CardProjectTask from '../common/card/CardProjectTask.vue';
 export default {
+
     components: {
         MenuTop,
         LeftSidebar,
