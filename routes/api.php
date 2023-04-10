@@ -36,7 +36,7 @@ Route::controller(RegisterController::class)->group(function () {
 
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login','postLogin')->name('login');
-    Route::get('/logout','logout')->middleware('auth:sanctum');
+    Route::post('/logout','logout')->middleware('auth:sanctum');
 });
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {

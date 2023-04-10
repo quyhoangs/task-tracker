@@ -19744,7 +19744,17 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['authenticated', 'user']))
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['authenticated', 'user'])),
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['logout'])), {}, {
+    handleLogout: function handleLogout() {
+      var _this = this;
+      this.logout().then(function () {
+        _this.$router.push({
+          name: 'Login'
+        });
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -19930,7 +19940,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         _this.password = '';
         _this.password_confirmation = '';
         // Xử lý kết quả trả về từ API
-        console.log(response.data); // Nếu API trả về dữ liệu, bạn có thể xử lý dữ liệu ở đây
+        console.log(response); // Nếu API trả về dữ liệu, bạn có thể xử lý dữ liệu ở đây
         _this.isModalVisible = true;
         // Hoặc chuyển hướng sang trang đăng nhập, hoặc hiển thị thông báo thành công, tùy theo yêu cầu của bạn
       })["catch"](function (error) {
@@ -20132,6 +20142,11 @@ var _hoisted_17 = {
   key: 0,
   "class": "text-gray-300"
 };
+var _hoisted_18 = {
+  "class": "text-gray-300"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, null, -1 /* HOISTED */);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
@@ -20191,7 +20206,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_14];
     }),
     _: 1 /* STABLE */
-  })], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Username "), _ctx.authenticated ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])]);
+  })], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Username "), _ctx.authenticated ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleLogout && $options.handleLogout.apply($options, arguments);
+    }, ["prevent"])),
+    "class": "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium",
+    "aria-current": "page"
+  }, "Logout "), _hoisted_19])])])])])])]);
 }
 
 /***/ }),
@@ -24217,8 +24238,13 @@ widgets: chứa các component nhỏ hơn, dùng để hiển thị thông tin n
  // Import store từ file store.js
 
 
-(0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)(_components_member_layouts_MemberLayout_vue__WEBPACK_IMPORTED_MODULE_4__["default"]).use(_router_js__WEBPACK_IMPORTED_MODULE_2__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_3__["default"]) // Sử dụng store Vuex
-.mount("#app");
+__webpack_require__(/*! ./components/store/subscriber.js */ "./resources/js/components/store/subscriber.js");
+
+// Attempt to login if token exists
+_store_js__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch('attempt', localStorage.getItem('token')).then(function () {
+  (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)(_components_member_layouts_MemberLayout_vue__WEBPACK_IMPORTED_MODULE_4__["default"]).use(_router_js__WEBPACK_IMPORTED_MODULE_2__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_3__["default"]) // Sử dụng store Vuex
+  .mount("#app");
+});
 
 /***/ }),
 
@@ -24289,13 +24315,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function auth(to, from, next) {
   // Kiểm tra xem người dùng đã đăng nhập hay chưa
-  var authUser = _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters["auth/authUser"];
+  var authUser = _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters.user;
+  console.log('auth middleware', _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch);
   if (!authUser) {
     // Nếu chưa đăng nhập
     // Dispatch action để lấy thông tin người dùng từ server
-    _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch("auth/getAuthUser").then(function () {
+    _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch("attempt").then(function () {
       // Kiểm tra lại xem người dùng đã đăng nhập hay chưa
-      var authUserAfterFetch = _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters["auth/authUser"];
+      var authUserAfterFetch = _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters.user;
       if (!authUserAfterFetch) {
         // Nếu chưa đăng nhập sau khi lấy thông tin từ server
         // Redirect đến trang đăng nhập với query parameter redirect là đường dẫn của route hiện tại
@@ -24315,6 +24342,38 @@ function auth(to, from, next) {
     return next();
   }
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/store/subscriber.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/store/subscriber.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store */ "./resources/js/store.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+// Subscribe to store mutations and save token to localStorage
+_store__WEBPACK_IMPORTED_MODULE_0__["default"].subscribe(function (mutation, state) {
+  console.log(mutation);
+  switch (mutation.type) {
+    case "SET_TOKEN":
+      if (mutation.payload) {
+        (axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.headers.common.Authorization) = "Bearer " + mutation.payload;
+        localStorage.setItem("token", mutation.payload);
+      } else {
+        (axios__WEBPACK_IMPORTED_MODULE_1___default().defaults.headers.common.Authorization) = null;
+        localStorage.removeItem("token");
+      }
+      break;
+  }
+});
 
 /***/ }),
 
@@ -24471,7 +24530,8 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
     }
   },
   actions: {
-    login: function login(_ref, credentials) {
+    registerUser: function registerUser(_ref, credentials) {
+      var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var commit, response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -24479,10 +24539,10 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
             case 0:
               commit = _ref.commit;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', credentials);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', credentials);
             case 3:
               response = _context.sent;
-              return _context.abrupt("return", dispatch('attempt', response.data.token));
+              return _context.abrupt("return", _this.dispatch('attempt', response.data.token));
             case 5:
             case "end":
               return _context.stop();
@@ -24490,37 +24550,70 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
         }, _callee);
       }))();
     },
-    attempt: function attempt(_ref2, token) {
+    login: function login(_ref2, credentials) {
+      var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var commit, state, response;
+        var commit, response;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              commit = _ref2.commit, state = _ref2.state;
-              commit('SET_TOKEN', token);
-              _context2.prev = 2;
-              _context2.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/user', {
-                headers: {
-                  'Authorization': 'Bearer ' + token
-                }
-              });
-            case 5:
+              commit = _ref2.commit;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', credentials);
+            case 3:
               response = _context2.sent;
-              commit('SET_USER', response.data);
-              _context2.next = 13;
-              break;
-            case 9:
-              _context2.prev = 9;
-              _context2.t0 = _context2["catch"](2);
-              commit('SET_TOKEN', null);
-              commit('SET_USER', null);
-            case 13:
+              return _context2.abrupt("return", _this2.dispatch('attempt', response.data.token));
+            case 5:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[2, 9]]);
+        }, _callee2);
       }))();
+    },
+    attempt: function attempt(_ref3, token) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var commit, state, response;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit, state = _ref3.state;
+              if (token) {
+                commit('SET_TOKEN', token);
+              }
+
+              //
+              if (state.accessToken) {
+                _context3.next = 4;
+                break;
+              }
+              return _context3.abrupt("return");
+            case 4:
+              _context3.prev = 4;
+              _context3.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/user');
+            case 7:
+              response = _context3.sent;
+              commit('SET_USER', response.data);
+              _context3.next = 15;
+              break;
+            case 11:
+              _context3.prev = 11;
+              _context3.t0 = _context3["catch"](4);
+              commit('SET_TOKEN', null);
+              commit('SET_USER', null);
+            case 15:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, null, [[4, 11]]);
+      }))();
+    },
+    logout: function logout(_ref4) {
+      var commit = _ref4.commit;
+      return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/logout').then(function () {
+        commit('SET_TOKEN', null);
+        commit('SET_USER', null);
+      });
     }
   },
   getters: {

@@ -16,19 +16,29 @@ const store = createStore({
         }
     },
     actions: {
+        async registerUser({ commit }, credentials) {
+            let response = await axios.post('/api/register', credentials);
+            return this.dispatch('attempt', response.data.token);
+        },
+
+
         async login({ commit }, credentials) {
             let response = await axios.post('/api/login', credentials);
-          return dispatch('attempt', response.data.token);
+          return this.dispatch('attempt', response.data.token);
         },
 
         async attempt({ commit, state }, token) {
-            commit('SET_TOKEN', token);
+            if (token) {
+                commit('SET_TOKEN', token);
+            }
+
+            //
+            if (!state.accessToken) {
+                return;
+            }
+
             try {
-                let response = await axios.get('/api/user',{
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    }
-                });
+                let response = await axios.get('/api/user');
                 commit('SET_USER', response.data);
             }
             catch (e) {
@@ -36,6 +46,13 @@ const store = createStore({
                 commit('SET_USER', null);
             }
         },
+         logout({ commit }) {
+            return axios.post('/api/logout').then(() => {
+                commit('SET_TOKEN', null);
+                commit('SET_USER', null);
+            });
+        }
+
     },
     getters: {
         authenticated(state) {

@@ -148,7 +148,7 @@ export default {
                     this.password = '';
                     this.password_confirmation = '';
                     // Xử lý kết quả trả về từ API
-                    console.log(response.data); // Nếu API trả về dữ liệu, bạn có thể xử lý dữ liệu ở đây
+                    console.log(response); // Nếu API trả về dữ liệu, bạn có thể xử lý dữ liệu ở đây
                     this.isModalVisible = true;
                     // Hoặc chuyển hướng sang trang đăng nhập, hoặc hiển thị thông báo thành công, tùy theo yêu cầu của bạn
                 })

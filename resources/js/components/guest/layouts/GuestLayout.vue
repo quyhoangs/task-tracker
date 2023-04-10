@@ -62,6 +62,17 @@
                                 {{ user.name }}
                             </div>
 
+                            <div class="text-gray-300">
+                                <button @click.prevent="handleLogout"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    aria-current="page">Logout
+                                </button>
+                                <div>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -73,11 +84,20 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     computed: {
         ...mapGetters(['authenticated', 'user'])
+    },
+
+    methods: {
+        ...mapActions(['logout']),
+        handleLogout() {
+            this.logout().then(() => {
+                this.$router.push({ name: 'Login' });
+            });
+        },
     }
 }
 </script>
