@@ -41,6 +41,14 @@ const routes = [
 
     //ROuter member
     {
+        path : '/profile',
+        name : 'Profile',
+        component :  () => import('./components/member/view/Profile.vue'),
+        meta: {
+            middleware: [authMiddleware] // Đăng ký middleware auth vào đây
+        }
+    },
+    {
         path : '/home',
         name : 'HomeMember',
         component :  () => import('./components/member/view/HomeMember.vue'),
