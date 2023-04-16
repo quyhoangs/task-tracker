@@ -13,11 +13,11 @@ import authMiddleware from './components/middeware/auth.js';
 const routes = [
 
     //Router guest
-    {
-        path : '/home',
-        name : 'Home',
-        component : HomeLayout
-    },
+    // {
+    //     path : '/home',
+    //     name : 'Home',
+    //     component : HomeLayout
+    // },
     {
         path : '/contact',
         name : 'Contact',
@@ -40,6 +40,14 @@ const routes = [
     },
 
     //ROuter member
+    {
+        path : '/home',
+        name : 'HomeMember',
+        component :  () => import('./components/member/view/HomeMember.vue'),
+        meta: {
+            middleware: [authMiddleware] // Đăng ký middleware auth vào đây
+        }
+    },
     {
         path : '/project',
         name : 'Project',

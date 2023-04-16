@@ -16,12 +16,8 @@ require('./components/store/subscriber.js');
 
 // Attempt to login if token exists
 store.dispatch('attempt', localStorage.getItem('token')).then(() => {
-
-
-
-createApp(MemberLayout)
-    .use(router)
-    .use(store) // Sử dụng store Vuex
-    .mount("#app")
-
+    createApp(MemberLayout)
+        .use(router)
+        .use(store) // Sử dụng store Vuex
+        .mount("#app")
 });

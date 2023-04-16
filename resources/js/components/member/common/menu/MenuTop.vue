@@ -2,7 +2,7 @@
     <!-- component -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     <div class="bg-gray-200  flex flex-wrap sys-app-notCollapsed ">
-        <div class="p-2 w-full ">
+        <div class=" w-full ">
             <div class="p-2 text-gray-900 bg-white rounded-lg shadow-lg flex items-center">
                 <span class="px-2 mr-36 border-r border-gray-800 font-sans">
                     <img src="https://www.freepnglogos.com/uploads/spotify-logo-png/file-spotify-logo-png-4.png"

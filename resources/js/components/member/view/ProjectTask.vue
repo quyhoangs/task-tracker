@@ -1,4 +1,4 @@
-ư<template>
+<template>
     <div class="grid grid-cols-5 gap-4 ">
         <div class="col-span-1 w-1/5 ">
             <LeftSidebar> </LeftSidebar>
@@ -9,7 +9,8 @@
             <div class="flex items-center">
                 <div class="w-1/2">
                     <DropdownListProjectTask> </DropdownListProjectTask>
-                    <ButtonCreateProject class="mr-20"> </ButtonCreateProject>
+                    <ButtonCreateProject class="mr-2" @click="openModal"> </ButtonCreateProject>
+                    <ModalCreateProject v-if="showModal" @closeModal="closeModal" />
                     <FilterTask> </FilterTask>
                 </div>
 
@@ -71,6 +72,9 @@ import ButtonCreateProject from '../common/button/ButtonCreateProject.vue';
 import FilterTask from '../common/filter/FilterTask.vue';
 import TabProject from '../common/tabs/TabProject.vue';
 import CardProjectTask from '../common/card/CardProjectTask.vue';
+import ModalCreateProject from '../common/modal/ModalCreateProject.vue';
+
+
 export default {
 
     components: {
@@ -82,6 +86,22 @@ export default {
         FilterTask,
         TabProject,
         CardProjectTask,
+        ModalCreateProject,
+    },
+    data() {
+        return {
+            showModal: false,
+        };
+    },
+    methods: {
+        openModal() {
+            // Mở modal
+            this.showModal = true;
+        },
+        closeModal() {
+            // Đóng modal
+            this.showModal = false;
+        },
     }
 }
 </script>
