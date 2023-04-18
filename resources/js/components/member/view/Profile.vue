@@ -26,7 +26,7 @@
                     </svg>
                 </div>
             </div>
-            <div class=" w-full h-60 rounded-3xl overflow-hidden">
+            <div class=" w-full h-40 rounded-3xl overflow-hidden">
                 <!-- Ảnh bìa -->
                 <img src="../../../../../public/images/coved/curved0.jpg" alt="Ảnh bìa" class="object-cover w-full h-full">
             </div>
@@ -78,380 +78,48 @@
                 </div>
             </div>
 
-            <!-- Thông tin người dùng -->
-
-            <!-- Profile Information -->
-
-            <div class="flex">
-                <div class="w-1/3">
-                    <!-- Cột 1 - Profile Information -->
-                    <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
-
-                        <!-- ID task and dropdown -->
-                        <div class="overflow-auto">
-                            <p class="float-left text-xs text-accent font-bold">Profile Information</p>
-                            <button
-                                class='mt-[-18px] float-right items-center text-xl hover:cursor-pointer bg-lightPrimary p-2 text-brand-500 hover:bg-gray-100 dark:bg-navy-700 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/10 rounded-lg'>
-                                <svg stroke="black" fill="black" stroke-width="0" viewBox="0 0 16 16" class="h-6 w-6"
-                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
-                                    </path>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <p>
-                            Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally
-                            difficult paths, choose the one more painful in the short term (pain avoidance is
-                            creating an illusion of equality).
-
-                        </p>
-
-                        <!-- Full Name:   Alec M. Thompson -->
-                        <div class="flex flex-col md:flex-row items-center mt-2">
-                            <div class="text-sm text-gray-500">Full Name:</div>
-                            <div class="ml-2 text-sm text-gray-500">Alec M. Thompson</div>
-                        </div>
-
-                        <div class="flex flex-col md:flex-row items-center mt-2">
-                            <div class="text-sm text-gray-500">Mobile:</div>
-                            <div class="ml-2 text-sm text-gray-500">(44) 1223 12134 123</div>
-                        </div>
-
-                        <div class="flex flex-col md:flex-row items-center mt-2">
-                            <div class="text-sm text-gray-500">Email:</div>
-                            <div class="ml-2 text-sm text-gray-500"> 23f3f3f3@mail.com</div>
-                        </div>
-
-                        <div class="flex flex-col md:flex-row items-center mt-2">
-                            <div class="text-sm text-gray-500">Location:</div>
-                            <div class="ml-2 text-sm text-gray-500">USA</div>
-                        </div>
-
-                        <!-- Social: -->
-                        <div class="flex flex-col md:flex-row items-center mt-2">
-                            <div class="text-sm text-gray-500">Social:</div>
-                            <div class="ml-2 text-sm text-gray-500">Facebook, Twitter, Instagram</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-1/3 ml-5">
-                    <!-- Cột 1 - Profile Information -->
-                    <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
-                        <div class="p-4">
-                            <h2 class="text-lg font-semibold mb-2">Platform Settings</h2>
-                            <h3 class="text-md font-medium mb-2">ACCOUNT</h3>
-                            <div class="flex items-center mb-2">
-                                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
-                                    </div>
-                                    <span class="ml-3 text-sm">Nhận email khi có task mới</span>
-                                </label>
-
-                            </div>
-
-                            <div class="flex items-center mb-2">
-                                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
-                                    </div>
-                                    <span class="ml-3 text-sm">Nhận email khi có task mới</span>
-                                </label>
-
-                            </div>
-
-                            <h3 class="text-md font-medium mb-2">APPLICATION</h3>
-                            <div class="flex items-center mb-2">
-                                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
-                                    </div>
-                                    <span class="ml-3 text-sm">Nhận email khi có task mới</span>
-                                </label>
-
-                            </div>
-
-                            <div class="flex items-center">
-                                <label class="relative inline-flex items-center mr-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" checked>
-                                    <div
-                                        class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
-                                    </div>
-                                    <span class="ml-3 text-sm">Nhận email khi có task mới</span>
-                                </label>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-1/3 ml-5">
-                    <!-- Cột 1 - Profile Information -->
-                    <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
-                        <div class="p-4">
-                            <h2 class="text-lg font-semibold mb-2">Activity</h2>
-                            + hiện thị hoạt động gần đây của bạn
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Tab :Persion info , Working status , Password, Language and region , Session History  -->
             <div>
-                <div class="flex">
-                    <div class="w-1/3 mr-2">
-                        <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
-                    </div>
+                <ul class="grid grid-flow-col text-center text-gray-500 bg-gray-100 rounded-full p-1 mb-3">
+                    <li>
+                        <tab-item label="Person Info" :route="{ name: 'PersonInfo' }"></tab-item>
+                    </li>
+                    <li>
+                        <tab-item label="Working Status" :route="{ name: 'WorkingStatus' }"></tab-item>
+                    </li>
+                    <li>
+                        <tab-item label="Password" :route="{ name: 'Password' }"></tab-item>
+                    </li>
+                    <li>
+                        <tab-item label="Language and Region" :route="{ name: 'LanguageRegion' }"></tab-item>
+                    </li>
+                    <li>
+                        <tab-item label="Session History" :route="{ name: 'SessionHistory' }"></tab-item>
+                    </li>
+                </ul>
 
-                    <div class="w-1/3 mr-2">
-                        <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
-                    </div>
-
-                    <div class="w-1/3 mr-2">
-                        <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
-                    </div>
-                </div>
+                <router-view></router-view>
             </div>
 
 
-            <div>
-                <div class="flex">
-                    <div class="w-1/4 mr-2">
-                        <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
 
-                            <!-- ID task and dropdown -->
-                            <div class="overflow-auto">
-                                <p class="float-left text-xs text-accent font-bold">3 Dự án gần nhất</p>
-                                <button
-                                    class='mt-[-18px] float-right items-center text-xl hover:cursor-pointer bg-lightPrimary p-2 text-brand-500 hover:bg-gray-100 dark:bg-navy-700 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/10 rounded-lg'>
-                                    <svg stroke="black" fill="black" stroke-width="0" viewBox="0 0 16 16" class="h-6 w-6"
-                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <p>
-                                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally
-                                difficult paths, choose the one more painful in the short term (pain avoidance is
-                                creating an illusion of equality).
-
-                            </p>
-
-                            <!-- Full Name:   Alec M. Thompson -->
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Full Name:</div>
-                                <div class="ml-2 text-sm text-gray-500">Alec M. Thompson</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Mobile:</div>
-                                <div class="ml-2 text-sm text-gray-500">(44) 1223 12134 123</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Email:</div>
-                                <div class="ml-2 text-sm text-gray-500"> 23f3f3f3@mail.com</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Location:</div>
-                                <div class="ml-2 text-sm text-gray-500">USA</div>
-                            </div>
-
-                            <!-- Social: -->
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Social:</div>
-                                <div class="ml-2 text-sm text-gray-500">Facebook, Twitter, Instagram</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-1/4 mr-2">
-                        <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
-
-                            <!-- ID task and dropdown -->
-                            <div class="overflow-auto">
-                                <p class="float-left text-xs text-accent font-bold">Profile Information</p>
-                                <button
-                                    class='mt-[-18px] float-right items-center text-xl hover:cursor-pointer bg-lightPrimary p-2 text-brand-500 hover:bg-gray-100 dark:bg-navy-700 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/10 rounded-lg'>
-                                    <svg stroke="black" fill="black" stroke-width="0" viewBox="0 0 16 16" class="h-6 w-6"
-                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <p>
-                                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally
-                                difficult paths, choose the one more painful in the short term (pain avoidance is
-                                creating an illusion of equality).
-
-                            </p>
-
-                            <!-- Full Name:   Alec M. Thompson -->
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Full Name:</div>
-                                <div class="ml-2 text-sm text-gray-500">Alec M. Thompson</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Mobile:</div>
-                                <div class="ml-2 text-sm text-gray-500">(44) 1223 12134 123</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Email:</div>
-                                <div class="ml-2 text-sm text-gray-500"> 23f3f3f3@mail.com</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Location:</div>
-                                <div class="ml-2 text-sm text-gray-500">USA</div>
-                            </div>
-
-                            <!-- Social: -->
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Social:</div>
-                                <div class="ml-2 text-sm text-gray-500">Facebook, Twitter, Instagram</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-1/4 mr-2">
-                        <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
-
-                            <!-- ID task and dropdown -->
-                            <div class="overflow-auto">
-                                <p class="float-left text-xs text-accent font-bold">Profile Information</p>
-                                <button
-                                    class='mt-[-18px] float-right items-center text-xl hover:cursor-pointer bg-lightPrimary p-2 text-brand-500 hover:bg-gray-100 dark:bg-navy-700 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/10 rounded-lg'>
-                                    <svg stroke="black" fill="black" stroke-width="0" viewBox="0 0 16 16" class="h-6 w-6"
-                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <p>
-                                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally
-                                difficult paths, choose the one more painful in the short term (pain avoidance is
-                                creating an illusion of equality).
-
-                            </p>
-
-                            <!-- Full Name:   Alec M. Thompson -->
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Full Name:</div>
-                                <div class="ml-2 text-sm text-gray-500">Alec M. Thompson</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Mobile:</div>
-                                <div class="ml-2 text-sm text-gray-500">(44) 1223 12134 123</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Email:</div>
-                                <div class="ml-2 text-sm text-gray-500"> 23f3f3f3@mail.com</div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Location:</div>
-                                <div class="ml-2 text-sm text-gray-500">USA</div>
-                            </div>
-
-                            <!-- Social: -->
-                            <div class="flex flex-col md:flex-row items-center mt-2">
-                                <div class="text-sm text-gray-500">Social:</div>
-                                <div class="ml-2 text-sm text-gray-500">Facebook, Twitter, Instagram</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-1/4 mr-2">
-                        <div class="block bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-3 ">
-                            + New Project
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
 </template>
 
-
-
-
 <script>
 import LeftSidebar from '../common/sidebar/LeftSidebar.vue';
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+// Định nghĩa base cho router được chọn
+import TabItem from '../common/tabs/TabItem.vue';
 
 export default {
-    name: 'BarChart',
+    name: 'Profile',
     components: {
         LeftSidebar,
-        Bar
+        TabItem
     },
-    data() {
-        return {
-            chartData: {
-                labels: ['January', 'February', 'March'],
-                datasets: [
-                    {
-                        label: 'Team 1',
-                        backgroundColor: 'yellow',
-                        data: [40, 20, 12]
-                    },
-                    {
-                        label: 'Team 2',
-                        backgroundColor: 'blue',
-                        data: [30, 25, 20]
-                    },
-                    {
-                        label: 'Team 3',
-                        backgroundColor: 'green',
-                        data: [15, 10, 8]
-                    }
-                ]
-            },
-            chartOptions: {
-                responsive: true,
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        fontColor: 'black',
-                        fontSize: 10
-                    }
-                },
-                scales: {
-                    x: {
-                        stacked: true // Xác định trục x có dạng cột chồng
-                    },
-                    y: {
-                        beginAtZero: true,
-                        stacked: true // Xác định trục y có dạng cột chồng
-                    }
-                }
-            }
-        }
-    },
+
 };
 </script>

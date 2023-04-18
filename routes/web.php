@@ -8,7 +8,7 @@
 //router init for base url
 Route::get('/{any?}', function () {
      return view('layouts.app');
-});
+    })->where('any', '.*');
 
 
 // Route::get('/home', function () {
