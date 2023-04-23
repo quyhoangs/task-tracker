@@ -1,0 +1,116 @@
+Hiện tại đang ở nhánh develop 
+
+VScode có thể thao tác tất cả bằng UI 
+nhưng để hiểu bản chất thì cứ dùng cmd cho hiểu đã , sau hãy dùng UI 
+
+--Check xem nhánh hiện tại là nhánh nào
+ 1. git branch  --> develop
+- Nếu là develop thì sẻ tạo 1 bản copy từ nhánh đó để code chức năng 
+-Checkout ở đây hiểu như là copy  1 bản i sì develop và code trên đó 
+==> code trên nhánh tạo này sẻ là mới nhất nên khi code xong sẻ có thao tác là merge lại vào nhánh develop
+để đảm bảo nhánh develop luôn là code mới nhất .
+2. git checkout -b Tên_nhánh_code_chức_năng
+
+Thường thì trong 1 dự án tên nhánh này sẻ phải tuân theo RULE của người chủ sở hữu projefct đó
+vd : tên có thể là tên dự án + id task + tên chức năng 
+ex : TASK_TRACKER_100_BUILD_UI_PROFILE 
+        TASK_TRACKER_ : TÊN DỰ ÁN
+        100 :ID TASK 
+        _BUILD_UI_PROFILE : TÊN CHỨC NĂNG CẦN TRIỂN KHAI
+EX : git checkout -b TTK_01_FIX_UI_PROFILE
+
+Bây giờ đang là nhánh đó rồi : code chức năng trên này 
+
+Khi code xong chức năng cần phải merge code ngược lại nhánh develop để đảm bảo code develop luôn là mới nhất
+VD : giờ chưa code gì , giả sử bạn muốn commit chính file này lên luôn 
+
+Git nó sẻ phát hiện đây là 1 file mới nên mới có dòng màu xanh lá cây nha 
+Xóa 1 dòng thì nó sẻ có màu đỏ , đấy là chỉ demo thôi 
+Cái này để quản lý file trong dự án 
+
+OK . Bây giờ là tất cả thao tác khi làm xong 1 chức năng và push lên git hub 
+1.kiểm tra trạng thái các file thay đổi ( bước này không cần thiết lắm
+vì dùng vscode nó đã hiển thị trực tiếp luôn rồi 
+VD: có 2 file changes bên trái OK
+  lệnh : git status
+  --> nó hiện lên 1 file đã modifed: tức là file này đã tạo trước đó và do mình chạy npm nên file này nó có tự động update
+  không care chỗ này 
+  --> File RuleGit.txxt vừa tạo là file mới nên có trạng thái là untracked 
+
+)
+2. Đưa 2 file này vào khu vực theo dõi bằng dòng lệnh:
+git add . ( . ở đâu có nghĩa là add tất cả các file )
+
+
+Các file đã đưa vào Staged change thì khi có thay đổi gì thêm nó sẻ hiển thị ở khu vực changes
+
+Nếu muốn apply thêm đoạn mới này lại tiếp tục git add . 
+
+3. Thao tác commit (Đưa các thay đổi đó vào local repo - xem ảnh cho dễ hình dung )
+lệnh : git commit -m "Message của commit " 
+vd" git commit -m "Thêm quy định về quản lý nhánh git"
+
+|| Nếu trước đó chưa có add account vào vscode nó sẻ hỏi user name và email 
+Lên git hub lấy thông tin 
+user.name : hxtrongg
+email.name :email git hub : điền vào đi :hxtrongg@gmail.com
+OK vậy thông tin này là :
+git config --global user.email "hxtrongg@gmail.com"
+git config --global user.name "hxtrongg"
+
+OK như vậy là đã commit các thay đổi vào local repo  - chỗ code mới này đang có dòng xanh là tại vì mình đang thêm mới
+
+Làm thao tác như vừa nãy để commit phát cuối
+
+4. Thao tác đẩy lên nhánh remote
+thao tác commit vừa nãy chỉ là đẩy lên nhánh local trên máy bạn 
+cần phải đẩy nó lên nhánh remote thì sẻ là môi trường internet ai cũng có thể xem nhánh đó 
+Thao tác ; 
+    git push 
+Khi đang ở nhánh nào thì mặc định git push sẻ là đẩy thẳng lên nhánh đó 
+VD : đầy đủ sẻ là : git push origin Tên_nhánh_hiện_tại
+   git push origin TTK_01_FIX_UI_PROFILE  == > git push : là nó sẻ hiểu rồi viết ra như vậy để hiểu rõ hơn  
+   origin : là đẩy lên môi trường remote nhé 
+
+   Nó đang xử lý ,lần đầu nên hơi lâu 
+
+   OK , đã đẩy xong , bây giờ trên orgin (github) sẻ có 1 nhánh tên là TTK_01_FIX_UI_PROFILE
+
+   https://github.com/quyhoangs/task-tracker/pull/new/TTK_01_FIX_UI_PROFILE
+
+   Truy cập vào đó , và tạo 1 pull request tới branch develop để hợp nhất code lại 
+
+   TỪ nhánh TTK_01_FIX_UI_PROFILE  yêu cầu tạo pullrequest tới develop 
+để ý tên nhánh không tạo PR nhầm
+
+Trên pull request sẻ hiện thị tất cả các thay đổi hiện tại so với nhánh mình tạo merge reuqest vào
+ở đây là develop 
+và code mới cũng là sẻ ở thời điểm mình git commit nên nó sẻ chỉ thấy đoạn code mà mình đã commit lần gần cuối cùng 
+Muốn thêm thay đổi thì cứ làm lại như bước trên 
+OK. 
+Bước cuối cùng xác nhận tạo PR và gửi PR cho người review 
+vì file này có thay đổi so với lần cuối commit nên sẻ commit tiếp thay đổi cuối cùng này và tạo PR  thì toàn bộ text trên đây sẻ có trên develop 
+nếu được ngườ review dồng ý merge vào develop 
+
+Nếu PR được đồng ý merge và kết thúc task này thì sẻ không cần kéo code mới từ develop về 
+Trong trường hợp làm task mới thì sẻ lại quay về nhánh cũ là develop 
+git checkout develop 
+sau đó cần thêm thao tác là : git pull orgin develop 
+là sẻ kéo tất cả code từ xa về do trước đó thằng review nó đã merge code này vào develop
+tuy nhiên ở nhánh develop local (máy tính của bạn) chưa có code mới này nên cần thao tác pull như trên
+
+VD; Bây giờ t sẻ đồng ý merge task này vào nhánh develop 
+chờ xem nhéok
+
+Giả sử ông review phát hiện bug , hoặc vấn đề gì đó cần phải update lại như trên đó
+
+"Hãy remove file composer.lock vì file này chỉ chạy trên môi trường local
+Không được đẩy lên môi trường develop"
+
+Tức là file này chỉ nên dùng ở môi trường local không đẩy lên 
+Thao tác là revert lại file đó như thời điểm ban đầu nó chưa thay đổi chẳng hạn 
+
+//nói chung là revert lại file giống như trạng thái lần gần nhất commmit 
+Cái này nói sơ sơ vậy cho hiểu cơ bản 
+sau đó lại thao tác đẩy lại 
+
