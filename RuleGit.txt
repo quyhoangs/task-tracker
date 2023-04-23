@@ -91,3 +91,26 @@ OK.
 Bước cuối cùng xác nhận tạo PR và gửi PR cho người review 
 vì file này có thay đổi so với lần cuối commit nên sẻ commit tiếp thay đổi cuối cùng này và tạo PR  thì toàn bộ text trên đây sẻ có trên develop 
 nếu được ngườ review dồng ý merge vào develop 
+
+Nếu PR được đồng ý merge và kết thúc task này thì sẻ không cần kéo code mới từ develop về 
+Trong trường hợp làm task mới thì sẻ lại quay về nhánh cũ là develop 
+git checkout develop 
+sau đó cần thêm thao tác là : git pull orgin develop 
+là sẻ kéo tất cả code từ xa về do trước đó thằng review nó đã merge code này vào develop
+tuy nhiên ở nhánh develop local (máy tính của bạn) chưa có code mới này nên cần thao tác pull như trên
+
+VD; Bây giờ t sẻ đồng ý merge task này vào nhánh develop 
+chờ xem nhéok
+
+Giả sử ông review phát hiện bug , hoặc vấn đề gì đó cần phải update lại như trên đó
+
+"Hãy remove file composer.lock vì file này chỉ chạy trên môi trường local
+Không được đẩy lên môi trường develop"
+
+Tức là file này chỉ nên dùng ở môi trường local không đẩy lên 
+Thao tác là revert lại file đó như thời điểm ban đầu nó chưa thay đổi chẳng hạn 
+
+//nói chung là revert lại file giống như trạng thái lần gần nhất commmit 
+Cái này nói sơ sơ vậy cho hiểu cơ bản 
+sau đó lại thao tác đẩy lại 
+
