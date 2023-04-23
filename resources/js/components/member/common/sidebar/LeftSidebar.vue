@@ -27,7 +27,7 @@
                         d="M19 14H15C14.4477 14 14 14.4477 14 15V19C14 19.5523 14.4477 20 15 20H19C19.5523 20 20 19.5523 20 19V15C20 14.4477 19.5523 14 19 14Z"
                         stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <p class="text-base leading-4 ">Dashboard</p>
+                <router-link class="text-base leading-4" to="/dashboard">Dashboard</router-link>
             </button>
             <button
                 class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-black focus:text-indigo-400   rounded ">
@@ -40,7 +40,7 @@
                         d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21"
                         stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <p class="text-base leading-4 ">Home</p>
+                <router-link class="text-base leading-4" to="/home">Home</router-link>
             </button>
 
             <button
@@ -68,7 +68,9 @@
                         d="M6 21V19C6 17.9391 6.42143 16.9217 7.17157 16.1716C7.92172 15.4214 8.93913 15 10 15H14C15.0609 15 16.0783 15.4214 16.8284 16.1716C17.5786 16.9217 18 17.9391 18 19V21"
                         stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <p class="text-base leading-4 ">Profile</p>
+                <!-- <p class="text-base leading-4 ">Profile</p> -->
+                <router-link class="text-base leading-4" to="/profile/person-info">Profile</router-link>
+
             </button>
 
         </div>
@@ -90,7 +92,7 @@
                             class="w-8 h-8 -mt-1 inline mx-auto ">
                     </span>
 
-                    <p class="text-base leading-4 inline-block ">SPOTIFY</p>
+                    <router-link class="text-base leading-4 inline-block" to="/project">SPOTIFY</router-link>
                 </button>
                 <button
                     class="flex justify-start items-center space-x-6 hover:text-black focus:bg-gray-700 focus:text-black hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">

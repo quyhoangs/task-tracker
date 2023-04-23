@@ -82,6 +82,14 @@ const routes = [
           ]
     },
     {
+        path : '/dashboard',
+        name : 'Dashboard',
+        component :  () => import('./components/member/view/Dashboard.vue'),
+        meta: {
+            middleware: [authMiddleware] // Đăng ký middleware auth vào đây
+        }
+    },
+    {
         path : '/home',
         name : 'HomeMember',
         component :  () => import('./components/member/view/HomeMember.vue'),
