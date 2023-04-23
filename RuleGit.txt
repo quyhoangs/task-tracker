@@ -61,3 +61,33 @@ git config --global user.name "hxtrongg"
 OK như vậy là đã commit các thay đổi vào local repo  - chỗ code mới này đang có dòng xanh là tại vì mình đang thêm mới
 
 Làm thao tác như vừa nãy để commit phát cuối
+
+4. Thao tác đẩy lên nhánh remote
+thao tác commit vừa nãy chỉ là đẩy lên nhánh local trên máy bạn 
+cần phải đẩy nó lên nhánh remote thì sẻ là môi trường internet ai cũng có thể xem nhánh đó 
+Thao tác ; 
+    git push 
+Khi đang ở nhánh nào thì mặc định git push sẻ là đẩy thẳng lên nhánh đó 
+VD : đầy đủ sẻ là : git push origin Tên_nhánh_hiện_tại
+   git push origin TTK_01_FIX_UI_PROFILE  == > git push : là nó sẻ hiểu rồi viết ra như vậy để hiểu rõ hơn  
+   origin : là đẩy lên môi trường remote nhé 
+
+   Nó đang xử lý ,lần đầu nên hơi lâu 
+
+   OK , đã đẩy xong , bây giờ trên orgin (github) sẻ có 1 nhánh tên là TTK_01_FIX_UI_PROFILE
+
+   https://github.com/quyhoangs/task-tracker/pull/new/TTK_01_FIX_UI_PROFILE
+
+   Truy cập vào đó , và tạo 1 pull request tới branch develop để hợp nhất code lại 
+
+   TỪ nhánh TTK_01_FIX_UI_PROFILE  yêu cầu tạo pullrequest tới develop 
+để ý tên nhánh không tạo PR nhầm
+
+Trên pull request sẻ hiện thị tất cả các thay đổi hiện tại so với nhánh mình tạo merge reuqest vào
+ở đây là develop 
+và code mới cũng là sẻ ở thời điểm mình git commit nên nó sẻ chỉ thấy đoạn code mà mình đã commit lần gần cuối cùng 
+Muốn thêm thay đổi thì cứ làm lại như bước trên 
+OK. 
+Bước cuối cùng xác nhận tạo PR và gửi PR cho người review 
+vì file này có thay đổi so với lần cuối commit nên sẻ commit tiếp thay đổi cuối cùng này và tạo PR  thì toàn bộ text trên đây sẻ có trên develop 
+nếu được ngườ review dồng ý merge vào develop 
