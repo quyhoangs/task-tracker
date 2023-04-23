@@ -44,7 +44,7 @@
                 <!-- Thẻ div ở bên trái -->
                 <div class="flex-shrink-0 mt-10 mb-5">
                     <div class="flex flex-col md:flex-row items-center">
-                        <div class="text-2xl font-bold text-gray-800">Bruce Mars</div>
+                        <div class="text-2xl font-bold text-gray-800">Bruce Mars </div>
                         <div class="ml-2 mt-2 md:mt-0">
                             <button
                                 class="flex items-center justify-center w-20 h-8 rounded-full text-white bg-green-500 hover:bg-green-600">
@@ -110,7 +110,6 @@
 
 <script>
 import LeftSidebar from '../common/sidebar/LeftSidebar.vue';
-
 // Định nghĩa base cho router được chọn
 import TabItem from '../common/tabs/TabItem.vue';
 

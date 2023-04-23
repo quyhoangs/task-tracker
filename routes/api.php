@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\ProjectsController;
 use App\Http\Controllers\Api\ProjectTaskController;
 use App\Http\Controllers\Api\ProjectInvitationsController;
+use App\Http\Controllers\Api\Member\PersonInfoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,11 +21,9 @@ use App\Http\Controllers\Api\ProjectInvitationsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return [
-        'name' => 'John Doe',
-        'email' => 'adsa'
-    ] ;
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/profile/person-info', [PersonInfoController::class, 'show']);
+    Route::put('/profile/person-info', [PersonInfoController::class, 'updatePersonalInfo']);
 });
 
 Route::get('/secrets',[SecretController::class,'index']);

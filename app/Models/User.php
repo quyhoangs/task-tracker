@@ -19,12 +19,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    //Nếu gọi tới $user->fill hoặc $user->update thì các trường được khai báo trong $fillable mới được cập nhật
+    //Nếu field đó không có trong $fillable thì sẽ không được cập nhật
     protected $fillable = [
         'name',
         'email',
         'password',
         'is_email_verified',
-        'remember_token'
+        'remember_token',
+        'phone',
+        'skype',
+        'location',
+        'birthday',
     ];
 
     /**

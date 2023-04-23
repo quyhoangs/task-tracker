@@ -22,6 +22,12 @@ class CreateUsersTable extends Migration
             $table->boolean('is_email_verified')->default(0);
             $table->string('password');
             $table->string('role_id')->default(Role::IS_USER);
+
+            $table->string('phone')->nullable();
+            $table->string('skype')->nullable();
+            $table->string('location')->nullable();
+            $table->date('birthday')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
