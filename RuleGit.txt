@@ -1,0 +1,47 @@
+Hiện tại đang ở nhánh develop 
+
+VScode có thể thao tác tất cả bằng UI 
+nhưng để hiểu bản chất thì cứ dùng cmd cho hiểu đã , sau hãy dùng UI 
+
+--Check xem nhánh hiện tại là nhánh nào
+ 1. git branch  --> develop
+- Nếu là develop thì sẻ tạo 1 bản copy từ nhánh đó để code chức năng 
+-Checkout ở đây hiểu như là copy  1 bản i sì develop và code trên đó 
+==> code trên nhánh tạo này sẻ là mới nhất nên khi code xong sẻ có thao tác là merge lại vào nhánh develop
+để đảm bảo nhánh develop luôn là code mới nhất .
+2. git checkout -b Tên_nhánh_code_chức_năng
+
+Thường thì trong 1 dự án tên nhánh này sẻ phải tuân theo RULE của người chủ sở hữu projefct đó
+vd : tên có thể là tên dự án + id task + tên chức năng 
+ex : TASK_TRACKER_100_BUILD_UI_PROFILE 
+        TASK_TRACKER_ : TÊN DỰ ÁN
+        100 :ID TASK 
+        _BUILD_UI_PROFILE : TÊN CHỨC NĂNG CẦN TRIỂN KHAI
+EX : git checkout -b TTK_01_FIX_UI_PROFILE
+
+Bây giờ đang là nhánh đó rồi : code chức năng trên này 
+
+Khi code xong chức năng cần phải merge code ngược lại nhánh develop để đảm bảo code develop luôn là mới nhất
+VD : giờ chưa code gì , giả sử bạn muốn commit chính file này lên luôn 
+
+Git nó sẻ phát hiện đây là 1 file mới nên mới có dòng màu xanh lá cây nha 
+Xóa 1 dòng thì nó sẻ có màu đỏ , đấy là chỉ demo thôi 
+Cái này để quản lý file trong dự án 
+
+OK . Bây giờ là tất cả thao tác khi làm xong 1 chức năng và push lên git hub 
+1.kiểm tra trạng thái các file thay đổi ( bước này không cần thiết lắm
+vì dùng vscode nó đã hiển thị trực tiếp luôn rồi 
+VD: có 2 file changes bên trái OK
+  lệnh : git status
+  --> nó hiện lên 1 file đã modifed: tức là file này đã tạo trước đó và do mình chạy npm nên file này nó có tự động update
+  không care chỗ này 
+  --> File RuleGit.txxt vừa tạo là file mới nên có trạng thái là untracked 
+
+)
+2. Đưa 2 file này vào khu vực theo dõi bằng dòng lệnh:
+git add . ( . ở đâu có nghĩa là add tất cả các file )
+
+
+Các file đã đưa vào Staged change thì khi có thay đổi gì thêm nó sẻ hiển thị ở khu vực changes
+
+Nếu muốn apply thêm đoạn mới này lại tiếp tục git add . 
