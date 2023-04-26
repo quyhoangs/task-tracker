@@ -14,77 +14,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_sidebar_LeftSidebar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/sidebar/LeftSidebar.vue */ "./resources/js/components/member/common/sidebar/LeftSidebar.vue");
 /* harmony import */ var _common_menu_MenuTop_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/menu/MenuTop.vue */ "./resources/js/components/member/common/menu/MenuTop.vue");
 /* harmony import */ var _common_breadcrumb_BreadCrumb_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/breadcrumb/BreadCrumb.vue */ "./resources/js/components/member/common/breadcrumb/BreadCrumb.vue");
-/* harmony import */ var _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/button/ButtonCreateProject.vue */ "./resources/js/components/member/common/button/ButtonCreateProject.vue");
-/* harmony import */ var _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../view/Project/TableProject.vue */ "./resources/js/components/member/view/Project/TableProject.vue");
-/* harmony import */ var _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/paginate/PaginationProject.vue */ "./resources/js/components/member/common/paginate/PaginationProject.vue");
-/* harmony import */ var _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common/modal/ModalCreateProject.vue */ "./resources/js/components/member/common/modal/ModalCreateProject.vue");
-/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/dist/index.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
+/* harmony import */ var _view_Dashboard_DashboardChart_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../view/Dashboard/DashboardChart.vue */ "./resources/js/components/member/view/Dashboard/DashboardChart.vue");
+/* harmony import */ var _view_Dashboard_DashboardTable_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../view/Dashboard/DashboardTable.vue */ "./resources/js/components/member/view/Dashboard/DashboardTable.vue");
 
 
 
 
 
-
-
-
-
-chart_js__WEBPACK_IMPORTED_MODULE_7__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_7__.Title, chart_js__WEBPACK_IMPORTED_MODULE_7__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_7__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_7__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_7__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_7__.LinearScale);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'BarChart',
   components: {
     MenuTop: _common_menu_MenuTop_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     LeftSidebar: _common_sidebar_LeftSidebar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     BreadCrumb: _common_breadcrumb_BreadCrumb_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ButtonCreateProject: _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    TableProject: _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    PaginationProject: _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    ModalCreateProject: _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Bar: vue_chartjs__WEBPACK_IMPORTED_MODULE_8__.Bar
+    DashboardChart: _view_Dashboard_DashboardChart_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    DashboardTable: _view_Dashboard_DashboardTable_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Dashboard_component_ChartComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Dashboard/component/ChartComponent.vue */ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ChartComponent: _Dashboard_component_ChartComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      showModal: false,
       chartData: {
-        labels: ['January', 'February', 'March'],
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-          label: 'Team 1',
-          backgroundColor: 'yellow',
-          data: [40, 20, 12]
-        }, {
-          label: 'Team 2',
-          backgroundColor: 'blue',
-          data: [30, 25, 20]
-        }, {
-          label: 'Team 3',
-          backgroundColor: 'green',
-          data: [15, 10, 8]
+          label: 'Data One',
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF6384', '#36A2EB', '#FFCE56', '#FF6384'],
+          data: [40, 20, 12, 39, 10, 40, 39]
         }]
       },
       chartOptions: {
         responsive: true,
-        legend: {
-          display: true,
-          position: 'top',
-          labels: {
-            fontColor: 'black',
-            fontSize: 10
-          }
-        },
-        scales: {
-          x: {
-            stacked: true // Xác định trục x có dạng cột chồng
-          },
-
-          y: {
-            beginAtZero: true,
-            stacked: true // Xác định trục y có dạng cột chồng
-          }
-        }
+        maintainAspectRatio: false
       }
     };
-  },
+  }
+});
 
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/button/ButtonCreateProject.vue */ "./resources/js/components/member/common/button/ButtonCreateProject.vue");
+/* harmony import */ var _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../view/Project/TableProject.vue */ "./resources/js/components/member/view/Project/TableProject.vue");
+/* harmony import */ var _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/paginate/PaginationProject.vue */ "./resources/js/components/member/common/paginate/PaginationProject.vue");
+/* harmony import */ var _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/modal/ModalCreateProject.vue */ "./resources/js/components/member/common/modal/ModalCreateProject.vue");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ButtonCreateProject: _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TableProject: _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PaginationProject: _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ModalCreateProject: _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  data: function data() {
+    return {
+      showModal: false
+    };
+  },
   methods: {
     openModal: function openModal() {
       // Mở modal
@@ -96,6 +110,68 @@ chart_js__WEBPACK_IMPORTED_MODULE_7__.Chart.register(chart_js__WEBPACK_IMPORTED_
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.js");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+  props: {
+    chartData: {
+      type: Object,
+      required: true
+    },
+    chartType: {
+      type: String,
+      required: true
+    },
+    chartOptions: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.setCanvasSize();
+    this.renderChart();
+    window.addEventListener('resize', this.onWindowResize);
+  },
+  beforeUnmount: function beforeUnmount() {
+    window.removeEventListener('resize', this.onWindowResize);
+  },
+  methods: {
+    setCanvasSize: function setCanvasSize() {
+      var containerRect = this.$el.getBoundingClientRect();
+      this.$refs.chartCanvas.width = containerRect.width;
+      this.$refs.chartCanvas.height = containerRect.height;
+    },
+    renderChart: function renderChart() {
+      var ctx = this.$refs.chartCanvas.getContext('2d');
+      new chart_js_auto__WEBPACK_IMPORTED_MODULE_1__["default"](ctx, {
+        type: this.chartType,
+        data: this.chartData,
+        options: this.chartOptions
+      });
+    },
+    onWindowResize: function onWindowResize() {
+      this.setCanvasSize();
+      this.renderChart();
+    }
+  }
+}));
 
 /***/ }),
 
@@ -144,58 +220,125 @@ var _hoisted_3 = {
   "class": "col-span-4 w-5/5 ml-[-68px]"
 };
 var _hoisted_4 = {
-  "class": "flex"
-};
-var _hoisted_5 = {
-  "class": "w-2/3 mr-2"
-};
-var _hoisted_6 = {
-  "class": "w-1/3 mr-2"
-};
-var _hoisted_7 = {
   open: ""
 };
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("summary", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("summary", {
   "class": "py-2 outline-none cursor-pointer"
 }, "My Project(4) ", -1 /* HOISTED */);
-var _hoisted_9 = {
-  "class": "px-4 pb-4"
-};
-var _hoisted_10 = {
-  "class": "min-w-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden"
-};
-var _hoisted_11 = {
-  "class": "w-full lg:w-5/6"
-};
-var _hoisted_12 = {
-  "class": "bg-white shadow-md rounded my-6"
-};
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Export Excel", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_LeftSidebar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LeftSidebar");
   var _component_MenuTop = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuTop");
   var _component_BreadCrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreadCrumb");
-  var _component_Bar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Bar");
+  var _component_DashboardChart = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DashboardChart");
+  var _component_DashboardTable = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DashboardTable");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LeftSidebar)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuTop), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreadCrumb), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DashboardChart), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("details", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" + New Project "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DashboardTable)])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "flex"
+};
+var _hoisted_2 = {
+  "class": "w-1/3 mr-2"
+};
+var _hoisted_3 = {
+  "class": "w-1/3 mr-2"
+};
+var _hoisted_4 = {
+  "class": "w-1/3 mr-2"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_chart_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("chart-component");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_chart_component, {
+    "chart-data": $data.chartData,
+    "chart-type": 'pie',
+    "chart-options": $data.chartOptions
+  }, null, 8 /* PROPS */, ["chart-data", "chart-options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_chart_component, {
+    "chart-data": $data.chartData,
+    "chart-type": 'line',
+    "chart-options": $data.chartOptions
+  }, null, 8 /* PROPS */, ["chart-data", "chart-options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_chart_component, {
+    "chart-data": $data.chartData,
+    "chart-type": 'bar',
+    "chart-options": $data.chartOptions
+  }, null, 8 /* PROPS */, ["chart-data", "chart-options"])])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "px-4 pb-4"
+};
+var _hoisted_2 = {
+  "class": "min-w-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden"
+};
+var _hoisted_3 = {
+  "class": "w-full lg:w-5/6"
+};
+var _hoisted_4 = {
+  "class": "bg-white shadow-md rounded my-6"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Export Excel", -1 /* HOISTED */);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ButtonCreateProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ButtonCreateProject");
   var _component_ModalCreateProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ModalCreateProject");
   var _component_TableProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TableProject");
   var _component_PaginationProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginationProject");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LeftSidebar)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuTop), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreadCrumb), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Bar, {
-    id: "my-chart-id",
-    options: $data.chartOptions,
-    data: $data.chartData
-  }, null, 8 /* PROPS */, ["options", "data"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Bar, {
-    id: "my-chart-id",
-    options: $data.chartOptions,
-    data: $data.chartData
-  }, null, 8 /* PROPS */, ["options", "data"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("details", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" + New Project "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ButtonCreateProject, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ButtonCreateProject, {
     "class": "mb-2",
     onClick: $options.openModal
   }, null, 8 /* PROPS */, ["onClick"]), $data.showModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ModalCreateProject, {
     key: 0,
     onCloseModal: $options.closeModal
-  }, null, 8 /* PROPS */, ["onCloseModal"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TableProject), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginationProject)])])])])])])]);
+  }, null, 8 /* PROPS */, ["onCloseModal"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TableProject), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginationProject)])])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  ref: "chartCanvas"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("canvas", _hoisted_1, null, 512 /* NEED_PATCH */)]);
 }
 
 /***/ }),
@@ -445,6 +588,87 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/member/view/Dashboard/DashboardChart.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/DashboardChart.vue ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardChart.vue?vue&type=template&id=affebff6 */ "./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6");
+/* harmony import */ var _DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardChart.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js");
+/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/DashboardChart.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/DashboardTable.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/DashboardTable.vue ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardTable.vue?vue&type=template&id=598ce816 */ "./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816");
+/* harmony import */ var _DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardTable.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js");
+/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/DashboardTable.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/component/ChartComponent.vue ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ChartComponent.vue?vue&type=template&id=120215a8 */ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8");
+/* harmony import */ var _ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChartComponent.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js");
+/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/component/ChartComponent.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/member/view/Project/TableProject.vue":
 /*!**********************************************************************!*\
   !*** ./resources/js/components/member/view/Project/TableProject.vue ***!
@@ -485,6 +709,51 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DashboardChart.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DashboardTable.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ChartComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/member/common/paginate/PaginationProject.vue?vue&type=template&id=ed5eadbe":
 /*!************************************************************************************************************!*\
   !*** ./resources/js/components/member/common/paginate/PaginationProject.vue?vue&type=template&id=ed5eadbe ***!
@@ -511,6 +780,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Dashboard.vue?vue&type=template&id=79f73238 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard.vue?vue&type=template&id=79f73238");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6 ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DashboardChart.vue?vue&type=template&id=affebff6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816 ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DashboardTable.vue?vue&type=template&id=598ce816 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8 ***!
+  \******************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ChartComponent.vue?vue&type=template&id=120215a8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8");
 
 
 /***/ }),
@@ -1149,6 +1463,74 @@ function index_esm(input) {
 }
 
 
+
+
+/***/ }),
+
+/***/ "./node_modules/chart.js/auto/auto.js":
+/*!********************************************!*\
+  !*** ./node_modules/chart.js/auto/auto.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Animation": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Animation),
+/* harmony export */   "Animations": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Animations),
+/* harmony export */   "ArcElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.ArcElement),
+/* harmony export */   "BarController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BarController),
+/* harmony export */   "BarElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BarElement),
+/* harmony export */   "BasePlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BasePlatform),
+/* harmony export */   "BasicPlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BasicPlatform),
+/* harmony export */   "BubbleController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BubbleController),
+/* harmony export */   "CategoryScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.CategoryScale),
+/* harmony export */   "Chart": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart),
+/* harmony export */   "Colors": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Colors),
+/* harmony export */   "DatasetController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DatasetController),
+/* harmony export */   "Decimation": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Decimation),
+/* harmony export */   "DomPlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DomPlatform),
+/* harmony export */   "DoughnutController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DoughnutController),
+/* harmony export */   "Element": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Element),
+/* harmony export */   "Filler": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler),
+/* harmony export */   "Interaction": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Interaction),
+/* harmony export */   "Legend": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend),
+/* harmony export */   "LineController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LineController),
+/* harmony export */   "LineElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement),
+/* harmony export */   "LinearScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LinearScale),
+/* harmony export */   "LogarithmicScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LogarithmicScale),
+/* harmony export */   "PieController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PieController),
+/* harmony export */   "PointElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement),
+/* harmony export */   "PolarAreaController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PolarAreaController),
+/* harmony export */   "RadarController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.RadarController),
+/* harmony export */   "RadialLinearScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale),
+/* harmony export */   "Scale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Scale),
+/* harmony export */   "ScatterController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.ScatterController),
+/* harmony export */   "SubTitle": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.SubTitle),
+/* harmony export */   "Ticks": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Ticks),
+/* harmony export */   "TimeScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.TimeScale),
+/* harmony export */   "TimeSeriesScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.TimeSeriesScale),
+/* harmony export */   "Title": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Title),
+/* harmony export */   "Tooltip": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip),
+/* harmony export */   "_adapters": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__._adapters),
+/* harmony export */   "_detectPlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__._detectPlatform),
+/* harmony export */   "animator": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.animator),
+/* harmony export */   "controllers": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.controllers),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "defaults": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults),
+/* harmony export */   "elements": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.elements),
+/* harmony export */   "layouts": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.layouts),
+/* harmony export */   "plugins": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.plugins),
+/* harmony export */   "registerables": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registerables),
+/* harmony export */   "registry": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registry),
+/* harmony export */   "scales": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.scales)
+/* harmony export */ });
+/* harmony import */ var _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dist/chart.js */ "./node_modules/chart.js/dist/chart.js");
+
+
+_dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(..._dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registerables);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart);
 
 
 /***/ }),
@@ -15289,258 +15671,6 @@ function styleChanged(style, prevStyle) {
 
 
 //# sourceMappingURL=helpers.segment.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-chartjs/dist/index.js":
-/*!************************************************!*\
-  !*** ./node_modules/vue-chartjs/dist/index.js ***!
-  \************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Bar": () => (/* binding */ Bar),
-/* harmony export */   "Bubble": () => (/* binding */ Bubble),
-/* harmony export */   "Chart": () => (/* binding */ Chart),
-/* harmony export */   "Doughnut": () => (/* binding */ Doughnut),
-/* harmony export */   "Line": () => (/* binding */ Line),
-/* harmony export */   "Pie": () => (/* binding */ Pie),
-/* harmony export */   "PolarArea": () => (/* binding */ PolarArea),
-/* harmony export */   "Radar": () => (/* binding */ Radar),
-/* harmony export */   "Scatter": () => (/* binding */ Scatter),
-/* harmony export */   "createTypedChart": () => (/* binding */ createTypedChart),
-/* harmony export */   "getDatasetAtEvent": () => (/* binding */ getDatasetAtEvent),
-/* harmony export */   "getElementAtEvent": () => (/* binding */ getElementAtEvent),
-/* harmony export */   "getElementsAtEvent": () => (/* binding */ getElementsAtEvent)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
-
-
-
-const CommonProps = {
-    data: {
-        type: Object,
-        required: true
-    },
-    options: {
-        type: Object,
-        default: ()=>({})
-    },
-    plugins: {
-        type: Array,
-        default: ()=>[]
-    },
-    datasetIdKey: {
-        type: String,
-        default: "label"
-    },
-    updateMode: {
-        type: String,
-        default: undefined
-    }
-};
-const Props = {
-    type: {
-        type: String,
-        required: true
-    },
-    ...CommonProps
-};
-
-const compatProps = vue__WEBPACK_IMPORTED_MODULE_0__.version[0] === "2" ? (internals, props)=>Object.assign(internals, {
-        attrs: props
-    }) : (internals, props)=>Object.assign(internals, props);
-function toRawIfProxy(obj) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.isProxy)(obj) ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRaw)(obj) : obj;
-}
-function cloneProxy(obj) {
-    let src = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : obj;
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.isProxy)(src) ? new Proxy(obj, {}) : obj;
-}
-function setOptions(chart, nextOptions) {
-    const options = chart.options;
-    if (options && nextOptions) {
-        Object.assign(options, nextOptions);
-    }
-}
-function setLabels(currentData, nextLabels) {
-    currentData.labels = nextLabels;
-}
-function setDatasets(currentData, nextDatasets, datasetIdKey) {
-    const addedDatasets = [];
-    currentData.datasets = nextDatasets.map((nextDataset)=>{
-        // given the new set, find it's current match
-        const currentDataset = currentData.datasets.find((dataset)=>dataset[datasetIdKey] === nextDataset[datasetIdKey]);
-        // There is no original to update, so simply add new one
-        if (!currentDataset || !nextDataset.data || addedDatasets.includes(currentDataset)) {
-            return {
-                ...nextDataset
-            };
-        }
-        addedDatasets.push(currentDataset);
-        Object.assign(currentDataset, nextDataset);
-        return currentDataset;
-    });
-}
-function cloneData(data, datasetIdKey) {
-    const nextData = {
-        labels: [],
-        datasets: []
-    };
-    setLabels(nextData, data.labels);
-    setDatasets(nextData, data.datasets, datasetIdKey);
-    return nextData;
-}
-/**
- * Get dataset from mouse click event
- * @param chart - Chart.js instance
- * @param event - Mouse click event
- * @returns Dataset
- */ function getDatasetAtEvent(chart, event) {
-    return chart.getElementsAtEventForMode(event, "dataset", {
-        intersect: true
-    }, false);
-}
-/**
- * Get single dataset element from mouse click event
- * @param chart - Chart.js instance
- * @param event - Mouse click event
- * @returns Dataset
- */ function getElementAtEvent(chart, event) {
-    return chart.getElementsAtEventForMode(event, "nearest", {
-        intersect: true
-    }, false);
-}
-/**
- * Get all dataset elements from mouse click event
- * @param chart - Chart.js instance
- * @param event - Mouse click event
- * @returns Dataset
- */ function getElementsAtEvent(chart, event) {
-    return chart.getElementsAtEventForMode(event, "index", {
-        intersect: true
-    }, false);
-}
-
-const Chart = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-    props: Props,
-    setup (props, param) {
-        let { expose  } = param;
-        const canvasRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-        const chartRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.shallowRef)(null);
-        expose({
-            chart: chartRef
-        });
-        const renderChart = ()=>{
-            if (!canvasRef.value) return;
-            const { type , data , options , plugins , datasetIdKey  } = props;
-            const clonedData = cloneData(data, datasetIdKey);
-            const proxiedData = cloneProxy(clonedData, data);
-            chartRef.value = new chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart(canvasRef.value, {
-                type,
-                data: proxiedData,
-                options: {
-                    ...options
-                },
-                plugins
-            });
-        };
-        const destroyChart = ()=>{
-            const chart = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRaw)(chartRef.value);
-            if (chart) {
-                chart.destroy();
-                chartRef.value = null;
-            }
-        };
-        const update = (chart)=>{
-            chart.update(props.updateMode);
-        };
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(renderChart);
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(destroyChart);
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)([
-            ()=>props.options,
-            ()=>props.data
-        ], (param, param1)=>{
-            let [nextOptionsProxy, nextDataProxy] = param, [prevOptionsProxy, prevDataProxy] = param1;
-            const chart = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRaw)(chartRef.value);
-            if (!chart) {
-                return;
-            }
-            let shouldUpdate = false;
-            if (nextOptionsProxy) {
-                const nextOptions = toRawIfProxy(nextOptionsProxy);
-                const prevOptions = toRawIfProxy(prevOptionsProxy);
-                if (nextOptions && nextOptions !== prevOptions) {
-                    setOptions(chart, nextOptions);
-                    shouldUpdate = true;
-                }
-            }
-            if (nextDataProxy) {
-                const nextLabels = toRawIfProxy(nextDataProxy.labels);
-                const prevLabels = toRawIfProxy(prevDataProxy.labels);
-                const nextDatasets = toRawIfProxy(nextDataProxy.datasets);
-                const prevDatasets = toRawIfProxy(prevDataProxy.datasets);
-                if (nextLabels !== prevLabels) {
-                    setLabels(chart.config.data, nextLabels);
-                    shouldUpdate = true;
-                }
-                if (nextDatasets && nextDatasets !== prevDatasets) {
-                    setDatasets(chart.config.data, nextDatasets, props.datasetIdKey);
-                    shouldUpdate = true;
-                }
-            }
-            if (shouldUpdate) {
-                update(chart);
-            }
-        }, {
-            deep: true
-        });
-        return ()=>{
-            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)("canvas", {
-                ref: canvasRef
-            });
-        };
-    }
-});
-
-function createTypedChart(type, registerables) {
-    chart_js__WEBPACK_IMPORTED_MODULE_1__.Chart.register(registerables);
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-        props: CommonProps,
-        setup (props, param) {
-            let { expose  } = param;
-            const ref = (0,vue__WEBPACK_IMPORTED_MODULE_0__.shallowRef)(null);
-            const reforwardRef = (chartRef)=>{
-                ref.value = chartRef?.chart;
-            };
-            expose({
-                chart: ref
-            });
-            return ()=>{
-                return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(Chart, compatProps({
-                    ref: reforwardRef
-                }, {
-                    type,
-                    ...props
-                }));
-            };
-        }
-    });
-}
-const Bar = /* #__PURE__ */ createTypedChart("bar", chart_js__WEBPACK_IMPORTED_MODULE_1__.BarController);
-const Doughnut = /* #__PURE__ */ createTypedChart("doughnut", chart_js__WEBPACK_IMPORTED_MODULE_1__.DoughnutController);
-const Line = /* #__PURE__ */ createTypedChart("line", chart_js__WEBPACK_IMPORTED_MODULE_1__.LineController);
-const Pie = /* #__PURE__ */ createTypedChart("pie", chart_js__WEBPACK_IMPORTED_MODULE_1__.PieController);
-const PolarArea = /* #__PURE__ */ createTypedChart("polarArea", chart_js__WEBPACK_IMPORTED_MODULE_1__.PolarAreaController);
-const Radar = /* #__PURE__ */ createTypedChart("radar", chart_js__WEBPACK_IMPORTED_MODULE_1__.RadarController);
-const Bubble = /* #__PURE__ */ createTypedChart("bubble", chart_js__WEBPACK_IMPORTED_MODULE_1__.BubbleController);
-const Scatter = /* #__PURE__ */ createTypedChart("scatter", chart_js__WEBPACK_IMPORTED_MODULE_1__.ScatterController);
-
-
-//# sourceMappingURL=index.js.map
 
 
 /***/ })
