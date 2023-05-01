@@ -10,12 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Task extends Model
 {
     use HasFactory,RecordsActivity,SoftDeletes;
-    const STATUS_OPEN = 'open';
-    const STATUS_IN_PROGRESS = 'in_progress';
-    const STATUS_RESOLVED = 'resolved';
-    const STATUS_COMPLETED = 'completed';
-
-
 
     /*1. protected $guarded = []; means that no field is guarded
       2. protected $guarded = ['*']; means that all field are guarded
@@ -57,4 +51,8 @@ class Task extends Model
         return '/projects/' . $this->project->id . '/tasks/' . $this->id;
     }
 
+    public function projectStatus()
+    {
+        return $this->belongsTo(ProjectStatus::class);
+    }
 }

@@ -68,11 +68,11 @@ import MenuTop from '../common/menu/MenuTop.vue';
 import LeftSidebar from '../common/sidebar/LeftSidebar.vue';
 import BreadCrumb from '../common/breadcrumb/BreadCrumb.vue';
 import DropdownListProjectTask from '../common/dropdown/DropdownListProjectTask.vue';
-import ButtonCreateProject from '../common/button/ButtonCreateProject.vue';
+import ButtonCreateProject from '../view/Project/button/ButtonCreateProject.vue';
 import FilterTask from '../common/filter/FilterTask.vue';
 import TabProject from '../common/tabs/TabProject.vue';
-import CardProjectTask from '../common/card/CardProjectTask.vue';
-import ModalCreateProject from '../common/modal/ModalCreateProject.vue';
+import CardProjectTask from '../view/Project/card/CardProjectTask.vue';
+import ModalCreateProject from '../view/Project/modal/ModalCreateProject.vue';
 
 
 export default {

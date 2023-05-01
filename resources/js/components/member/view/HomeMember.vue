@@ -151,10 +151,10 @@
 import LeftSidebar from '../common/sidebar/LeftSidebar.vue';
 import MenuTop from '../common/menu/MenuTop.vue';
 import BreadCrumb from '../common/breadcrumb/BreadCrumb.vue';
-import ButtonCreateProject from '../common/button/ButtonCreateProject.vue';
+import ButtonCreateProject from '../view/Project/button/ButtonCreateProject.vue';
 import TableProject from '../view/Project/TableProject.vue';
 import PaginationProject from '../common/paginate/PaginationProject.vue';
-import ModalCreateProject from '../common/modal/ModalCreateProject.vue';
+import ModalCreateProject from '../view/Project/modal/ModalCreateProject.vue';
 
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
