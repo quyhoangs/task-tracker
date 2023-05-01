@@ -14,10 +14,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_sidebar_LeftSidebar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/sidebar/LeftSidebar.vue */ "./resources/js/components/member/common/sidebar/LeftSidebar.vue");
 /* harmony import */ var _common_menu_MenuTop_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/menu/MenuTop.vue */ "./resources/js/components/member/common/menu/MenuTop.vue");
 /* harmony import */ var _common_breadcrumb_BreadCrumb_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/breadcrumb/BreadCrumb.vue */ "./resources/js/components/member/common/breadcrumb/BreadCrumb.vue");
-/* harmony import */ var _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/button/ButtonCreateProject.vue */ "./resources/js/components/member/common/button/ButtonCreateProject.vue");
+/* harmony import */ var _view_Project_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../view/Project/button/ButtonCreateProject.vue */ "./resources/js/components/member/view/Project/button/ButtonCreateProject.vue");
 /* harmony import */ var _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../view/Project/TableProject.vue */ "./resources/js/components/member/view/Project/TableProject.vue");
 /* harmony import */ var _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/paginate/PaginationProject.vue */ "./resources/js/components/member/common/paginate/PaginationProject.vue");
-/* harmony import */ var _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common/modal/ModalCreateProject.vue */ "./resources/js/components/member/common/modal/ModalCreateProject.vue");
+/* harmony import */ var _view_Project_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../view/Project/modal/ModalCreateProject.vue */ "./resources/js/components/member/view/Project/modal/ModalCreateProject.vue");
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/dist/index.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
 
@@ -36,10 +36,10 @@ chart_js__WEBPACK_IMPORTED_MODULE_7__.Chart.register(chart_js__WEBPACK_IMPORTED_
     MenuTop: _common_menu_MenuTop_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     LeftSidebar: _common_sidebar_LeftSidebar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     BreadCrumb: _common_breadcrumb_BreadCrumb_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ButtonCreateProject: _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ButtonCreateProject: _view_Project_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     TableProject: _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     PaginationProject: _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    ModalCreateProject: _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    ModalCreateProject: _view_Project_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     Bar: vue_chartjs__WEBPACK_IMPORTED_MODULE_8__.Bar
   },
   data: function data() {

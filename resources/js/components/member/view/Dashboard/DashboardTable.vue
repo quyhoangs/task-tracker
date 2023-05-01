@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import ButtonCreateProject from '../../common/button/ButtonCreateProject.vue';
+import ButtonCreateProject from '../Project/button/ButtonCreateProject.vue';
 import TableProject from '../../view/Project/TableProject.vue';
 import PaginationProject from '../../common/paginate/PaginationProject.vue';
-import ModalCreateProject from '../../common/modal/ModalCreateProject.vue';
+import ModalCreateProject from '../Project/modal/ModalCreateProject.vue';
 
 export default {
     components: {

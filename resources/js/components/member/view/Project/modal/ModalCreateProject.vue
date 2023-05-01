@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+    <div class="fixed fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
         <div class="bg-gray-500 bg-opacity-50 absolute top-0 left-0 right-0 bottom-0"></div>
         <div class="bg-white rounded-lg p-8 z-10">
             <div class="grid  gap-8 grid-cols-1">

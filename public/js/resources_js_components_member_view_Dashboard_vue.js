@@ -79,20 +79,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/button/ButtonCreateProject.vue */ "./resources/js/components/member/common/button/ButtonCreateProject.vue");
+/* harmony import */ var _Project_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Project/button/ButtonCreateProject.vue */ "./resources/js/components/member/view/Project/button/ButtonCreateProject.vue");
 /* harmony import */ var _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../view/Project/TableProject.vue */ "./resources/js/components/member/view/Project/TableProject.vue");
 /* harmony import */ var _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/paginate/PaginationProject.vue */ "./resources/js/components/member/common/paginate/PaginationProject.vue");
-/* harmony import */ var _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/modal/ModalCreateProject.vue */ "./resources/js/components/member/common/modal/ModalCreateProject.vue");
+/* harmony import */ var _Project_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Project/modal/ModalCreateProject.vue */ "./resources/js/components/member/view/Project/modal/ModalCreateProject.vue");
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ButtonCreateProject: _common_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ButtonCreateProject: _Project_button_ButtonCreateProject_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     TableProject: _view_Project_TableProject_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     PaginationProject: _common_paginate_PaginationProject_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ModalCreateProject: _common_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    ModalCreateProject: _Project_modal_ModalCreateProject_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
