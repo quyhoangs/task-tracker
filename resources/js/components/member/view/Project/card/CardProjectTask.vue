@@ -1,7 +1,8 @@
 <template>
-    <div class="p-4 mt-3 flex flex-wrap -mx-4 overflow-y-auto   bg-gradient-to-r from-slate-300 to-slate-400">
+    <div
+        class="rounded-xl border border-gray-300 p-4 mt-3 flex flex-wrap -mx-4 overflow-y-auto   bg-gradient-to-r from-slate-300 to-slate-400">
         <!-- 1 -->
-        <div class="w-full md:w-1/5 p-2 max-h-screen overflow-y-auto mr-3 ">
+        <div class="w-full md:w-1/5 ml-2 max-h-screen overflow-y-auto mr-3 ">
             <div class="inline-block w-3 h-3 bg-red-500 rounded-full"></div>
             <span class="inline-block  mr-2 px-1.5 py-0.5 rounded font-semibold">
                 New Task

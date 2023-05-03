@@ -1,7 +1,7 @@
 <template>
-    <div class=" ml-2">
-        <button class="bg-teal-500 hover:bg-teal-300 text-white rounded " @click="showModal = true">
-            Add task +
+    <div class="float-right ">
+        <button class="bg-teal-500 hover:bg-teal-300 text-white rounded mt-2 mr-2 text-sm" @click="showModal = true">
+            <p class="p-2">Add task +</p>
         </button>
         <ModalCreateTask v-if="showModal" @close="showModal = false" />
     </div>

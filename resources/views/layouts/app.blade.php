@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="theme-light bg-page  bg-gray-200">
+<body class="theme-light bg-page  bg-gray-50">
     <div id="app" >
         <script src="{{ asset('js/app.js') }}"  ></script>
     </div>
