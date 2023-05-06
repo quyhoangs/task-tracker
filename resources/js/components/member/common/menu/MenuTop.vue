@@ -23,7 +23,7 @@
                     class="absolute right-0 top-0 -mt-2 -mr-1 text-xs bg-red-500 text-white font-medium px-2 shadow-lg rounded-full">3</span>
             </span>
             <span class="w-10 relative cursor-pointer hover:text-gray-700 ml-3">
-                <i class="fas fa-user p-2 bg-gray-200 rounded-full"></i>
+                <img class="rounded-full w-8" src="https://i.ibb.co/L1LQtBm/Ellipse-1.png" alt="avatar" />
                 <span
                     class="absolute right-0 top-0 -mt-1 -mr-1 text-xs bg-yellow-500 text-black font-medium px-2 rounded-full">3</span>
             </span>

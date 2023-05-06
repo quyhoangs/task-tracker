@@ -3,18 +3,19 @@
         <div class="float-left">
             <ul class=" flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                 <li class="mr-2 ml-4">
-                    <a href="#"
+                    <router-link :to="{ name: 'ListProject' }"
                         class="dark:border-green-500 text-green-500 inline-flex p-4 border-b-4 border-transparent rounded-t-lg  ">
-                        <svg aria-hidden="true" class="w-5 h-5 mr-2 text-green-500 group-hover:text-green-500 "
-                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                                clip-rule="evenodd"></path>
-                        </svg>Project
-                    </a>
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-5 h-5 mr-2 ">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122">
+                            </path>
+                        </svg>
+                        Project
+                    </router-link>
                 </li>
                 <li class="mr-2">
-                    <a href="#"
+                    <router-link :to="{ name: 'CardProjectTask' }"
                         class="inline-flex p-4  border-b-4 rounded-t-lg active hover:text-red-300 hover:border-red-300 dark:hover:text-red-300 group  "
                         aria-current="page">
                         <svg aria-hidden="true" class="w-5 h-5 mr-2 " fill="currentColor" viewBox="0 0 20 20"
@@ -28,7 +29,7 @@
                             5
                         </span>
 
-                    </a>
+                    </router-link>
                 </li>
                 <li class="mr-2">
                     <a href="#"

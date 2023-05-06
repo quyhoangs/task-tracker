@@ -1,14 +1,15 @@
 <template>
-    <div class="px-4 pb-4">
+    <div class="px-4 pb-4 p-5">
         <div class="min-w-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-            <div class="w-full lg:w-5/6">
-
-                <div class="bg-white shadow-md rounded my-6">
-                    <ButtonCreateProject class="mb-2" @click="openModal"> </ButtonCreateProject>
-                    <ModalCreateProject v-if="showModal" @closeModal="closeModal" />
-                    <button>Export Excel</button>
-                    <TableProject> </TableProject>
-                    <PaginationProject />
+            <div class="w-full lg:w-5/6 ">
+                <div class="bg-white shadow-md rounded my-6 mt-5">
+                    <div class="p-5">
+                        <ButtonCreateProject class="mb-2" @click="openModal"> </ButtonCreateProject>
+                        <ModalCreateProject v-if="showModal" @closeModal="closeModal" />
+                        <button>Export Excel</button>
+                        <TableProject> </TableProject>
+                        <PaginationProject />
+                    </div>
                 </div>
             </div>
         </div>

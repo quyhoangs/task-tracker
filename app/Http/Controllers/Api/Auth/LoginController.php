@@ -22,27 +22,27 @@ class LoginController extends Controller
     public function postLogin(LoginRequest $request)
     {
         if ($request->expectsJson()) {
-                $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->first();
 
-                if(!$user || !Hash::check($request->password, $user->password)) {
-                    return response([
-                        'message' => 'Bad creds'
-                    ], 401);
-                }
-
-                $token = $user->createToken('token_login')->plainTextToken;
-
+            if(!$user || !Hash::check($request->password, $user->password)) {
                 return response([
-                    'status' => 'success',
-                    'message' => 'Login successfully',
-                    'data' =>   $user,
-                    'token' => $token
-                ]);
+                    'message' => 'Bad creds'
+                ], 401);
             }
+
+            $token = $user->createToken('token_login')->plainTextToken;
+
             return response([
-                'status' => 'error',
-                'message' => 'Login failed'
+                'status' => 'success',
+                'message' => 'Login successfully',
+                'data' =>   $user,
+                'token' => $token
             ]);
+        }
+        return response([
+            'status' => 'error',
+            'message' => 'Login failed'
+        ]);
     }
 
 

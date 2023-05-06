@@ -11,7 +11,8 @@
                 <SearchFilterTask>
                 </SearchFilterTask>
             </div>
-            <CardProjectTask> </CardProjectTask>
+            <!-- <CardProjectTask> </CardProjectTask> -->
+            <router-view></router-view>
 
         </div>
     </div>

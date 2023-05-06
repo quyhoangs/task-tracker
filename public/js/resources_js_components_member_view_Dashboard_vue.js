@@ -293,7 +293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "px-4 pb-4"
+  "class": "px-4 pb-4 p-5"
 };
 var _hoisted_2 = {
   "class": "min-w-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden"
@@ -302,22 +302,25 @@ var _hoisted_3 = {
   "class": "w-full lg:w-5/6"
 };
 var _hoisted_4 = {
-  "class": "bg-white shadow-md rounded my-6"
+  "class": "bg-white shadow-md rounded my-6 mt-5"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Export Excel", -1 /* HOISTED */);
+var _hoisted_5 = {
+  "class": "p-5"
+};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Export Excel", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ButtonCreateProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ButtonCreateProject");
   var _component_ModalCreateProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ModalCreateProject");
   var _component_TableProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TableProject");
   var _component_PaginationProject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginationProject");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ButtonCreateProject, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ButtonCreateProject, {
     "class": "mb-2",
     onClick: $options.openModal
   }, null, 8 /* PROPS */, ["onClick"]), $data.showModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ModalCreateProject, {
     key: 0,
     onCloseModal: $options.closeModal
-  }, null, 8 /* PROPS */, ["onCloseModal"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TableProject), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginationProject)])])])]);
+  }, null, 8 /* PROPS */, ["onCloseModal"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TableProject), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginationProject)])])])])]);
 }
 
 /***/ }),

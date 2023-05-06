@@ -14,6 +14,7 @@ import Password from './components/member/view/Profile/Password.vue';
 import LanguageRegion from './components/member/view/Profile/LanguageRegion.vue';
 import SessionHistory from './components/member/view/Profile/SessionHistory.vue';
 
+
 import authMiddleware from './components/middeware/auth.js';
 
 const routes = [
@@ -99,11 +100,24 @@ const routes = [
     },
     {
         path : '/project',
-        name : 'Project',
+        name : 'ProjectTask',
         component :  () => import('./components/member/view/ProjectTask.vue'),
         meta: {
             middleware: [authMiddleware] // Đăng ký middleware auth vào đây
-        }
+        },
+        children: [
+            {
+              path: '', // path: '' tức là path mặc định, nó sẽ được hiển thị khi /project được truy cập
+              name: 'ListProject',
+              component :  () => import('./components/member/view/ListProject.vue'),
+            },
+            {
+                path: 'list-task',
+                name: 'CardProjectTask',
+                component :  () => import('./components/member/view/Project/card/CardProjectTask.vue'),
+            },
+
+          ]
     },
 ];
 
