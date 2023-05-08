@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/secrets',[SecretController::class,'index']);
 
 Route::controller(RegisterController::class)->group(function () {
-    Route::post('/register','store');
+    Route::post('/register','store')->middleware('throttle:3,60');
     Route::post('/verify-account/{token}', 'verifyAccount')->name('verify');
 });
 
