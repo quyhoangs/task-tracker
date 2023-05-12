@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ProjectsController;
 use App\Http\Controllers\Api\ProjectTaskController;
 use App\Http\Controllers\Api\ProjectInvitationsController;
 use App\Http\Controllers\Api\Member\PersonInfoController;
+use App\Http\Controllers\Api\Member\EmailController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,7 +22,11 @@ use App\Http\Controllers\Api\Member\PersonInfoController;
 |
 */
 
+Route::get('/check-email', [EmailController::class, 'checkEmail']);
+
+
 Route::middleware('auth:sanctum')->group(function () {
+
     Route::get('/profile/person-info', [PersonInfoController::class, 'show']);
     Route::put('/profile/person-info', [PersonInfoController::class, 'updatePersonalInfo']);
 });

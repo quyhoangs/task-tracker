@@ -45,7 +45,7 @@
 
 
 
-                        <div class="relative ml-3">
+                        <!-- <div class="relative ml-3">
                             <div>
                                 <button type="button"
                                     class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -57,7 +57,6 @@
                                 </button>
                             </div>
 
-                            <!-- Username -->
                             <div v-if="authenticated" class="text-gray-300">
                                 {{ user.name }}
                             </div>
@@ -73,7 +72,7 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 

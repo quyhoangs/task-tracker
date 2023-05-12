@@ -22,7 +22,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\ThrottleRequestsMiddleware::class,
+        // \App\Http\Middleware\ThrottleRequestsMiddleware::class,
     ];
 
     /**
@@ -45,7 +45,7 @@ class Kernel extends HttpKernel
             EnsureFrontendRequestsAreStateful::class,
             // 'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\ThrottleRequestsMiddleware::class,
+            // \App\Http\Middleware\ThrottleRequestsMiddleware::class,
         ],
     ];
 
@@ -57,7 +57,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
-        'throttle' => \App\Http\Middleware\ThrottleRequestsMiddleware::class,
+        // 'throttle' => \App\Http\Middleware\ThrottleRequestsMiddleware::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

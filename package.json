@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "chart.js": "^4.2.1",
+        "lodash": "^4.17.21",
         "vue": "^3.2.36",
         "vue-chartjs": "^5.2.0",
         "vue-cookies": "^1.8.3",

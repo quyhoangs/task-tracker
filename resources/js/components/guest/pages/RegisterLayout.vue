@@ -13,7 +13,7 @@
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 name</label>
-                            <input v-model="name" type="name"
+                            <input v-model="name" type="name" @input="validate"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="JonhDoe">
                             <p v-if="errors.name" class="text-red-500 mt-1 text-sm">{{ errors.name }}</p>
@@ -22,16 +22,17 @@
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 email</label>
-                            <input v-model="email" type="email"
+                            <input v-model="email" type="email" @input="onInput"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="name@company.com">
+                            <span v-if="emailExists">Email is already registered.</span>
                             <p v-if="errors.email" class="text-red-500 mt-1 text-sm">{{ errors.email }}</p>
                         </div>
 
                         <div>
                             <label for="password"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                            <input v-model="password" type="password" placeholder="••••••••"
+                            <input v-model="password" type="password" placeholder="••••••••" @input="validate"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <p v-if="errors.password" class="text-red-500 mt-1 text-sm">{{ errors.password }}</p>
                         </div>
@@ -39,7 +40,7 @@
                             <label for="confirm-password"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
                                 password</label>
-                            <input v-model="password_confirmation" type="password" placeholder="••••••••"
+                            <input v-model="password_confirmation" type="password" placeholder="••••••••" @input="validate"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <p v-if="errors.password_confirmation" class="text-red-500 mt-1 text-sm">{{
                                 errors.password_confirmation }}</p>
@@ -110,6 +111,7 @@
 import GuestLayout from '../layouts/GuestLayout.vue';
 import axios from 'axios'; // Điều này có thể không cần vì Axios đã được đăng ký toàn cục
 import { mapActions } from 'vuex';
+import { debounce } from 'lodash';
 
 export default {
     name: 'Register',
@@ -123,6 +125,7 @@ export default {
             password: '',
             password_confirmation: '',
             isModalVisible: false, // Trạng thái hiển thị modal, ban đầu là ẩn
+            emailExists: false,
             errors: {},
         };
     },
@@ -170,11 +173,29 @@ export default {
         },
         validate() {
             console.log('validate');
+            const validations = [
+                {
+                    test: !this.name,
+                    message: 'Please enter your name'
+                },
+                {
+                    test: !isNaN(this.name),
+                    message: 'Name cannot be a number'
+                },
+                {
+                    test: !/^[a-zA-Z0-9_ ]*$/.test(this.name),
+                    message: 'Name cannot contain special characters'
+                },
+                {
+                    test: this.name.length > 15,
+                    message: 'Name cannot be longer than 15 characters'
+                },
+
+
+            ];
+
             let errors = {};
 
-            if (!this.name) {
-                errors.name = 'Please enter your name';
-            }
 
             if (!this.email) {
                 errors.email = 'Please enter your email';
@@ -194,11 +215,31 @@ export default {
                 errors.password_confirmation = 'Passwords do not match';
             }
 
+            validations.forEach(validation => {
+                if (validation.test) {
+                    errors.name = validation.message;
+                }
+            });
+
 
             this.errors = errors;
             console.log(this.errors);
             return Object.keys(errors).length === 0;
         },
+        onInput() {
+            // Gọi cả hai phương thức `checkEmail` và `validate`
+            this.checkEmail();
+            this.validate();
+        },
+        checkEmail: debounce(function () {
+            axios.get('/api/check-email', { params: { email: this.email } })
+                .then(response => {
+                    this.emailExists = response.data.exists;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }, 500)
     }
 };
 </script>
