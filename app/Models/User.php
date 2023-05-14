@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
         'is_email_verified',
         'remember_token',
         'phone',
@@ -66,9 +67,9 @@ class User extends Authenticatable
                 ->get();
     }
 
-    public function secrets()
-    {
-        return $this->hasMany(Secret::class);
-    }
+    //1 User có thể có nhiều tài khoản SocialIdentity
+    public function socialIdentity() {
+        return $this->hasMany(SocialIdentity::class);
+     }
 
 }

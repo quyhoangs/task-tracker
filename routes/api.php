@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SecretController;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\OAuthProviderController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\ProjectsController;
 use App\Http\Controllers\Api\ProjectTaskController;
@@ -22,6 +23,10 @@ use App\Http\Controllers\Api\Member\EmailController;
 |
 */
 
+Route::controller(OAuthProviderController::class)->group(function () {
+    Route::get('/auth/{provider}/redirect', 'redirectToProvider');
+    Route::get('/auth/{provider}/callback', 'handleProviderCallback');
+});
 Route::get('/check-email', [EmailController::class, 'checkEmail']);
 
 

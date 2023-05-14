@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_email_verified')->default(0);
             $table->string('password');
             $table->string('role_id')->default(Role::IS_USER);
-
+            $table->string('avatar')->nullable();
             $table->string('phone')->nullable();
             $table->string('skype')->nullable();
             $table->string('location')->nullable();
