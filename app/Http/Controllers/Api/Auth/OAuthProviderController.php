@@ -50,11 +50,16 @@ class OAuthProviderController extends Controller
         $token = $authUser->createToken('authTokenWithSociallite')->plainTextToken;
 
         // Return a response with the token and user information
-        return response()->json([
-            'message' => 'Login success with ' . $provider . '',
-            'token' => $token,
-            'user' => $authUser
-        ], 200);
+        //set token into local
+        $cookie = cookie('token', $token, 60 * 24); // 1 day
+
+        return redirect('http://localhost:8080/project')->withCookie($cookie);
+
+        // return response()->json([
+        //     'message' => 'Login success with ' . $provider . '',
+        //     'token' => $token,
+        //     'user' => $authUser
+        // ], 200)->withCookie($cookie);
     }
 
     /**

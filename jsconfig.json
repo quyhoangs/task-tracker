@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".", // This must be specified if "paths" is.
+        "paths": {
+            "@/*": ["./src/*"] // @/foo -> src/foo
+        }
+    },
+
+    // exclude some folders from being scanned for js files to include in the project
+    "exclude": ["node_modules", "dist"]
+}

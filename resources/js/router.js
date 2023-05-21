@@ -3,6 +3,7 @@ import HomeLayout from './components/guest/pages/HomeLayout.vue';
 import ContactLayout from './components/guest/pages/ContactLayout.vue';
 import AboutLayout from './components/guest/pages/AboutLayout.vue';
 import LoginLayout from './components/guest/pages/LoginLayout.vue';
+import GoogleCallback from './components/guest/pages/GoogleCallback.vue';
 import RegisterLayout from './components/guest/pages/RegisterLayout.vue';
 
 import MemberLayout from './components/member/layouts/MemberLayout.vue';
@@ -40,6 +41,8 @@ const routes = [
         name : 'Login',
         component : LoginLayout
     },
+    { path: '/api/auth/google/callback', name: 'GoogleCallback', component: GoogleCallback },
+
     {
         path : '/register',
         name : 'Register',

@@ -6,7 +6,8 @@
         <div class="bg-gray-700 rounded p-5  w-full md:max-w-md  md:mx-auto md:w-1/2 xl:w-1/3 ">
             <div class="w-full h-100 ">
 
-                <h1 class="text-xl md:text-2xl font-bold leading-tight  text-white">Log in to your account</h1>
+                <h1 class="text-xl md:text-2xl font-bold leading-tight  text-white">Welcome back!
+                </h1>
 
                 <form class="mt-6 p-3" @submit.prevent="handleLogin">
                     <!-- @csrf -->
@@ -44,7 +45,7 @@
                 <hr class="my-6 border-gray-300 w-full">
 
                 <div class="p-4">
-                    <button type="button"
+                    <button type="button" @click="loginWithGoogle"
                         class="bg-white mb-1 w-full block bg-card hover:bg-gray-300 focus:bg-gray-300 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
                         <div class="flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -108,9 +109,18 @@ export default {
         ...mapActions(['login']),
         handleLogin() {
             this.login(this.formData).then(() => {
-                this.$router.push({ name: 'home' });
+                this.$router.push({ name: 'ListProject' });
             });
         },
+        async loginWithGoogle() {
+            try {
+                // Chuyển hướng đến trang xác thực Google (OAuth)
+                window.location.href = '/api/auth/google/redirect';
+            } catch (error) {
+                // Lỗi khi gọi API, hiển thị thông báo lỗi
+                alert('An error occurred. Please try again later.');
+            }
+        }
     }
 };
 </script>
