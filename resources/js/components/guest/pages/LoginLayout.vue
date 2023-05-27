@@ -108,8 +108,10 @@ export default {
     methods: {
         ...mapActions(['login']),
         handleLogin() {
-            this.login(this.formData).then(() => {
-                this.$router.push({ name: 'ListProject' });
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                this.login(this.formData).then(() => {
+                    this.$router.push({ name: 'ListProject' });
+                });
             });
         },
         async loginWithGoogle() {

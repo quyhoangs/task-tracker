@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'; // Import createStore từ vuex
 import axios from 'axios'; // Import axios để gửi request
-import VueCookies from 'vue-cookies';
 
 const store = createStore({
     namespaced: true, // Để có thể sử dụng module mode trong Vuex
@@ -61,6 +60,7 @@ const store = createStore({
                 router.push({ name: 'Login' });
             }
         },
+
         //Logout user xoá token và user trong state của store đi
          logout({ commit }) {
             return axios.post('/api/logout').then(() => {
@@ -70,7 +70,7 @@ const store = createStore({
         }
 
     },
-    //getters để lấy dữ liệu từ state của store (tương tự computed trong component)
+    // getters để lấy dữ liệu từ state của store (tương tự computed trong component)
     getters: {
         // Kiểm tra xem người dùng đã đăng nhập hay chưa (có token và user trong state của store hay không)
         authenticated(state) {

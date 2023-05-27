@@ -51,15 +51,15 @@ class OAuthProviderController extends Controller
 
         // Return a response with the token and user information
         //set token into local
-        $cookie = cookie('token', $token, 60 * 24); // 1 day
+        // $cookie = cookie('token', $token, 60 * 24); // 1 day
 
-        return redirect('http://localhost:8080/project')->withCookie($cookie);
+        // return redirect('http://localhost:8080/project')->withCookie($cookie);
 
-        // return response()->json([
-        //     'message' => 'Login success with ' . $provider . '',
-        //     'token' => $token,
-        //     'user' => $authUser
-        // ], 200)->withCookie($cookie);
+        return response()->json([
+            'message' => 'Login success with ' . $provider . '',
+            'token' => $token,
+            'user' => $authUser
+        ], 200);
     }
 
     /**
