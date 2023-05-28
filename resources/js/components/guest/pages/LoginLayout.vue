@@ -66,7 +66,7 @@
                         </div>
                     </button>
 
-                    <button type="submid"
+                    <button type="submid" @click="loginWithGithub"
                         class="bg-white w-full block bg-card hover:bg-gray-300 focus:bg-gray-300 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
                         <div class="flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -90,6 +90,7 @@
 import GuestLayout from '../layouts/GuestLayout.vue';
 import { mapActions } from 'vuex';
 
+import { getCsrfToken } from '../../src/apis/Csrf';
 
 
 export default {
@@ -105,24 +106,45 @@ export default {
             },
         };
     },
+    mounted() {
+        // Trích xuất token từ URL
+        getCsrfToken()
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+
+        // Kiểm tra xem token có tồn tại hay không
+        if (token) {
+            //attempt coomit token to store
+            this.$store.commit('SET_TOKEN', token);
+            //push to list project
+            this.$router.push({ name: 'ListProject' });
+        }
+    },
     methods: {
         ...mapActions(['login']),
         handleLogin() {
-            axios.get('/sanctum/csrf-cookie').then(response => {
+            getCsrfToken().then(() => {
                 this.login(this.formData).then(() => {
                     this.$router.push({ name: 'ListProject' });
                 });
             });
         },
-        async loginWithGoogle() {
-            try {
-                // Chuyển hướng đến trang xác thực Google (OAuth)
-                window.location.href = '/api/auth/google/redirect';
-            } catch (error) {
-                // Lỗi khi gọi API, hiển thị thông báo lỗi
-                alert('An error occurred. Please try again later.');
-            }
-        }
+        loginWithGithub() {
+            this.socialLogin('github');
+        },
+        loginWithGoogle() {
+            this.socialLogin('google');
+        },
+        socialLogin(provider) {
+            //// Chuyển hướng đến trang xác thực Google (OAuth)
+            axios.get(`/api/auth/${provider}/redirect`)
+                .then(response => {
+                    window.location.href = response.data.redirect_url;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
     }
 };
 </script>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Api\Controller;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -20,7 +22,9 @@ class OAuthProviderController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        $redirectUrl = Socialite::driver($provider)->stateless()->redirect()->getTargetUrl();
+
+        return response()->json(['redirect_url' => $redirectUrl]);
     }
 
     /**
@@ -33,8 +37,14 @@ class OAuthProviderController extends Controller
     public function handleProviderCallback($provider)
     {
         try {
+            $validated = $this->validateProvider($provider);
+
+            if (!is_null($validated)) {
+                return $validated;
+            }
+
             // Retrieve user information from provider
-            $providerUser = Socialite::driver($provider)->user();
+            $providerUser = Socialite::driver($provider)->stateless()->user();
         } catch(Exception $e) {
             // Handle errors
             return response()->json([
@@ -49,17 +59,15 @@ class OAuthProviderController extends Controller
         // Create a token for the authenticated user
         $token = $authUser->createToken('authTokenWithSociallite')->plainTextToken;
 
-        // Return a response with the token and user information
-        //set token into local
-        // $cookie = cookie('token', $token, 60 * 24); // 1 day
+        //redirect to frontend localhost:8080/project with token
+        return redirect('http://localhost:8080/login?token='.$token);
 
-        // return redirect('http://localhost:8080/project')->withCookie($cookie);
 
-        return response()->json([
-            'message' => 'Login success with ' . $provider . '',
-            'token' => $token,
-            'user' => $authUser
-        ], 200);
+        // return response()->json([
+        //     'message' => 'Login successfully with ' . $provider . '',
+        //     'data' => $authUser,
+        //     'token' => $token
+        // ]);
     }
 
     /**
@@ -122,5 +130,17 @@ class OAuthProviderController extends Controller
             'refresh_token' => $providerUser->refreshToken,
             'expires_in' => $providerUser->expiresIn,
         ]);
+    }
+
+    protected function validateProvider($provider)
+    {
+        if (!in_array($provider, ['github', 'google'])) {
+            return response()->json(['error' => 'Please login using github or google'], 422);
+        }
+    }
+
+    public function getToken(){
+        $token = request()->cookie('token');
+        return response()->json(['token' => $token]);
     }
 }
