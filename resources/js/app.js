@@ -10,6 +10,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import router from './router.js'
 import store from './store.js' // Import store từ file store.js
+// import './axios-interceptor';
+import '../js/components/src/axios-interceptor.js';
 
 import MemberLayout from './components/member/layouts/MemberLayout.vue'
 require('./components/store/subscriber.js');

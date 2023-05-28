@@ -15,7 +15,19 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie','login', 'logout'],
+    'paths' => [
+        'api/*',
+        'sanctum/csrf-cookie',
+        'login',
+        'logout',
+        // '/api/auth/google/callback' //đang gặp lỗi cors
+        //Access to XMLHttpRequest at 'https://accounts.google.com/o/oauth2/auth?client_id=781322322722-mfa8e5pplc…le+email&response_type=code&state=xHTxbv74nRJHoixDaadm00kfyQCpyuV80YqmmCGK'
+        // (redirected from 'http://localhost:8080/api/auth/google/redirect')
+        // from origin 'http://localhost:8080' has been blocked by CORS policy:
+        // Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin'
+        // header is present on the requested resource.
+
+    ],
 
     'allowed_methods' => ['*'],
 
@@ -24,6 +36,7 @@ return [
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
+    //'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept', 'Origin', 'Access-Control-Allow-Origin'],
 
     'exposed_headers' => [],
 

@@ -6,7 +6,8 @@
         <div class="bg-gray-700 rounded p-5  w-full md:max-w-md  md:mx-auto md:w-1/2 xl:w-1/3 ">
             <div class="w-full h-100 ">
 
-                <h1 class="text-xl md:text-2xl font-bold leading-tight  text-white">Log in to your account</h1>
+                <h1 class="text-xl md:text-2xl font-bold leading-tight  text-white">Welcome back!
+                </h1>
 
                 <form class="mt-6 p-3" @submit.prevent="handleLogin">
                     <!-- @csrf -->
@@ -44,7 +45,7 @@
                 <hr class="my-6 border-gray-300 w-full">
 
                 <div class="p-4">
-                    <button type="button"
+                    <button type="button" @click="loginWithGoogle"
                         class="bg-white mb-1 w-full block bg-card hover:bg-gray-300 focus:bg-gray-300 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
                         <div class="flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -65,7 +66,7 @@
                         </div>
                     </button>
 
-                    <button type="submid"
+                    <button type="submid" @click="loginWithGithub"
                         class="bg-white w-full block bg-card hover:bg-gray-300 focus:bg-gray-300 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
                         <div class="flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -89,6 +90,7 @@
 import GuestLayout from '../layouts/GuestLayout.vue';
 import { mapActions } from 'vuex';
 
+import { getCsrfToken } from '../../src/apis/Csrf';
 
 
 export default {
@@ -104,12 +106,44 @@ export default {
             },
         };
     },
+    mounted() {
+        // Trích xuất token từ URL
+        getCsrfToken()
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+
+        // Kiểm tra xem token có tồn tại hay không
+        if (token) {
+            //attempt coomit token to store
+            this.$store.commit('SET_TOKEN', token);
+            //push to list project
+            this.$router.push({ name: 'ListProject' });
+        }
+    },
     methods: {
         ...mapActions(['login']),
         handleLogin() {
-            this.login(this.formData).then(() => {
-                this.$router.push({ name: 'home' });
+            getCsrfToken().then(() => {
+                this.login(this.formData).then(() => {
+                    this.$router.push({ name: 'ListProject' });
+                });
             });
+        },
+        loginWithGithub() {
+            this.socialLogin('github');
+        },
+        loginWithGoogle() {
+            this.socialLogin('google');
+        },
+        socialLogin(provider) {
+            //// Chuyển hướng đến trang xác thực Google (OAuth)
+            axios.get(`/api/auth/${provider}/redirect`)
+                .then(response => {
+                    window.location.href = response.data.redirect_url;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
     }
 };
