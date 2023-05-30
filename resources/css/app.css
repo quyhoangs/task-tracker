@@ -1,0 +1,8 @@
+:root {
+    --user-name: "Bruce Mars";
+  }
+  
+  .user-name::before {
+    content: var(--user-name);
+  }
+  

@@ -16,6 +16,7 @@
                             <input v-model="name" type="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="JonhDoe">
+                            <span v-if="!nameValid" class="text-red-500 text-sm">Vui lòng nhập họ và tên</span>
                         </div>
 
                         <div>
@@ -24,6 +25,7 @@
                             <input v-model="email" type="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="name@company.com">
+                            <span v-if="!emailValid" class="text-red-500 text-sm">Vui lòng nhập email hợp lệ</span>
                         </div>
 
                         <div>
@@ -31,6 +33,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                             <input v-model="password" type="password" placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <span v-if="!passwordValid" class="text-red-500 text-sm">Mật khẩu phải chứa ít nhất 6 ký tự</span>
                         </div>
                         <div>
                             <label for="confirm-password"
@@ -38,6 +41,7 @@
                                 password</label>
                             <input v-model="password_confirmation" type="password" placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <span v-if="!passwordValid" class="text-red-500 text-sm">Mật khẩu không giống nhau</span>
                         </div>
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
@@ -128,7 +132,10 @@ export default {
             email: '',
             password: '',
             password_confirmation: '',
-            isModalVisible: false // Trạng thái hiển thị modal, ban đầu là ẩn
+            isModalVisible: false, // Trạng thái hiển thị modal, ban đầu là ẩn
+            nameValid: true,
+            emailValid: true,
+            passwordValid: true
         };
     },
     methods: {
@@ -136,10 +143,17 @@ export default {
         handleRegister() {
             // Gọi action đăng ký người dùng từ store
             this.registerUser({
-                name: this.name,
-                email: this.email,
-                password: this.password,
-                password_confirmation: this.password_confirmation
+                // name: this.name,
+                // email: this.email,
+                // password: this.password,
+                // password_confirmation: this.password_confirmation
+                this.nameValid = this.name.trim() !== "";
+      this.emailValid = this.validateEmail(this.email);
+      this.passwordValid = this.password.length >= 6;
+
+      if (this.nameValid && this.emailValid && this.passwordValid) {
+        // Gửi dữ liệu đăng ký
+        console.log("Đăng ký thành công");
             })
                 .then(response => {
                     // Reset dữ liệu của các input
@@ -147,6 +161,9 @@ export default {
                     this.email = '';
                     this.password = '';
                     this.password_confirmation = '';
+                    this.nameValid = true;
+                    this.emailValid = true;
+                    this.passwordValid = true;
                     // Xử lý kết quả trả về từ API
                     console.log(response); // Nếu API trả về dữ liệu, bạn có thể xử lý dữ liệu ở đây
                     this.isModalVisible = true;
