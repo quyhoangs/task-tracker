@@ -29,7 +29,12 @@
                     <!-- Trường hợp chưa update avatar hiển thị 2 chữ cái trong User Name -->
                     <div
                         class="mr-1 relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                        <span class="font-medium text-gray-600 dark:text-gray-300">JL</span>
+                        <span v-if="user && user.avatar" class="font-medium text-gray-600 dark:text-gray-300">
+                            <img class="w-full h-full object-cover" :src="user.avatar" alt="User Avatar">
+                        </span>
+                        <span v-else class="font-medium text-gray-600 dark:text-gray-300">
+                            {{ user && user.name ? user.name.substring(0, 2).toUpperCase() : '' }}
+                        </span>
                     </div>
 
                     <span
@@ -38,7 +43,8 @@
                 </div>
 
                 <div>
-                    <div class="font-medium "> John Doe </div>
+                    <!-- Username -->
+                    <div class="font-medium">{{ user && user.name ? user.name : '' }}</div>
                 </div>
             </div>
 
@@ -53,11 +59,16 @@
 import DropdownListProjectTask from '../dropdown/DropdownListProjectTask.vue';
 import DropdownUserOption from '../dropdown/DropdownUserOption.vue';
 import SearchAllCategory from '../search/SearchAllCategory.vue';
+import { mapGetters } from 'vuex';
+
 export default {
     components: {
         DropdownListProjectTask,
         SearchAllCategory,
         DropdownUserOption
-    }
+    },
+    computed: {
+        ...mapGetters(['user']),
+    },
 }
 </script>

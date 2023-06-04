@@ -31,10 +31,10 @@ Route::get('/check-email', [EmailController::class, 'checkEmail']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', function (Request $request) {
-        //Trả về thông tin user đã đăng nhập thành công
-        return $request->user();
-    });
+    // Route::get('/user', function (Request $request) {
+    //     //Trả về thông tin user đã đăng nhập thành công
+    //     return $request->user();
+    // });
 
     Route::get('/profile/person-info', [PersonInfoController::class, 'show']);
     Route::put('/profile/person-info', [PersonInfoController::class, 'updatePersonalInfo']);

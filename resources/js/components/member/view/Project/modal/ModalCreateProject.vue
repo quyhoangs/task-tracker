@@ -1,119 +1,95 @@
 <template>
-    <div class="fixed  z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+    <div class="fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center ">
         <div class="bg-gray-500 bg-opacity-50 absolute top-0 left-0 right-0 bottom-0"></div>
-        <div class="bg-white rounded-lg p-8 z-10">
-            <div class="grid  gap-8 grid-cols-1">
-                <div class="flex flex-col ">
-                    <div class="flex flex-col sm:flex-row items-center">
-                        <h2 class="font-semibold text-lg ">Create new project</h2>
+        <div class="bg-white rounded-lg z-10 ">
+            <div class="grid gap-8 grid-cols-3 rounded-lg bg-gradient-to-b from-sky-200 to-sky-100">
+
+                <!-- Cột bên trái chứa các bước tiến trình -->
+                <div class="flex flex-col mt-32 ml-10 ">
+                    <div v-for="(step, index) in steps" :key="index" class="flex items-center relative">
+                        <!-- Hiển thị tick xanh nếu bước đó đã hoàn thành -->
+                        <div class="mt-4" v-if="currentStep > index + 1">
+                            <svg class="mb-4 h-7 w-7 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd">
+                                </path>
+                            </svg>
+                        </div>
+                        <!-- Hiển thị Các Step từ 1-4 -->
+                        <svg v-else xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 256 256"
+                            class="text-green-500">
+                            <path fill="currentColor" :d="getStepIcon(index + 1)" />
+                        </svg>
+                        <!-- Hiển thị Title các step -->
+                        <div class="font-semibold text-green-600 py-2 ml-1" v-if="currentStep > index + 1">{{ step.title }}
+                        </div>
+                        <div class="font-semibold text-gray-400  py-2 ml-1" v-else>{{ step.title }}</div>
                     </div>
-                    <div class="form">
-                        <div class="md:space-y-2 ">
-                            <label class="text-xs font-semibold text-gray-600 py-2">Company
-                                Logo<abbr class="hidden" title="required">*</abbr></label>
-                            <div class="flex items-center py-3">
-                                <div class="w-12 h-12 mr-4 flex-none rounded-xl border overflow-hidden">
-                                    <img class="w-12 h-12 mr-4 object-cover"
-                                        src="https://images.unsplash.com/photo-1611867967135-0faab97d1530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1352&amp;q=80"
-                                        alt="Avatar Upload">
-                                </div>
-                                <label class="cursor-pointer ">
-                                    <span
-                                        class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Browse</span>
-                                    <input type="file" class="hidden" :multiple="multiple" :accept="accept">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="md:flex flex-row md:space-x-4 w-full text-xs">
-                            <div class="mb-3 space-y-2 w-full text-xs">
-                                <label class="font-semibold text-gray-600 py-2">Company Name
-                                    <abbr title="required">*</abbr></label>
-                                <input placeholder="Company Name"
-                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                    type="text" name="integration[shop_name]" id="integration_shop_name">
-                                <p class="text-red text-xs hidden">Please fill out this
-                                    field.</p>
-                            </div>
-                            <div class="mb-3 space-y-2 w-full text-xs">
-                                <label class="font-semibold text-gray-600 py-2">Company Mail
-                                    <abbr title="required">*</abbr></label>
-                                <input placeholder="Email ID"
-                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                    type="text" name="integration[shop_name]" id="integration_shop_name">
-                                <p class="text-red text-xs hidden">Please fill out this
-                                    field.</p>
-                            </div>
-                        </div>
-                        <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class=" font-semibold text-gray-600 py-2">Company
-                                Website</label>
-                            <div class="flex flex-wrap items-stretch w-full mb-4 relative">
-                                <div class="flex">
-                                    <span
-                                        class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <input type="text"
-                                    class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow"
-                                    placeholder="https://">
-                            </div>
-                        </div>
-                        <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
-                            <div class="w-full flex flex-col mb-3">
-                                <label class="font-semibold text-gray-600 py-2">Company
-                                    Address</label>
-                                <input placeholder="Address"
-                                    class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
-                                    type="text" name="integration[street_address]" id="integration_street_address">
-                            </div>
-                            <div class="w-full flex flex-col mb-3">
-                                <label class="font-semibold text-gray-600 py-2">Location<abbr
-                                        title="required">*</abbr></label>
-                                <select
-                                    class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full "
-                                    name="integration[city_id]" id="integration_city_id">
-                                    <option value="">Seleted location</option>
-                                    <option value="">Cochin,KL</option>
-                                    <option value="">Mumbai,MH</option>
-                                    <option value="">Bangalore,KA</option>
-                                </select>
-                                <p class="text-sm text-red-500 hidden mt-3" id="error">
-                                    Please fill out this field.</p>
-                            </div>
-                        </div>
-                        <div class="flex-auto w-full mb-1 text-xs space-y-2">
-                            <label class="font-semibold text-gray-600 py-2">Description</label>
-                            <textarea name="message" id=""
-                                class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
-                                placeholder="Enter your comapny info" spellcheck="false"></textarea>
-                            <p class="text-xs text-gray-400 text-left my-3">You inserted 0
-                                characters</p>
-                        </div>
-                        <p class="text-xs text-red-500 text-right my-3">Required fields are
-                            marked with an
-                            asterisk <abbr title="Required field">*</abbr></p>
-                        <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-                            <button @click="closeModal"
-                                class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
-                                Cancel </button>
-                            <button @click="createProject"
-                                class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save</button>
+                </div>
+
+                <div class="bg-gray-200 col-span-2 pr-20 pl-20 rounded-lg">
+                    <button class=" text-gray-500 hover:text-gray-700 ml-auto bg-white rounded float-right mb-3 mt-5"
+                        @click="closeModal">
+                        <i
+                            class="fas fa-times transform transition duration-500 hover:rotate-180 hover:text-green-600 p-2 ">
+                        </i>
+                    </button>
+
+
+                    <div class="p-2">
+                        <!-- Step 1: Upload Avatar -->
+                        <UploadAvatar v-if="currentStep === 1" />
+                        <ProjectInfo v-if="currentStep === 2" />
+                        <CustomsStatus v-if="currentStep === 3" />
+                        <InviteMembers v-if="currentStep === 4" />
+
+                        <div class="flex items-center justify-end p-5">
+                            <button v-if="currentStep > 1" @click="goToPreviousStep"
+                                class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow ml-2">
+                                Previous
+                            </button>
+                            <button v-if="currentStep < 4" @click="goToNextStep"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-blue-500 rounded shadow ml-2">
+                                Next
+                            </button>
+                            <button @click="createProject" v-if="currentStep === 4"
+                                class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save
+                            </button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import UploadAvatar from '../modal/StepCreateProject/UploadAvatar.vue';
+import ProjectInfo from '../modal/StepCreateProject/ProjectInfo.vue'
+import CustomsStatus from '../modal/StepCreateProject/CustomsStatus.vue'
+import InviteMembers from '../modal/StepCreateProject/InviteMembers.vue'
+
 export default {
+    components: {
+        UploadAvatar,
+        ProjectInfo,
+        CustomsStatus,
+        InviteMembers,
+    },
+    data() {
+        return {
+            currentStep: 1,
+            // Các thông tin cần thiết khác
+            steps: [
+                { title: 'Upload Avatar' },
+                { title: 'ProjectInfo' },
+                { title: 'Customs Status' },
+                { title: 'Invites Members' }
+            ]
+        };
+    },
     methods: {
         closeModal() {
             // Đóng modal
@@ -123,9 +99,30 @@ export default {
             // Thực hiện logic tạo dự án ở đây
             // Sau khi tạo xong, có thể đóng modal bằng cách gọi this.closeModal()
         },
+        goToPreviousStep() {
+            this.currentStep--; // Di chuyển đến bước trước đó
+        },
+        goToNextStep() {
+            this.currentStep++; // Di chuyển đến bước tiếp theo
+        },
+        getStepIcon(stepIndex) {
+            switch (stepIndex) {
+                case 1:
+                    return "M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Zm10-138v96a6 6 0 0 1-12 0V91.21L111.33 101a6 6 0 0 1-6.66-10l24-16a6 6 0 0 1 9.33 5Z";
+                case 2:
+                    return "M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Zm24-95.95l-36 48h36a6 6 0 0 1 0 12h-48a6 6 0 0 1-4.8-9.6l43.17-57.56A18 18 0 1 0 111 98a6 6 0 1 1-11.31-4A30 30 0 1 1 152 122.05Z";
+                case 3:
+                    return "M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Zm30-66a34 34 0 0 1-58.29 23.79a6 6 0 0 1 8.58-8.39A22 22 0 1 0 124 130a6 6 0 0 1-4.92-9.44L140.48 90H104a6 6 0 0 1 0-12h48a6 6 0 0 1 4.92 9.44l-22.53 32.18A34.06 34.06 0 0 1 158 152Z";
+                case 4:
+                    return "M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26Zm0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90Zm38-74a6 6 0 0 1-6 6h-10v26a6 6 0 0 1-12 0v-26H96a6 6 0 0 1-5.69-7.9l24-72a6 6 0 1 1 11.38 3.8L104.32 138H138v-26a6 6 0 0 1 12 0v26h10a6 6 0 0 1 6 6Z";
+                default:
+                    return "";
+            }
+        }
     },
 };
 </script>
+
 <style scoped>
 /* Căn giữa màn hình  modal */
 .modal {
