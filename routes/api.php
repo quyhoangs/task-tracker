@@ -1,16 +1,17 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\OAuthProviderController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Member\EmailController;
+use App\Http\Controllers\Api\Member\PersonInfoController;
+use App\Http\Controllers\Api\Member\UploadController;
+use App\Http\Controllers\Api\ProjectInvitationsController;
 use App\Http\Controllers\Api\ProjectsController;
 use App\Http\Controllers\Api\ProjectTaskController;
-use App\Http\Controllers\Api\ProjectInvitationsController;
-use App\Http\Controllers\Api\Member\PersonInfoController;
-use App\Http\Controllers\Api\Member\EmailController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //     //Trả về thông tin user đã đăng nhập thành công
     //     return $request->user();
     // });
+    Route::post('/upload-avatar', [UploadController::class, 'uploadAvatarProject']);
 
     Route::get('/profile/person-info', [PersonInfoController::class, 'show']);
     Route::put('/profile/person-info', [PersonInfoController::class, 'updatePersonalInfo']);

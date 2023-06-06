@@ -20904,7 +20904,8 @@ __webpack_require__.r(__webpack_exports__);
       projectName: '',
       isNameValid: true,
       nameErrorMessage: '',
-      isInputValid: false
+      isInputValid: false,
+      imageUrl: ''
     };
   },
   mounted: function mounted() {
@@ -20960,7 +20961,39 @@ __webpack_require__.r(__webpack_exports__);
         this.nameErrorMessage = '';
         this.isInputValid = true;
       }
-    }, 500)
+    }, 500),
+    handleFileUpload: function handleFileUpload(event) {
+      var _this = this;
+      // Lấy file từ event upload lên
+      var file = event.target.files[0];
+      // Kiểm tra kiểu tệp tin hợp lệ
+      if (!['image/jpeg', 'image/png'].includes(file.type)) {
+        alert('Please choose a JPEG or PNG image.');
+        return;
+      }
+
+      // Kiểm tra kích thước tệp tin hợp lệ (giới hạn 2MB)
+      if (file.size > 8 * 1024 * 1024) {
+        alert('The image size exceeds the maximum allowed limit.');
+        return;
+      }
+
+      // Tạo đối tượng FormData để gửi yêu cầu POST lên server với dữ liệu là file vừa chọn
+      var formData = new FormData();
+
+      // Thêm dữ liệu file vào formData với key là 'avatar' (tên phải trùng với tên của biến trong request)
+      // và value là 'file' vừa chọn
+      formData.append('avatar', file);
+      // Khi gửi yêu cầu POST, dữ liệu tệp hình ảnh được đóng gói trong đối tượng FormData
+      // và gửi đi qua một yêu cầu HTTP. Server sau đó có thể nhận dữ liệu này và xử lý nó
+      // Thông thường, server sẽ có một endpoint xử lý tải lên ảnh
+      axios.post('/api/upload-avatar', formData).then(function (response) {
+        // Lưu URL của ảnh đã tải lên
+        _this.imageUrl = response.data.path;
+      })["catch"](function (error) {
+        console.error(error);
+      });
+    }
   }
 });
 
@@ -26325,6 +26358,24 @@ var _hoisted_22 = {
   "class": "flex flex-wrap -mx-2"
 };
 var _hoisted_23 = ["onClick", "onKeydown", "aria-checked"];
+var _hoisted_24 = {
+  "class": "flex items-center bg-white border border-gray-300 rounded p-10 mt-10"
+};
+var _hoisted_25 = {
+  "class": "flex items-center py-3"
+};
+var _hoisted_26 = {
+  "class": "w-20 h-20 mr-4 flex-none rounded-full border overflow-hidden"
+};
+var _hoisted_27 = ["src"];
+var _hoisted_28 = {
+  "for": "avatar-input",
+  "class": "cursor-pointer"
+};
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg"
+}, "Browse", -1 /* HOISTED */);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
@@ -26376,7 +26427,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "aria-checked": $data.colorSelected === color,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["w-8 h-8 inline-flex rounded-full cursor-pointer border-4 border-white focus:outline-none focus:shadow-outline", "bg-".concat(color, "-500")])
     }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_23)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
-  }), 128 /* KEYED_FRAGMENT */))])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isOpen]])])])])])]);
+  }), 128 /* KEYED_FRAGMENT */))])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isOpen]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    "class": "w-full h-full object-cover",
+    src: $data.imageUrl,
+    alt: "Avatar Upload"
+  }, null, 8 /* PROPS */, _hoisted_27)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "avatar-input",
+    type: "file",
+    "class": "hidden",
+    onChange: _cache[5] || (_cache[5] = function () {
+      return $options.handleFileUpload && $options.handleFileUpload.apply($options, arguments);
+    })
+  }, null, 32 /* HYDRATE_EVENTS */)])])])])]);
 }
 
 /***/ }),

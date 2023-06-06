@@ -91,7 +91,18 @@
 
             </div>
 
-
+            <div class="flex items-center bg-white border border-gray-300 rounded p-10 mt-10">
+                <div class="flex items-center py-3">
+                    <div class="w-20 h-20 mr-4 flex-none rounded-full border overflow-hidden">
+                        <img class="w-full h-full object-cover" :src="imageUrl" alt="Avatar Upload">
+                    </div>
+                    <label for="avatar-input" class="cursor-pointer">
+                        <span
+                            class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Browse</span>
+                        <input id="avatar-input" type="file" class="hidden" @change="handleFileUpload">
+                    </label>
+                </div>
+            </div>
 
 
         </div>
@@ -110,7 +121,8 @@ export default {
             projectName: '',
             isNameValid: true,
             nameErrorMessage: '',
-            isInputValid: false
+            isInputValid: false,
+            imageUrl: '',
         };
     },
 
@@ -175,6 +187,40 @@ export default {
                 this.isInputValid = true;
             }
         }, 500),
+
+        handleFileUpload(event) {
+            // Lấy file từ event upload lên
+            const file = event.target.files[0];
+            // Kiểm tra kiểu tệp tin hợp lệ
+            if (!['image/jpeg', 'image/png'].includes(file.type)) {
+                alert('Please choose a JPEG or PNG image.');
+                return;
+            }
+
+            // Kiểm tra kích thước tệp tin hợp lệ (giới hạn 2MB)
+            if (file.size > 8 * 1024 * 1024) {
+                alert('The image size exceeds the maximum allowed limit.');
+                return;
+            }
+
+            // Tạo đối tượng FormData để gửi yêu cầu POST lên server với dữ liệu là file vừa chọn
+            const formData = new FormData();
+
+            // Thêm dữ liệu file vào formData với key là 'avatar' (tên phải trùng với tên của biến trong request)
+            // và value là 'file' vừa chọn
+            formData.append('avatar', file);
+            // Khi gửi yêu cầu POST, dữ liệu tệp hình ảnh được đóng gói trong đối tượng FormData
+            // và gửi đi qua một yêu cầu HTTP. Server sau đó có thể nhận dữ liệu này và xử lý nó
+            // Thông thường, server sẽ có một endpoint xử lý tải lên ảnh
+            axios.post('/api/upload-avatar', formData)
+                .then(response => {
+                    // Lưu URL của ảnh đã tải lên
+                    this.imageUrl = response.data.path;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
 
     },
 
