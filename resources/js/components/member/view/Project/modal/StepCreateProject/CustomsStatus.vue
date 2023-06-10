@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center  w-[600px] h-[600px]">
         <div class="rounded-full w-32 h-32 flex items-center justify-center" :style="{ backgroundColor: avatarColor }">
             <span class="text-3xl text-white">{{ projectInitials }}</span>
         </div>

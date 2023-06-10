@@ -101,7 +101,9 @@
                             class="focus:outline-none text-white text-sm py-2 px-4 rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg">Browse</span>
                         <input id="avatar-input" type="file" class="hidden" @change="handleFileUpload">
                     </label>
+                    <!-- Note : Avatar của bạn không được vượt quá 5MB -->
                 </div>
+                <small class="text-gray-400 ml-2">Note : Avatar của bạn không được vượt quá 5MB</small>
             </div>
 
 
