@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api\Member;
+use App\Http\Controllers\Api\Controller;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;

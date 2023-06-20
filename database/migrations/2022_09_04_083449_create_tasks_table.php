@@ -20,6 +20,8 @@ class CreateTasksTable extends Migration
             $table->text('description')->nullable();
             $table->text('body');
             $table->unsignedBigInteger('status_id');
+            //assigned_to là người được giao task có thể là 1 hoặc nhiều người, nên sẽ là 1 mảng
+            $table->unsignedBigInteger('assigned_to')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

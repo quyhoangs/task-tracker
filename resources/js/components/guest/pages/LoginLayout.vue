@@ -115,13 +115,13 @@ export default {
         // Kiểm tra xem token có tồn tại hay không
         if (token) {
             //attempt coomit token to store
-            this.$store.commit('SET_TOKEN', token);
+            this.$store.commit('auth/SET_TOKEN', token);
             //push to list project
             this.$router.push({ name: 'ListProject' });
         }
     },
     methods: {
-        ...mapActions(['login']),
+        ...mapActions('auth', ['login']),
         handleLogin() {
             getCsrfToken().then(() => {
                 this.login(this.formData).then(() => {

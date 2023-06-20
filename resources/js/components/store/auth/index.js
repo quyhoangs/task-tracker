@@ -1,7 +1,9 @@
-import { createStore } from 'vuex'; // Import createStore từ vuex
+// import { createStore } from 'vuex'; // Import createStore từ vuex
 import axios from 'axios'; // Import axios để gửi request
+import router from '../../../router.js'
 
-const store = createStore({
+
+const authStore = {
     namespaced: true, // Để có thể sử dụng module mode trong Vuex
     state: {
         accessToken: null, // Token của người dùng
@@ -24,24 +26,27 @@ const store = createStore({
         // Gửi request lên server để đăng ký người dùng mới và sau đó đăng nhập luôn
         async registerUser({ commit }, credentials) {
             let response = await axios.post('/api/register', credentials);
-            return this.dispatch('attempt', response.data.token);
+            return this.dispatch('auth/attempt', response.data.token);
         },
 
         // Gửi request lên server để đăng nhập và attempt để lưu token và user vào state của store nếu thành công
         async login({ commit }, credentials) {
             let response = await axios.post('/api/login', credentials);
-          return this.dispatch('attempt', response.data.token);
+            console.log('response',response);
+            return this.dispatch('auth/attempt', response.data.token);
         },
 
         // attempt sẽ lưu token và user vào state của store nếu token đã được lưu trong localStorage
         // trước đó (người dùng đã từng đăng nhập) hoặc nếu request lên server thành công (người dùng vừa đăng nhập)
         async attempt({ commit, state }, token) {
+            console.log('token',token);
+
 
             if (token) { // Nếu token được truyền vào (người dùng vừa đăng nhập) thì lưu token vào state của store
                 commit('SET_TOKEN', token);
             }
 
-            //
+            console.log('state.accessToken',state.accessToken);
             if (!state.accessToken) {
                 // state.accessToken = VueCookies.get('token');
                 return; // Nếu không có token nào trong state của store thì không làm gì cả (chưa đăng nhập)
@@ -50,7 +55,7 @@ const store = createStore({
             try {
                 // Gửi request lên server để lấy thông tin user dựa vào token đã lưu trong state của store
                 let response = await axios.get('/api/user');
-                console.log('USER',response.data);
+                // console.log('USER',response.data);
                 commit('SET_USER', response.data);
             }
             catch (e) {
@@ -74,15 +79,20 @@ const store = createStore({
     getters: {
         // Kiểm tra xem người dùng đã đăng nhập hay chưa (có token và user trong state của store hay không)
         authenticated(state) {
+            // Trả về true nếu có token và user trong state của store (đã đăng nhập) hoặc trả về false nếu không có
+            // ex " authenticated 19|NLYLaBzYHf4NgSCVgaDHZRF9J42r5dEQhDs7QuEs"
+            console.log('authenticated',state.user);
             return state.user && state.accessToken;
         },
         // Lấy thông tin user từ state của store (nếu có)
         user(state) {
             // Trả về null nếu không có user trong state của store (chưa đăng nhập) hoặc trả về thông tin user nếu có
+            console.log('user',state.user);
             return state.user;
         }
     }
 
-});
+};
 
-export default store;
+export default authStore; // Export store để có thể import vào các component khác
+

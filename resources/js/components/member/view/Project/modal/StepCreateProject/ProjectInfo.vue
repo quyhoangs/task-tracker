@@ -14,7 +14,9 @@
                 </div>
 
                 <div class="w-full flex flex-col mb-3">
-                    <label class=" font-semibold text-gray-600 py-2">Deadline </label>
+                    <label class=" font-semibold text-gray-600 py-2">Deadline
+                        <span class="text-xs text-gray-400 text-left my-3"> (Start date - End date) </span>
+                    </label>
                     <div class="flex flex-wrap items-stretch w-full mb-4 relative">
 
                         <VueDatePicker placeholder="Pick a date" v-model="dateRange" range multi-calendars
@@ -23,6 +25,9 @@
 
                     </div>
                 </div>
+
+                <button type="button" @click="saveForm">Save
+                </button>
 
 
             </div>
@@ -54,7 +59,20 @@ export default {
             dateRange: null,
             dateFormat: 'dd/MM/yyyy',
         }
-    }
+    },
+    methods: {
+        saveForm() {
+            console.log('Project Name:');
+
+            // Access the valid form values
+            const { projectName, colorSelected } = this.formValues;
+            // Perform your desired actions with the form values
+            console.log('Project Name:', projectName);
+            console.log('Color Selected:', colorSelected);
+            // ...
+        },
+    },
+
 }
 </script>
 

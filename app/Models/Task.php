@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
+    
     use HasFactory,RecordsActivity,SoftDeletes;
 
     /*1. protected $guarded = []; means that no field is guarded
@@ -41,6 +42,8 @@ class Task extends Model
         $this->project->recordActivity('incompleted_task');
     }
 
+    //1 task chỉ thuộc về 1 project
+    //Model Task
     public function project()
     {
         return $this->belongsTo(Project::class);
@@ -51,8 +54,9 @@ class Task extends Model
         return '/projects/' . $this->project->id . '/tasks/' . $this->id;
     }
 
-    public function projectStatus()
+    //1 task chỉ có thể thuộc về 1 trạng thái nhất định
+    public function status()
     {
-        return $this->belongsTo(ProjectStatus::class);
+        return $this->belongsTo(ProjectStatus::class,'status_id');
     }
 }

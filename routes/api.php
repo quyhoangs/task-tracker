@@ -6,12 +6,11 @@ use App\Http\Controllers\Api\Auth\OAuthProviderController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Member\EmailController;
 use App\Http\Controllers\Api\Member\PersonInfoController;
-use App\Http\Controllers\Api\Member\UploadController;
-use App\Http\Controllers\Api\ProjectInvitationsController;
-use App\Http\Controllers\Api\ProjectsController;
-use App\Http\Controllers\Api\ProjectTaskController;
+use App\Http\Controllers\Api\Member\ProjectInvitationsController;
+use App\Http\Controllers\Api\Member\ProjectsController;
+use App\Http\Controllers\Api\Member\ProjectTaskController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,11 +31,13 @@ Route::get('/check-email', [EmailController::class, 'checkEmail']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Route::get('/user', function (Request $request) {
-    //     //Trả về thông tin user đã đăng nhập thành công
-    //     return $request->user();
-    // });
-    Route::post('/upload-avatar', [UploadController::class, 'uploadAvatarProject']);
+    Route::get('/user', function (Request $request) {
+        //Trả về thông tin user đã đăng nhập thành công
+        //authenticated 19|NLYLaBzYHf4NgSCVgaDHZRF9J42r5dEQhDs7QuEs
+        //Dùng để lấy thông tin user đã đăng nhập thành công trên trình duyệt
+        //Mỗi request gửi lên server thì sẽ có 1 token khác nhau
+        return $request->user();
+    });
 
     Route::get('/profile/person-info', [PersonInfoController::class, 'show']);
     Route::put('/profile/person-info', [PersonInfoController::class, 'updatePersonalInfo']);
@@ -68,11 +69,10 @@ Route::middleware(['is_verify_email','auth:sanctum'])->group(function () {
     // Route::resource('projects', 'ProjectsController');
     Route::prefix('projects')->group(function() {
         Route::get('/create',[ProjectsController::class, 'create']);
-        Route::get('/{project}',[ProjectsController::class, 'show']);
         Route::get('/{project}/edit',[ProjectsController::class, 'edit']);
         Route::patch('/{project}',[ProjectsController::class, 'update']);
         Route::get('/',[ProjectsController::class, 'index']);
-        Route::post('/',[ProjectsController::class, 'store']);
+        Route::post('/',[ProjectsController::class, 'stepsCreateProject']);
         Route::delete('/{project}',[ProjectsController::class, 'destroy']);
 
         Route::post('/{project}/invitations',[ProjectInvitationsController::class, 'invite']);

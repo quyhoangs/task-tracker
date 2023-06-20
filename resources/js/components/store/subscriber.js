@@ -1,4 +1,4 @@
-import store from "../../store";
+import store from "./index.js";
 import axios from "axios";
 
 
@@ -8,11 +8,10 @@ import axios from "axios";
 // Ở đây subscribe sẻ được gọi sau khi mutation SET_TOKEN được commit (người dùng đăng nhập hoặc đăng xuất)
 
 
-// Subscribe tới mutation SET_TOKEN để lưu token vào localStorage và header của axios khi token thay đổi (người dùng đăng nhập hoặc đăng xuất)
 store.subscribe((mutation, state) => {
     console.log('mutation',mutation);
     switch (mutation.type) { // mutation.type là tên của mutation được commit (SET_TOKEN)
-        case "SET_TOKEN":
+        case "auth/SET_TOKEN":
             if (mutation.payload) {
                 // Lưu token vào localStorage và header của axios khi token thay đổi (người dùng đăng nhập )
                 axios.defaults.headers.common["Authorization"] = "Bearer " + mutation.payload;

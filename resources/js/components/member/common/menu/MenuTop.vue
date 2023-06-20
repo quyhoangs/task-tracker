@@ -68,7 +68,7 @@ export default {
         DropdownUserOption
     },
     computed: {
-        ...mapGetters(['user']),
+        ...mapGetters('auth', ['user']),
     },
 }
 </script>

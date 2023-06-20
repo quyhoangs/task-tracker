@@ -15,7 +15,7 @@
                                 </h3>
 
                                 <div class="mt-2 " v-if="fieldLabel !== 'birthday'">
-                                    <input v-model="fieldValue"
+                                    <input :value="fieldValue" @input="$emit('update:fieldValue', $event.target.value)"
                                         class=" w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                         type="text" />
                                 </div>
@@ -29,10 +29,10 @@
                                                 clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
-                                    <input datepicker type="date" v-model="fieldValue"
+                                    <input datepicker type="date" :value="fieldValue"
+                                        @input="$emit('update:fieldValue', $event.target.value)"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 "
-                                        placeholder="Select date" format=""
-                                        >
+                                        placeholder="Select date" format="">
                                 </div>
 
                             </div>
@@ -55,8 +55,6 @@
 </template>
 
 <script>
-// Import EventBus
-
 
 export default {
     props: {
@@ -77,5 +75,5 @@ export default {
             this.$emit('close');
         },
     },
-};
+}
 </script>

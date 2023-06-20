@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\ProjectStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateProjectStatusesTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -17,10 +19,15 @@ class CreateProjectStatusesTable extends Migration
 
             $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->string('name');
-            $table->string('color');
+            $table->unsignedBigInteger('status_type')->default(ProjectStatus::CUSTOM);
+            $table->boolean('is_active')->default(false);
             $table->integer('order');
+            $table->string('name_status');
+            $table->string('color');
             $table->boolean('is_completed')->default(false);
+            //modify by
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');

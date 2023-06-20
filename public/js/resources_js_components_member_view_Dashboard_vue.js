@@ -183,7 +183,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
@@ -206,7 +206,7 @@ function render(_ctx, _cache) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
@@ -245,7 +245,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
@@ -288,7 +288,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
@@ -333,7 +333,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
@@ -354,7 +354,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */   render: () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
@@ -550,12 +550,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _PaginationProject_vue_vue_type_template_id_ed5eadbe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginationProject.vue?vue&type=template&id=ed5eadbe */ "./resources/js/components/member/common/paginate/PaginationProject.vue?vue&type=template&id=ed5eadbe");
-/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_PaginationProject_vue_vue_type_template_id_ed5eadbe__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/common/paginate/PaginationProject.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_PaginationProject_vue_vue_type_template_id_ed5eadbe__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/common/paginate/PaginationProject.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -576,13 +576,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=79f73238 */ "./resources/js/components/member/view/Dashboard.vue?vue&type=template&id=79f73238");
 /* harmony import */ var _Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard.vue?vue&type=script&lang=js");
-/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -603,13 +603,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardChart.vue?vue&type=template&id=affebff6 */ "./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6");
 /* harmony import */ var _DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardChart.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=script&lang=js");
-/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/DashboardChart.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DashboardChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/DashboardChart.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -630,13 +630,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardTable.vue?vue&type=template&id=598ce816 */ "./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816");
 /* harmony import */ var _DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardTable.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=script&lang=js");
-/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/DashboardTable.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DashboardTable_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/DashboardTable.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -657,13 +657,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ChartComponent.vue?vue&type=template&id=120215a8 */ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8");
 /* harmony import */ var _ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChartComponent.vue?vue&type=script&lang=js */ "./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=script&lang=js");
-/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/component/ChartComponent.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ChartComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Dashboard/component/ChartComponent.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -683,12 +683,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _TableProject_vue_vue_type_template_id_61573bbe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TableProject.vue?vue&type=template&id=61573bbe */ "./resources/js/components/member/view/Project/TableProject.vue?vue&type=template&id=61573bbe");
-/* harmony import */ var C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_task_tracker_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_TableProject_vue_vue_type_template_id_61573bbe__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Project/TableProject.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_TableProject_vue_vue_type_template_id_61573bbe__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/member/view/Project/TableProject.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -765,7 +765,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginationProject_vue_vue_type_template_id_ed5eadbe__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginationProject_vue_vue_type_template_id_ed5eadbe__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginationProject_vue_vue_type_template_id_ed5eadbe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginationProject.vue?vue&type=template&id=ed5eadbe */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/common/paginate/PaginationProject.vue?vue&type=template&id=ed5eadbe");
 
@@ -780,7 +780,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_79f73238__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Dashboard.vue?vue&type=template&id=79f73238 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard.vue?vue&type=template&id=79f73238");
 
@@ -795,7 +795,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardChart_vue_vue_type_template_id_affebff6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DashboardChart.vue?vue&type=template&id=affebff6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardChart.vue?vue&type=template&id=affebff6");
 
@@ -810,7 +810,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DashboardTable_vue_vue_type_template_id_598ce816__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DashboardTable.vue?vue&type=template&id=598ce816 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/DashboardTable.vue?vue&type=template&id=598ce816");
 
@@ -825,7 +825,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChartComponent_vue_vue_type_template_id_120215a8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ChartComponent.vue?vue&type=template&id=120215a8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Dashboard/component/ChartComponent.vue?vue&type=template&id=120215a8");
 
@@ -840,7 +840,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TableProject_vue_vue_type_template_id_61573bbe__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TableProject_vue_vue_type_template_id_61573bbe__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TableProject_vue_vue_type_template_id_61573bbe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TableProject.vue?vue&type=template&id=61573bbe */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/member/view/Project/TableProject.vue?vue&type=template&id=61573bbe");
 
@@ -855,27 +855,27 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Color": () => (/* binding */ Color),
-/* harmony export */   "b2n": () => (/* binding */ b2n),
-/* harmony export */   "b2p": () => (/* binding */ b2p),
+/* harmony export */   Color: () => (/* binding */ Color),
+/* harmony export */   b2n: () => (/* binding */ b2n),
+/* harmony export */   b2p: () => (/* binding */ b2p),
 /* harmony export */   "default": () => (/* binding */ index_esm),
-/* harmony export */   "hexParse": () => (/* binding */ hexParse),
-/* harmony export */   "hexString": () => (/* binding */ hexString),
-/* harmony export */   "hsl2rgb": () => (/* binding */ hsl2rgb),
-/* harmony export */   "hslString": () => (/* binding */ hslString),
-/* harmony export */   "hsv2rgb": () => (/* binding */ hsv2rgb),
-/* harmony export */   "hueParse": () => (/* binding */ hueParse),
-/* harmony export */   "hwb2rgb": () => (/* binding */ hwb2rgb),
-/* harmony export */   "lim": () => (/* binding */ lim),
-/* harmony export */   "n2b": () => (/* binding */ n2b),
-/* harmony export */   "n2p": () => (/* binding */ n2p),
-/* harmony export */   "nameParse": () => (/* binding */ nameParse),
-/* harmony export */   "p2b": () => (/* binding */ p2b),
-/* harmony export */   "rgb2hsl": () => (/* binding */ rgb2hsl),
-/* harmony export */   "rgbParse": () => (/* binding */ rgbParse),
-/* harmony export */   "rgbString": () => (/* binding */ rgbString),
-/* harmony export */   "rotate": () => (/* binding */ rotate),
-/* harmony export */   "round": () => (/* binding */ round)
+/* harmony export */   hexParse: () => (/* binding */ hexParse),
+/* harmony export */   hexString: () => (/* binding */ hexString),
+/* harmony export */   hsl2rgb: () => (/* binding */ hsl2rgb),
+/* harmony export */   hslString: () => (/* binding */ hslString),
+/* harmony export */   hsv2rgb: () => (/* binding */ hsv2rgb),
+/* harmony export */   hueParse: () => (/* binding */ hueParse),
+/* harmony export */   hwb2rgb: () => (/* binding */ hwb2rgb),
+/* harmony export */   lim: () => (/* binding */ lim),
+/* harmony export */   n2b: () => (/* binding */ n2b),
+/* harmony export */   n2p: () => (/* binding */ n2p),
+/* harmony export */   nameParse: () => (/* binding */ nameParse),
+/* harmony export */   p2b: () => (/* binding */ p2b),
+/* harmony export */   rgb2hsl: () => (/* binding */ rgb2hsl),
+/* harmony export */   rgbParse: () => (/* binding */ rgbParse),
+/* harmony export */   rgbString: () => (/* binding */ rgbString),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   round: () => (/* binding */ round)
 /* harmony export */ });
 /*!
  * @kurkle/color v0.3.2
@@ -1478,54 +1478,54 @@ function index_esm(input) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Animation": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Animation),
-/* harmony export */   "Animations": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Animations),
-/* harmony export */   "ArcElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.ArcElement),
-/* harmony export */   "BarController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BarController),
-/* harmony export */   "BarElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BarElement),
-/* harmony export */   "BasePlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BasePlatform),
-/* harmony export */   "BasicPlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BasicPlatform),
-/* harmony export */   "BubbleController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BubbleController),
-/* harmony export */   "CategoryScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.CategoryScale),
-/* harmony export */   "Chart": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart),
-/* harmony export */   "Colors": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Colors),
-/* harmony export */   "DatasetController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DatasetController),
-/* harmony export */   "Decimation": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Decimation),
-/* harmony export */   "DomPlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DomPlatform),
-/* harmony export */   "DoughnutController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DoughnutController),
-/* harmony export */   "Element": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Element),
-/* harmony export */   "Filler": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler),
-/* harmony export */   "Interaction": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Interaction),
-/* harmony export */   "Legend": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend),
-/* harmony export */   "LineController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LineController),
-/* harmony export */   "LineElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement),
-/* harmony export */   "LinearScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LinearScale),
-/* harmony export */   "LogarithmicScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LogarithmicScale),
-/* harmony export */   "PieController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PieController),
-/* harmony export */   "PointElement": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement),
-/* harmony export */   "PolarAreaController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PolarAreaController),
-/* harmony export */   "RadarController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.RadarController),
-/* harmony export */   "RadialLinearScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale),
-/* harmony export */   "Scale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Scale),
-/* harmony export */   "ScatterController": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.ScatterController),
-/* harmony export */   "SubTitle": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.SubTitle),
-/* harmony export */   "Ticks": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Ticks),
-/* harmony export */   "TimeScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.TimeScale),
-/* harmony export */   "TimeSeriesScale": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.TimeSeriesScale),
-/* harmony export */   "Title": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Title),
-/* harmony export */   "Tooltip": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip),
-/* harmony export */   "_adapters": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__._adapters),
-/* harmony export */   "_detectPlatform": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__._detectPlatform),
-/* harmony export */   "animator": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.animator),
-/* harmony export */   "controllers": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.controllers),
+/* harmony export */   Animation: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Animation),
+/* harmony export */   Animations: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Animations),
+/* harmony export */   ArcElement: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.ArcElement),
+/* harmony export */   BarController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BarController),
+/* harmony export */   BarElement: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BarElement),
+/* harmony export */   BasePlatform: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BasePlatform),
+/* harmony export */   BasicPlatform: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BasicPlatform),
+/* harmony export */   BubbleController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.BubbleController),
+/* harmony export */   CategoryScale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.CategoryScale),
+/* harmony export */   Chart: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart),
+/* harmony export */   Colors: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Colors),
+/* harmony export */   DatasetController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DatasetController),
+/* harmony export */   Decimation: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Decimation),
+/* harmony export */   DomPlatform: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DomPlatform),
+/* harmony export */   DoughnutController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.DoughnutController),
+/* harmony export */   Element: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Element),
+/* harmony export */   Filler: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Filler),
+/* harmony export */   Interaction: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Interaction),
+/* harmony export */   Legend: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Legend),
+/* harmony export */   LineController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LineController),
+/* harmony export */   LineElement: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LineElement),
+/* harmony export */   LinearScale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LinearScale),
+/* harmony export */   LogarithmicScale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.LogarithmicScale),
+/* harmony export */   PieController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PieController),
+/* harmony export */   PointElement: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PointElement),
+/* harmony export */   PolarAreaController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.PolarAreaController),
+/* harmony export */   RadarController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.RadarController),
+/* harmony export */   RadialLinearScale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.RadialLinearScale),
+/* harmony export */   Scale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Scale),
+/* harmony export */   ScatterController: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.ScatterController),
+/* harmony export */   SubTitle: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.SubTitle),
+/* harmony export */   Ticks: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Ticks),
+/* harmony export */   TimeScale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.TimeScale),
+/* harmony export */   TimeSeriesScale: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.TimeSeriesScale),
+/* harmony export */   Title: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Title),
+/* harmony export */   Tooltip: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Tooltip),
+/* harmony export */   _adapters: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__._adapters),
+/* harmony export */   _detectPlatform: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__._detectPlatform),
+/* harmony export */   animator: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.animator),
+/* harmony export */   controllers: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.controllers),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "defaults": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults),
-/* harmony export */   "elements": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.elements),
-/* harmony export */   "layouts": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.layouts),
-/* harmony export */   "plugins": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.plugins),
-/* harmony export */   "registerables": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registerables),
-/* harmony export */   "registry": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registry),
-/* harmony export */   "scales": () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.scales)
+/* harmony export */   defaults: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.defaults),
+/* harmony export */   elements: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.elements),
+/* harmony export */   layouts: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.layouts),
+/* harmony export */   plugins: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.plugins),
+/* harmony export */   registerables: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registerables),
+/* harmony export */   registry: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.registry),
+/* harmony export */   scales: () => (/* reexport safe */ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.scales)
 /* harmony export */ });
 /* harmony import */ var _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dist/chart.js */ "./node_modules/chart.js/dist/chart.js");
 
@@ -1546,53 +1546,53 @@ _dist_chart_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(..._dist_chart_js__WE
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Animation": () => (/* binding */ Animation),
-/* harmony export */   "Animations": () => (/* binding */ Animations),
-/* harmony export */   "ArcElement": () => (/* binding */ ArcElement),
-/* harmony export */   "BarController": () => (/* binding */ BarController),
-/* harmony export */   "BarElement": () => (/* binding */ BarElement),
-/* harmony export */   "BasePlatform": () => (/* binding */ BasePlatform),
-/* harmony export */   "BasicPlatform": () => (/* binding */ BasicPlatform),
-/* harmony export */   "BubbleController": () => (/* binding */ BubbleController),
-/* harmony export */   "CategoryScale": () => (/* binding */ CategoryScale),
-/* harmony export */   "Chart": () => (/* binding */ Chart),
-/* harmony export */   "Colors": () => (/* binding */ plugin_colors),
-/* harmony export */   "DatasetController": () => (/* binding */ DatasetController),
-/* harmony export */   "Decimation": () => (/* binding */ plugin_decimation),
-/* harmony export */   "DomPlatform": () => (/* binding */ DomPlatform),
-/* harmony export */   "DoughnutController": () => (/* binding */ DoughnutController),
-/* harmony export */   "Element": () => (/* binding */ Element),
-/* harmony export */   "Filler": () => (/* binding */ index),
-/* harmony export */   "Interaction": () => (/* binding */ Interaction),
-/* harmony export */   "Legend": () => (/* binding */ plugin_legend),
-/* harmony export */   "LineController": () => (/* binding */ LineController),
-/* harmony export */   "LineElement": () => (/* binding */ LineElement),
-/* harmony export */   "LinearScale": () => (/* binding */ LinearScale),
-/* harmony export */   "LogarithmicScale": () => (/* binding */ LogarithmicScale),
-/* harmony export */   "PieController": () => (/* binding */ PieController),
-/* harmony export */   "PointElement": () => (/* binding */ PointElement),
-/* harmony export */   "PolarAreaController": () => (/* binding */ PolarAreaController),
-/* harmony export */   "RadarController": () => (/* binding */ RadarController),
-/* harmony export */   "RadialLinearScale": () => (/* binding */ RadialLinearScale),
-/* harmony export */   "Scale": () => (/* binding */ Scale),
-/* harmony export */   "ScatterController": () => (/* binding */ ScatterController),
-/* harmony export */   "SubTitle": () => (/* binding */ plugin_subtitle),
-/* harmony export */   "Ticks": () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aL),
-/* harmony export */   "TimeScale": () => (/* binding */ TimeScale),
-/* harmony export */   "TimeSeriesScale": () => (/* binding */ TimeSeriesScale),
-/* harmony export */   "Title": () => (/* binding */ plugin_title),
-/* harmony export */   "Tooltip": () => (/* binding */ plugin_tooltip),
-/* harmony export */   "_adapters": () => (/* binding */ adapters),
-/* harmony export */   "_detectPlatform": () => (/* binding */ _detectPlatform),
-/* harmony export */   "animator": () => (/* binding */ animator),
-/* harmony export */   "controllers": () => (/* binding */ controllers),
-/* harmony export */   "defaults": () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d),
-/* harmony export */   "elements": () => (/* binding */ elements),
-/* harmony export */   "layouts": () => (/* binding */ layouts),
-/* harmony export */   "plugins": () => (/* binding */ plugins),
-/* harmony export */   "registerables": () => (/* binding */ registerables),
-/* harmony export */   "registry": () => (/* binding */ registry),
-/* harmony export */   "scales": () => (/* binding */ scales)
+/* harmony export */   Animation: () => (/* binding */ Animation),
+/* harmony export */   Animations: () => (/* binding */ Animations),
+/* harmony export */   ArcElement: () => (/* binding */ ArcElement),
+/* harmony export */   BarController: () => (/* binding */ BarController),
+/* harmony export */   BarElement: () => (/* binding */ BarElement),
+/* harmony export */   BasePlatform: () => (/* binding */ BasePlatform),
+/* harmony export */   BasicPlatform: () => (/* binding */ BasicPlatform),
+/* harmony export */   BubbleController: () => (/* binding */ BubbleController),
+/* harmony export */   CategoryScale: () => (/* binding */ CategoryScale),
+/* harmony export */   Chart: () => (/* binding */ Chart),
+/* harmony export */   Colors: () => (/* binding */ plugin_colors),
+/* harmony export */   DatasetController: () => (/* binding */ DatasetController),
+/* harmony export */   Decimation: () => (/* binding */ plugin_decimation),
+/* harmony export */   DomPlatform: () => (/* binding */ DomPlatform),
+/* harmony export */   DoughnutController: () => (/* binding */ DoughnutController),
+/* harmony export */   Element: () => (/* binding */ Element),
+/* harmony export */   Filler: () => (/* binding */ index),
+/* harmony export */   Interaction: () => (/* binding */ Interaction),
+/* harmony export */   Legend: () => (/* binding */ plugin_legend),
+/* harmony export */   LineController: () => (/* binding */ LineController),
+/* harmony export */   LineElement: () => (/* binding */ LineElement),
+/* harmony export */   LinearScale: () => (/* binding */ LinearScale),
+/* harmony export */   LogarithmicScale: () => (/* binding */ LogarithmicScale),
+/* harmony export */   PieController: () => (/* binding */ PieController),
+/* harmony export */   PointElement: () => (/* binding */ PointElement),
+/* harmony export */   PolarAreaController: () => (/* binding */ PolarAreaController),
+/* harmony export */   RadarController: () => (/* binding */ RadarController),
+/* harmony export */   RadialLinearScale: () => (/* binding */ RadialLinearScale),
+/* harmony export */   Scale: () => (/* binding */ Scale),
+/* harmony export */   ScatterController: () => (/* binding */ ScatterController),
+/* harmony export */   SubTitle: () => (/* binding */ plugin_subtitle),
+/* harmony export */   Ticks: () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aL),
+/* harmony export */   TimeScale: () => (/* binding */ TimeScale),
+/* harmony export */   TimeSeriesScale: () => (/* binding */ TimeSeriesScale),
+/* harmony export */   Title: () => (/* binding */ plugin_title),
+/* harmony export */   Tooltip: () => (/* binding */ plugin_tooltip),
+/* harmony export */   _adapters: () => (/* binding */ adapters),
+/* harmony export */   _detectPlatform: () => (/* binding */ _detectPlatform),
+/* harmony export */   animator: () => (/* binding */ animator),
+/* harmony export */   controllers: () => (/* binding */ controllers),
+/* harmony export */   defaults: () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d),
+/* harmony export */   elements: () => (/* binding */ elements),
+/* harmony export */   layouts: () => (/* binding */ layouts),
+/* harmony export */   plugins: () => (/* binding */ plugins),
+/* harmony export */   registerables: () => (/* binding */ registerables),
+/* harmony export */   registry: () => (/* binding */ registry),
+/* harmony export */   scales: () => (/* binding */ scales)
 /* harmony export */ });
 /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunks/helpers.segment.js */ "./node_modules/chart.js/dist/chunks/helpers.segment.js");
 /*!
@@ -13031,131 +13031,131 @@ const registerables = [
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "$": () => (/* binding */ unclipArea),
-/* harmony export */   "A": () => (/* binding */ _rlookupByKey),
-/* harmony export */   "B": () => (/* binding */ _lookupByKey),
-/* harmony export */   "C": () => (/* binding */ _isPointInArea),
-/* harmony export */   "D": () => (/* binding */ getAngleFromPoint),
-/* harmony export */   "E": () => (/* binding */ toPadding),
-/* harmony export */   "F": () => (/* binding */ each),
-/* harmony export */   "G": () => (/* binding */ getMaximumSize),
-/* harmony export */   "H": () => (/* binding */ HALF_PI),
-/* harmony export */   "I": () => (/* binding */ _getParentNode),
-/* harmony export */   "J": () => (/* binding */ readUsedSize),
-/* harmony export */   "K": () => (/* binding */ supportsEventListenerOptions),
-/* harmony export */   "L": () => (/* binding */ throttled),
-/* harmony export */   "M": () => (/* binding */ _isDomSupported),
-/* harmony export */   "N": () => (/* binding */ _factorize),
-/* harmony export */   "O": () => (/* binding */ finiteOrDefault),
-/* harmony export */   "P": () => (/* binding */ PI),
-/* harmony export */   "Q": () => (/* binding */ callback),
-/* harmony export */   "R": () => (/* binding */ _addGrace),
-/* harmony export */   "S": () => (/* binding */ _limitValue),
-/* harmony export */   "T": () => (/* binding */ TAU),
-/* harmony export */   "U": () => (/* binding */ toDegrees),
-/* harmony export */   "V": () => (/* binding */ _measureText),
-/* harmony export */   "W": () => (/* binding */ _int16Range),
-/* harmony export */   "X": () => (/* binding */ _alignPixel),
-/* harmony export */   "Y": () => (/* binding */ clipArea),
-/* harmony export */   "Z": () => (/* binding */ renderText),
-/* harmony export */   "_": () => (/* binding */ _arrayUnique),
-/* harmony export */   "a": () => (/* binding */ resolve),
-/* harmony export */   "a$": () => (/* binding */ fontString),
-/* harmony export */   "a0": () => (/* binding */ toFont),
-/* harmony export */   "a1": () => (/* binding */ _toLeftRightCenter),
-/* harmony export */   "a2": () => (/* binding */ _alignStartEnd),
-/* harmony export */   "a3": () => (/* binding */ overrides),
-/* harmony export */   "a4": () => (/* binding */ merge),
-/* harmony export */   "a5": () => (/* binding */ _capitalize),
-/* harmony export */   "a6": () => (/* binding */ descriptors),
-/* harmony export */   "a7": () => (/* binding */ isFunction),
-/* harmony export */   "a8": () => (/* binding */ _attachContext),
-/* harmony export */   "a9": () => (/* binding */ _createResolver),
-/* harmony export */   "aA": () => (/* binding */ overrideTextDirection),
-/* harmony export */   "aB": () => (/* binding */ _textX),
-/* harmony export */   "aC": () => (/* binding */ restoreTextDirection),
-/* harmony export */   "aD": () => (/* binding */ drawPointLegend),
-/* harmony export */   "aE": () => (/* binding */ distanceBetweenPoints),
-/* harmony export */   "aF": () => (/* binding */ noop),
-/* harmony export */   "aG": () => (/* binding */ _setMinAndMaxByKey),
-/* harmony export */   "aH": () => (/* binding */ niceNum),
-/* harmony export */   "aI": () => (/* binding */ almostWhole),
-/* harmony export */   "aJ": () => (/* binding */ almostEquals),
-/* harmony export */   "aK": () => (/* binding */ _decimalPlaces),
-/* harmony export */   "aL": () => (/* binding */ Ticks),
-/* harmony export */   "aM": () => (/* binding */ log10),
-/* harmony export */   "aN": () => (/* binding */ _longestText),
-/* harmony export */   "aO": () => (/* binding */ _filterBetween),
-/* harmony export */   "aP": () => (/* binding */ _lookup),
-/* harmony export */   "aQ": () => (/* binding */ isPatternOrGradient),
-/* harmony export */   "aR": () => (/* binding */ getHoverColor),
-/* harmony export */   "aS": () => (/* binding */ clone),
-/* harmony export */   "aT": () => (/* binding */ _merger),
-/* harmony export */   "aU": () => (/* binding */ _mergerIf),
-/* harmony export */   "aV": () => (/* binding */ _deprecated),
-/* harmony export */   "aW": () => (/* binding */ _splitKey),
-/* harmony export */   "aX": () => (/* binding */ toFontString),
-/* harmony export */   "aY": () => (/* binding */ splineCurve),
-/* harmony export */   "aZ": () => (/* binding */ splineCurveMonotone),
-/* harmony export */   "a_": () => (/* binding */ getStyle),
-/* harmony export */   "aa": () => (/* binding */ _descriptors),
-/* harmony export */   "ab": () => (/* binding */ mergeIf),
-/* harmony export */   "ac": () => (/* binding */ uid),
-/* harmony export */   "ad": () => (/* binding */ debounce),
-/* harmony export */   "ae": () => (/* binding */ retinaScale),
-/* harmony export */   "af": () => (/* binding */ clearCanvas),
-/* harmony export */   "ag": () => (/* binding */ setsEqual),
-/* harmony export */   "ah": () => (/* binding */ _elementsEqual),
-/* harmony export */   "ai": () => (/* binding */ _isClickEvent),
-/* harmony export */   "aj": () => (/* binding */ _isBetween),
-/* harmony export */   "ak": () => (/* binding */ _readValueToProps),
-/* harmony export */   "al": () => (/* binding */ _updateBezierControlPoints),
-/* harmony export */   "am": () => (/* binding */ _computeSegments),
-/* harmony export */   "an": () => (/* binding */ _boundSegments),
-/* harmony export */   "ao": () => (/* binding */ _steppedInterpolation),
-/* harmony export */   "ap": () => (/* binding */ _bezierInterpolation),
-/* harmony export */   "aq": () => (/* binding */ _pointInLine),
-/* harmony export */   "ar": () => (/* binding */ _steppedLineTo),
-/* harmony export */   "as": () => (/* binding */ _bezierCurveTo),
-/* harmony export */   "at": () => (/* binding */ drawPoint),
-/* harmony export */   "au": () => (/* binding */ addRoundedRectPath),
-/* harmony export */   "av": () => (/* binding */ toTRBL),
-/* harmony export */   "aw": () => (/* binding */ toTRBLCorners),
-/* harmony export */   "ax": () => (/* binding */ _boundSegment),
-/* harmony export */   "ay": () => (/* binding */ _normalizeAngle),
-/* harmony export */   "az": () => (/* binding */ getRtlAdapter),
-/* harmony export */   "b": () => (/* binding */ isArray),
-/* harmony export */   "b0": () => (/* binding */ toLineHeight),
-/* harmony export */   "b1": () => (/* binding */ PITAU),
-/* harmony export */   "b2": () => (/* binding */ INFINITY),
-/* harmony export */   "b3": () => (/* binding */ RAD_PER_DEG),
-/* harmony export */   "b4": () => (/* binding */ QUARTER_PI),
-/* harmony export */   "b5": () => (/* binding */ TWO_THIRDS_PI),
-/* harmony export */   "b6": () => (/* binding */ _angleDiff),
-/* harmony export */   "c": () => (/* binding */ color),
-/* harmony export */   "d": () => (/* binding */ defaults),
-/* harmony export */   "e": () => (/* binding */ effects),
-/* harmony export */   "f": () => (/* binding */ resolveObjectKey),
-/* harmony export */   "g": () => (/* binding */ isNumberFinite),
-/* harmony export */   "h": () => (/* binding */ defined),
-/* harmony export */   "i": () => (/* binding */ isObject),
-/* harmony export */   "j": () => (/* binding */ createContext),
-/* harmony export */   "k": () => (/* binding */ isNullOrUndef),
-/* harmony export */   "l": () => (/* binding */ listenArrayEvents),
-/* harmony export */   "m": () => (/* binding */ toPercentage),
-/* harmony export */   "n": () => (/* binding */ toDimension),
-/* harmony export */   "o": () => (/* binding */ formatNumber),
-/* harmony export */   "p": () => (/* binding */ _angleBetween),
-/* harmony export */   "q": () => (/* binding */ _getStartAndCountOfVisiblePoints),
-/* harmony export */   "r": () => (/* binding */ requestAnimFrame),
-/* harmony export */   "s": () => (/* binding */ sign),
-/* harmony export */   "t": () => (/* binding */ toRadians),
-/* harmony export */   "u": () => (/* binding */ unlistenArrayEvents),
-/* harmony export */   "v": () => (/* binding */ valueOrDefault),
-/* harmony export */   "w": () => (/* binding */ _scaleRangesChanged),
-/* harmony export */   "x": () => (/* binding */ isNumber),
-/* harmony export */   "y": () => (/* binding */ _parseObjectDataRadialScale),
-/* harmony export */   "z": () => (/* binding */ getRelativePosition)
+/* harmony export */   $: () => (/* binding */ unclipArea),
+/* harmony export */   A: () => (/* binding */ _rlookupByKey),
+/* harmony export */   B: () => (/* binding */ _lookupByKey),
+/* harmony export */   C: () => (/* binding */ _isPointInArea),
+/* harmony export */   D: () => (/* binding */ getAngleFromPoint),
+/* harmony export */   E: () => (/* binding */ toPadding),
+/* harmony export */   F: () => (/* binding */ each),
+/* harmony export */   G: () => (/* binding */ getMaximumSize),
+/* harmony export */   H: () => (/* binding */ HALF_PI),
+/* harmony export */   I: () => (/* binding */ _getParentNode),
+/* harmony export */   J: () => (/* binding */ readUsedSize),
+/* harmony export */   K: () => (/* binding */ supportsEventListenerOptions),
+/* harmony export */   L: () => (/* binding */ throttled),
+/* harmony export */   M: () => (/* binding */ _isDomSupported),
+/* harmony export */   N: () => (/* binding */ _factorize),
+/* harmony export */   O: () => (/* binding */ finiteOrDefault),
+/* harmony export */   P: () => (/* binding */ PI),
+/* harmony export */   Q: () => (/* binding */ callback),
+/* harmony export */   R: () => (/* binding */ _addGrace),
+/* harmony export */   S: () => (/* binding */ _limitValue),
+/* harmony export */   T: () => (/* binding */ TAU),
+/* harmony export */   U: () => (/* binding */ toDegrees),
+/* harmony export */   V: () => (/* binding */ _measureText),
+/* harmony export */   W: () => (/* binding */ _int16Range),
+/* harmony export */   X: () => (/* binding */ _alignPixel),
+/* harmony export */   Y: () => (/* binding */ clipArea),
+/* harmony export */   Z: () => (/* binding */ renderText),
+/* harmony export */   _: () => (/* binding */ _arrayUnique),
+/* harmony export */   a: () => (/* binding */ resolve),
+/* harmony export */   a$: () => (/* binding */ fontString),
+/* harmony export */   a0: () => (/* binding */ toFont),
+/* harmony export */   a1: () => (/* binding */ _toLeftRightCenter),
+/* harmony export */   a2: () => (/* binding */ _alignStartEnd),
+/* harmony export */   a3: () => (/* binding */ overrides),
+/* harmony export */   a4: () => (/* binding */ merge),
+/* harmony export */   a5: () => (/* binding */ _capitalize),
+/* harmony export */   a6: () => (/* binding */ descriptors),
+/* harmony export */   a7: () => (/* binding */ isFunction),
+/* harmony export */   a8: () => (/* binding */ _attachContext),
+/* harmony export */   a9: () => (/* binding */ _createResolver),
+/* harmony export */   aA: () => (/* binding */ overrideTextDirection),
+/* harmony export */   aB: () => (/* binding */ _textX),
+/* harmony export */   aC: () => (/* binding */ restoreTextDirection),
+/* harmony export */   aD: () => (/* binding */ drawPointLegend),
+/* harmony export */   aE: () => (/* binding */ distanceBetweenPoints),
+/* harmony export */   aF: () => (/* binding */ noop),
+/* harmony export */   aG: () => (/* binding */ _setMinAndMaxByKey),
+/* harmony export */   aH: () => (/* binding */ niceNum),
+/* harmony export */   aI: () => (/* binding */ almostWhole),
+/* harmony export */   aJ: () => (/* binding */ almostEquals),
+/* harmony export */   aK: () => (/* binding */ _decimalPlaces),
+/* harmony export */   aL: () => (/* binding */ Ticks),
+/* harmony export */   aM: () => (/* binding */ log10),
+/* harmony export */   aN: () => (/* binding */ _longestText),
+/* harmony export */   aO: () => (/* binding */ _filterBetween),
+/* harmony export */   aP: () => (/* binding */ _lookup),
+/* harmony export */   aQ: () => (/* binding */ isPatternOrGradient),
+/* harmony export */   aR: () => (/* binding */ getHoverColor),
+/* harmony export */   aS: () => (/* binding */ clone),
+/* harmony export */   aT: () => (/* binding */ _merger),
+/* harmony export */   aU: () => (/* binding */ _mergerIf),
+/* harmony export */   aV: () => (/* binding */ _deprecated),
+/* harmony export */   aW: () => (/* binding */ _splitKey),
+/* harmony export */   aX: () => (/* binding */ toFontString),
+/* harmony export */   aY: () => (/* binding */ splineCurve),
+/* harmony export */   aZ: () => (/* binding */ splineCurveMonotone),
+/* harmony export */   a_: () => (/* binding */ getStyle),
+/* harmony export */   aa: () => (/* binding */ _descriptors),
+/* harmony export */   ab: () => (/* binding */ mergeIf),
+/* harmony export */   ac: () => (/* binding */ uid),
+/* harmony export */   ad: () => (/* binding */ debounce),
+/* harmony export */   ae: () => (/* binding */ retinaScale),
+/* harmony export */   af: () => (/* binding */ clearCanvas),
+/* harmony export */   ag: () => (/* binding */ setsEqual),
+/* harmony export */   ah: () => (/* binding */ _elementsEqual),
+/* harmony export */   ai: () => (/* binding */ _isClickEvent),
+/* harmony export */   aj: () => (/* binding */ _isBetween),
+/* harmony export */   ak: () => (/* binding */ _readValueToProps),
+/* harmony export */   al: () => (/* binding */ _updateBezierControlPoints),
+/* harmony export */   am: () => (/* binding */ _computeSegments),
+/* harmony export */   an: () => (/* binding */ _boundSegments),
+/* harmony export */   ao: () => (/* binding */ _steppedInterpolation),
+/* harmony export */   ap: () => (/* binding */ _bezierInterpolation),
+/* harmony export */   aq: () => (/* binding */ _pointInLine),
+/* harmony export */   ar: () => (/* binding */ _steppedLineTo),
+/* harmony export */   as: () => (/* binding */ _bezierCurveTo),
+/* harmony export */   at: () => (/* binding */ drawPoint),
+/* harmony export */   au: () => (/* binding */ addRoundedRectPath),
+/* harmony export */   av: () => (/* binding */ toTRBL),
+/* harmony export */   aw: () => (/* binding */ toTRBLCorners),
+/* harmony export */   ax: () => (/* binding */ _boundSegment),
+/* harmony export */   ay: () => (/* binding */ _normalizeAngle),
+/* harmony export */   az: () => (/* binding */ getRtlAdapter),
+/* harmony export */   b: () => (/* binding */ isArray),
+/* harmony export */   b0: () => (/* binding */ toLineHeight),
+/* harmony export */   b1: () => (/* binding */ PITAU),
+/* harmony export */   b2: () => (/* binding */ INFINITY),
+/* harmony export */   b3: () => (/* binding */ RAD_PER_DEG),
+/* harmony export */   b4: () => (/* binding */ QUARTER_PI),
+/* harmony export */   b5: () => (/* binding */ TWO_THIRDS_PI),
+/* harmony export */   b6: () => (/* binding */ _angleDiff),
+/* harmony export */   c: () => (/* binding */ color),
+/* harmony export */   d: () => (/* binding */ defaults),
+/* harmony export */   e: () => (/* binding */ effects),
+/* harmony export */   f: () => (/* binding */ resolveObjectKey),
+/* harmony export */   g: () => (/* binding */ isNumberFinite),
+/* harmony export */   h: () => (/* binding */ defined),
+/* harmony export */   i: () => (/* binding */ isObject),
+/* harmony export */   j: () => (/* binding */ createContext),
+/* harmony export */   k: () => (/* binding */ isNullOrUndef),
+/* harmony export */   l: () => (/* binding */ listenArrayEvents),
+/* harmony export */   m: () => (/* binding */ toPercentage),
+/* harmony export */   n: () => (/* binding */ toDimension),
+/* harmony export */   o: () => (/* binding */ formatNumber),
+/* harmony export */   p: () => (/* binding */ _angleBetween),
+/* harmony export */   q: () => (/* binding */ _getStartAndCountOfVisiblePoints),
+/* harmony export */   r: () => (/* binding */ requestAnimFrame),
+/* harmony export */   s: () => (/* binding */ sign),
+/* harmony export */   t: () => (/* binding */ toRadians),
+/* harmony export */   u: () => (/* binding */ unlistenArrayEvents),
+/* harmony export */   v: () => (/* binding */ valueOrDefault),
+/* harmony export */   w: () => (/* binding */ _scaleRangesChanged),
+/* harmony export */   x: () => (/* binding */ isNumber),
+/* harmony export */   y: () => (/* binding */ _parseObjectDataRadialScale),
+/* harmony export */   z: () => (/* binding */ getRelativePosition)
 /* harmony export */ });
 /* harmony import */ var _kurkle_color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @kurkle/color */ "./node_modules/@kurkle/color/dist/color.esm.js");
 /*!

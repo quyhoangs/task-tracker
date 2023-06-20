@@ -10,6 +10,7 @@ use App\RecordsActivity;
 
 class Project extends Model
 {
+
     use HasFactory,RecordsActivity;
 
     protected $guarded=[];
@@ -19,11 +20,13 @@ class Project extends Model
         return '/projects/' . $this->id;
     }
 
+    //Model Project
     public function owner()
     {
         return $this->belongsTo(User::class);
     }
 
+    //Model Project
     public function tasks()
     {
         return $this->hasMany(Task::class);
@@ -57,6 +60,16 @@ class Project extends Model
         // 1 member can be in many projects (n-n)
         return $this->belongsToMany(User::class,'project_members')->withTimestamps();
     }
+
+    //1 project có thể có nhiều bộ status khác nhau
+    //VD : Project A có 1 bộ status Kaban là : Open,To Do,Doing,Done
+    // và Project B cũng có thể dùng bộ status Kaban là : Open,To Do,Doing,Done
+    public function status()
+    {
+        //Có thể bỏ tham số thứ 2 (project_id) vì Laravel lấy Model + _id làm khóa ngoại mặc định
+        return $this->hasMany(ProjectStatus::class,'project_id');
+    }
+
 
     /** Dùng để ghi đè phương thức cha Laravel 7 Update
      * xử lý định dạng ngày tháng khác nhau khi so sánh định dạng cũ và định dạng mới

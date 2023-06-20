@@ -9,7 +9,8 @@ import './bootstrap';
 
 import { createApp } from 'vue';
 import router from './router.js'
-import store from './store.js' // Import store từ file store.js
+import store from './../js/components/store/index.js';
+// import store from './../js/components/store/auth-store.js';
 // import './axios-interceptor';
 import '../js/components/src/axios-interceptor.js';
 
@@ -17,9 +18,10 @@ import MemberLayout from './components/member/layouts/MemberLayout.vue'
 require('./components/store/subscriber.js');
 
 // Attempt to login if token exists
-store.dispatch('attempt', localStorage.getItem('token')).then(() => {
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
     createApp(MemberLayout)
         .use(router)
         .use(store) // Sử dụng store Vuex
         .mount("#app")
 });
+

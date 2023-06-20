@@ -127,6 +127,22 @@ export default {
             imageUrl: '',
         };
     },
+    //watch được sử dụng để theo dõi thay đổi của projectName và colorSelected
+    watch: {
+        projectName: {
+            handler: debounce(function (newValue) {
+                // Thực hiện các hành động khi projectName thay đổi
+                // Commit giá trị mới vào store
+                this.$store.commit('SET_PROJECT_NAME', newValue);
+            }, 500),
+            immediate: true, // Gọi handler ngay từ lúc khởi tạo component để đảm bảo lắng nghe thay đổi ban đầu
+        },
+        colorSelected(newValue) {
+            // Thực hiện các hành động khi colorSelected thay đổi
+            // Commit giá trị mới vào store
+            this.$store.commit('SET_COLOR_SELECTED', newValue);
+        },
+    },
 
     mounted() {
         // Mặc định chọn màu green
@@ -214,7 +230,7 @@ export default {
             // Khi gửi yêu cầu POST, dữ liệu tệp hình ảnh được đóng gói trong đối tượng FormData
             // và gửi đi qua một yêu cầu HTTP. Server sau đó có thể nhận dữ liệu này và xử lý nó
             // Thông thường, server sẽ có một endpoint xử lý tải lên ảnh
-            axios.post('/api/upload-avatar', formData)
+            axios.post('/api/projects', formData)
                 .then(response => {
                     // Lưu URL của ảnh đã tải lên
                     this.imageUrl = response.data.path;
