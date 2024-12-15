@@ -21,239 +21,66 @@ class ProjectObserver
      * When 1 project is created will active 1 record in the activity table.
      */
 
-    public function created(Project $project)
-    {
-        $project->recordActivity('created_project');
+     public function created(Project $project)
+     {
+         $project->recordActivity('created_project');
 
-        $projectStatuses = [
-            [
-                'status_type' => ProjectStatus::CUSTOM,
-                'is_active' => true,
-                'order' => 1,
-                'name_status' => 'Open',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CUSTOM,
-                'is_active' => true,
-                'order' => 2,
-                'name_status' => 'In Progress',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CUSTOM,
-                'is_active' => true,
-                'order' => 3,
-                'name_status' => 'Completed',
-                'color' => 'green',
-                'is_completed' => true,
-            ],
+         $statuses = [
+             'Custom' => [
+                 createStatus(true, 1, 'Open', 'red', false),
+                 createStatus(true, 2, 'In Progress', 'yellow', false),
+                 createStatus(true, 3, 'Completed', 'green', true)
+             ],
+             'Content' => [
+                 createStatus(false, 1, 'Open', 'red', false),
+                 createStatus(false, 2, 'Ready', 'yellow', false),
+                 createStatus(false, 3, 'Writing', 'yellow', false),
+                 createStatus(false, 4, 'Approval', 'yellow', false),
+                 createStatus(false, 5, 'Rejected', 'red', false),
+                 createStatus(false, 6, 'Publish', 'green', true)
+             ],
+             'Kanban' => [
+                 createStatus(false, 1, 'Open', 'red', false),
+                 createStatus(false, 2, 'In Progress', 'yellow', false),
+                 createStatus(false, 3, 'Review', 'yellow', false),
+                 createStatus(false, 4, 'Completed', 'green', true)
+             ],
+             'Marketing' => [
+                 createStatus(false, 1, 'Open', 'red', false),
+                 createStatus(false, 2, 'Concept', 'yellow', false),
+                 createStatus(false, 3, 'In Progress', 'yellow', false),
+                 createStatus(false, 4, 'Running', 'yellow', false),
+                 createStatus(false, 5, 'Review', 'yellow', false),
+                 createStatus(false, 6, 'Completed', 'green', true)
+             ],
+             'Scrum' => [
+                 createStatus(false, 1, 'Open', 'red', false),
+                 createStatus(false, 2, 'Pending', 'yellow', false),
+                 createStatus(false, 3, 'In Progress', 'yellow', false),
+                 createStatus(false, 4, 'Completed', 'green', false),
+                 createStatus(false, 5, 'In Review', 'yellow', false),
+                 createStatus(false, 6, 'Accepted', 'green', false),
+                 createStatus(false, 7, 'Rejected', 'red', false),
+                 createStatus(false, 8, 'Blocked', 'red', true)
+             ],
+             'Normal' => [
+                 createStatus(false, 1, 'Open', 'red', false),
+                 createStatus(false, 2, 'In Progress', 'yellow', false),
+                 createStatus(false, 3, 'Completed', 'green', true)
+             ],
+         ];
 
-            //CONTENT
-            [
-                'status_type' => ProjectStatus::CONTENT,
-                'is_active' => false,
-                'order' => 1,
-                'name_status' => 'Open',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CONTENT,
-                'is_active' => false,
-                'order' => 2,
-                'name_status' => 'Ready',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CONTENT,
-                'is_active' => false,
-                'order' => 3,
-                'name_status' => 'Writing',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CONTENT,
-                'is_active' => false,
-                'order' => 4,
-                'name_status' => 'Approval',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CONTENT,
-                'is_active' => false,
-                'order' => 5,
-                'name_status' => 'Rejected',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::CONTENT,
-                'is_active' => false,
-                'order' => 6,
-                'name_status' => 'Publish',
-                'color' => 'green',
-                'is_completed' => true,
-            ],
+         foreach ($statuses as $type => $typeStatuses) {
+            $statusType = ProjectStatus::where('name', $type)->first();
 
-            //KANBAN
-            [
-                'status_type' => ProjectStatus::KANBAN,
-                'is_active' => false,
-                'order' => 1,
-                'name_status' => 'Open',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::KANBAN,
-                'is_active' => false,
-                'order' => 2,
-                'name_status' => 'In Progress',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::KANBAN,
-                'is_active' => false,
-                'order' => 3,
-                'name_status' => 'Review',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::KANBAN,
-                'is_active' => false,
-                'order' => 4,
-                'name_status' => 'Completed',
-                'color' => 'green',
-                'is_completed' => true,
-            ],
+            if (!$statusType) {
+                $statusType = new ProjectStatus(['name' => $type]);
+                $project->status()->save($statusType);
+            }
 
-            //Marketing
-            [
-                'status_type' => ProjectStatus::MARKETING,
-                'is_active' => false,
-                'order' => 1,
-                'name_status' => 'Open',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::MARKETING,
-                'is_active' => false,
-                'order' => 2,
-                'name_status' => 'Concept',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::MARKETING,
-                'is_active' => false,
-                'order' => 3,
-                'name_status' => 'In Progress',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::MARKETING,
-                'is_active' => false,
-                'order' => 4,
-                'name_status' => 'Running',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::MARKETING,
-                'is_active' => false,
-                'order' => 5,
-                'name_status' => 'Review',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::MARKETING,
-                'is_active' => false,
-                'order' => 6,
-                'name_status' => 'Completed',
-                'color' => 'green',
-                'is_completed' => true,
-            ],
-
-            //Scrum
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 1,
-                'name_status' => 'Open',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 2,
-                'name_status' => 'Pending',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 3,
-                'name_status' => 'In Progress',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 4,
-                'name_status' => 'Completed',
-                'color' => 'green',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 5,
-                'name_status' => 'In Review',
-                'color' => 'yellow',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 6,
-                'name_status' => 'Accepted',
-                'color' => 'green',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 7,
-                'name_status' => 'Rejected',
-                'color' => 'red',
-                'is_completed' => false,
-            ],
-            [
-                'status_type' => ProjectStatus::SCRUM,
-                'is_active' => false,
-                'order' => 8,
-                'name_status' => 'Blocked',
-                'color' => 'red',
-                'is_completed' => true,
-            ],
-            ];
-
-        $project->status()->createMany($projectStatuses);
-    }
+            $statusType->statuses()->createMany($typeStatuses);
+        }
+     }
 
     public function updating(Project $project)
     {

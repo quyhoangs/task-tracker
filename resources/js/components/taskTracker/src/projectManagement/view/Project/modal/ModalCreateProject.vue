@@ -5,8 +5,25 @@
             <div class="grid gap-8 grid-cols-3 rounded-lg bg-gradient-to-b from-sky-200 to-sky-100">
 
                 <!-- Cột bên trái chứa các bước tiến trình -->
-                <div class="flex flex-col mt-32 ml-10 ">
-                    <div v-for="(step, index) in steps" :key="index" class="flex items-center relative">
+                <div class="mt-32 ml-10 ">
+                    <div class="group flex relative">
+                        <div class="mr-2 mx-2 mb-4 font-semibold text-green-700">
+                            Step Create Project
+                        </div>
+                        <svg aria-haspopup="true" xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-info-circle" width="25" height="25" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="#A0AEC0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <circle cx="12" cy="12" r="9" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                            <polyline points="11 12 12 12 12 16 13 16" />
+                        </svg>
+                        <span
+                            class="group-hover:opacity-100 bg-gray-800  w-48 px-1 text-xs text-gray-100 rounded-md absolute left-1/2 translate-y-full opacity-0 ">
+                            Please complete the following steps to create your project
+                        </span>
+                    </div>
+                    <div v-for="(    step, index    ) in     steps    " :key="index" class="flex items-center relative">
                         <!-- Hiển thị tick xanh nếu bước đó đã hoàn thành -->
                         <div class="mt-4" v-if="currentStep > index + 1">
                             <svg class="mb-4 h-7 w-7 text-green-500" viewBox="0 0 20 20" fill="currentColor">
@@ -22,7 +39,8 @@
                             <path fill="currentColor" :d="getStepIcon(index + 1)" />
                         </svg>
                         <!-- Hiển thị Title các step -->
-                        <div class="font-semibold text-green-600 py-2 ml-1" v-if="currentStep > index + 1">{{ step.title }}
+                        <div class="font-semibold text-green-600 py-2 ml-1" v-if="currentStep > index + 1">{{ step.title
+                        }}
                         </div>
                         <div class="font-semibold text-gray-400  py-2 ml-1" v-else>{{ step.title }}</div>
                     </div>
@@ -72,7 +90,7 @@
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 border border-blue-500 rounded shadow ml-2">
                                 Next
                             </button>
-                            <button @click="createProject" v-if="currentStep === 4"
+                            <button v-if="currentStep === 4"
                                 class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save
                             </button>
                         </div>
@@ -89,7 +107,7 @@ import UploadAvatar from '../modal/StepCreateProject/UploadAvatar.vue';
 import ProjectInfo from '../modal/StepCreateProject/ProjectInfo.vue'
 import CustomsStatus from '../modal/StepCreateProject/CustomsStatus.vue'
 import InviteMembers from '../modal/StepCreateProject/InviteMembers.vue'
-
+import { mapActions } from 'vuex';
 export default {
     components: {
         UploadAvatar,
@@ -106,23 +124,24 @@ export default {
                 { title: 'ProjectInfo' },
                 { title: 'Customs Status' },
                 { title: 'Invites Members' }
-            ]
+            ],
         };
     },
     methods: {
+        ...mapActions('project', ['createProject']),
         closeModal() {
             // Đóng modal
             this.$emit('closeModal');
-        },
-        createProject() {
-            // Thực hiện logic tạo dự án ở đây
-            // Sau khi tạo xong, có thể đóng modal bằng cách gọi this.closeModal()
         },
         goToPreviousStep() {
             this.currentStep--; // Di chuyển đến bước trước đó
         },
         goToNextStep() {
             this.currentStep++; // Di chuyển đến bước tiếp theo
+            if (this.currentStep === 3) {
+                //Gọi action từ store để tạo project mới
+                this.createProject();
+            }
         },
         getStepIcon(stepIndex) {
             switch (stepIndex) {

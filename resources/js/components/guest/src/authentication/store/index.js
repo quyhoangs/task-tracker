@@ -25,6 +25,7 @@ const authStore = {
 
         // Gửi request lên server để đăng ký người dùng mới và sau đó đăng nhập luôn
         async registerUser({ commit }, credentials) {
+            console.log('response','sada');
             let response = await axios.post('/api/register', credentials);
             return this.dispatch('auth/attempt', response.data.token);
         },
@@ -33,7 +34,7 @@ const authStore = {
         async login({ commit }, credentials) {
             let response = await axios.post('/api/login', credentials);
             console.log('response',response);
-            return this.dispatch('auth/attempt', response.data.token);
+            return this.dispatch('auth/attempt', response.data.token);//
         },
 
         // attempt sẽ lưu token và user vào state của store nếu token đã được lưu trong localStorage

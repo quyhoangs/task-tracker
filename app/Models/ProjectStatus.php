@@ -12,8 +12,8 @@ class ProjectStatus extends Model
     const CONTENT = 2;
     const KANBAN = 3;
     const MARKETING = 4;
-    const NORMAL = 5;
-    const SCRUM = 6;
+    const SCRUM = 5;
+    const NORMAL = 6;
 
     use HasFactory;
 

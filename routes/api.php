@@ -9,8 +9,9 @@ use App\Http\Controllers\Api\Member\PersonInfoController;
 use App\Http\Controllers\Api\Member\ProjectInvitationsController;
 use App\Http\Controllers\Api\Member\ProjectsController;
 use App\Http\Controllers\Api\Member\ProjectTaskController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Member\TemplateStatusController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -66,6 +67,9 @@ Route::controller(ForgotPasswordController::class)->middleware(['is_verify_email
 });
 
 Route::middleware(['is_verify_email','auth:sanctum'])->group(function () {
+    Route::prefix('template-status')->group(function() {
+        Route::get('/index',[TemplateStatusController::class, 'index']);
+    });
     // Route::resource('projects', 'ProjectsController');
     Route::prefix('projects')->group(function() {
         Route::get('/create',[ProjectsController::class, 'create']);

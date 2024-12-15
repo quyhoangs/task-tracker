@@ -112,7 +112,6 @@ import GuestLayout from '../layouts/GuestLayout.vue';
 import axios from 'axios'; // Điều này có thể không cần vì Axios đã được đăng ký toàn cục
 import { mapActions } from 'vuex';
 import { debounce } from 'lodash';
-
 export default {
     name: 'Register',
     components: {
@@ -130,16 +129,15 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['registerUser']), // Sử dụng mapActions để gọi action registerUser từ store
+        ...mapActions(['auth', 'registerUser']), // Sử dụng mapActions để gọi action registerUser từ store
         handleRegister() {
             if (this.validate()) {
                 // Gọi action đăng ký người dùng từ store
-                this.registerUser({
+                this.$store.dispatch('auth/registerUser', {
                     name: this.name,
                     email: this.email,
                     password: this.password,
                     password_confirmation: this.password_confirmation,
-
                 }).then(response => {
                     // Reset dữ liệu của các input
                     this.name = '';

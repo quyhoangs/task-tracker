@@ -17,11 +17,12 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('owner_id');
             $table->string('name');
+            // Nếu User không upload avatar thì sẽ lấy Color + name của Project làm avatar
             $table->string('avatar')->nullable();
             $table->string('background_color')->nullable();
-            $table->string('title');
             $table->text('description');
-            $table->date('deadline');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->text('notes')->nullable();
 
             $table->timestamps();

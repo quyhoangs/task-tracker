@@ -1,6 +1,7 @@
 <template>
     <div class="antialiased sans-serif bg-gray-200 flex flex-col w-[600px] h-[600px]">
         <div class="mb-5">
+            <h2 class="font-semibold text-lg mb-10">Setting your space color or avatar</h2>
             <div class="flex items-center">
                 <div class="relative flex items-center bg-white border border-gray-300 rounded p-10">
                     <div class="relative my-6 inline-block mr-5">
@@ -94,7 +95,12 @@
             <div class="flex items-center bg-white border border-gray-300 rounded p-10 mt-10">
                 <div class="flex items-center py-3">
                     <div class="w-20 h-20 mr-4 flex-none rounded-full border overflow-hidden">
-                        <img class="w-full h-full object-cover" :src="imageUrl" alt="Avatar Upload">
+                        <img v-if="uploadedImage" class="w-full h-full object-cover" :src="uploadedImage"
+                            alt="Uploaded Avatar">
+                        <svg v-else xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M17 17v4h2v-4h2l-3-3l-3 3h2M11 4C8.8 4 7 5.8 7 8s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4m0 10c-4.4 0-8 1.8-8 4v2h9.5c-.3-.8-.5-1.6-.5-2.5c0-1.2.3-2.3.9-3.4c-.6 0-1.2-.1-1.9-.1" />
+                        </svg>
                     </div>
                     <label for="avatar-input" class="cursor-pointer">
                         <span
@@ -106,42 +112,66 @@
                 <small class="text-gray-400 ml-2">Note : Avatar của bạn không được vượt quá 5MB</small>
             </div>
 
-
         </div>
     </div>
 </template>
 
 <script>
 import { debounce } from 'lodash';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data() {
         return {
             isOpen: false,
-            colors: ["blue", "teal", "green", "green", "red", "pink", "indigo", "yellow", "purple"],
-            colorSelected: '',
-            projectName: '',
+            colors: ["blue", "teal", "green", "green", "red", "pink", "indigo", "yellow", "gray"],
+            // colorSelected: '',
+            // projectName: '',
             isNameValid: true,
             nameErrorMessage: '',
             isInputValid: false,
-            imageUrl: '',
         };
     },
-    //watch được sử dụng để theo dõi thay đổi của projectName và colorSelected
-    watch: {
+    // computed được sử dụng để lấy giá trị projectName và colorSelected từ store
+    // computed dùng để tính toán giá trị mới từ các giá trị đã có và thực hiện cập nhật giá trị mới đó
+    computed: {
+        ...mapGetters('project', ['getProjectName', 'getColorSelected', 'getImageBase64', 'getImageFileInfor']),
+        // Lấy giá trị projectName từ store và cập nhật giá trị projectName trong store
         projectName: {
-            handler: debounce(function (newValue) {
-                // Thực hiện các hành động khi projectName thay đổi
-                // Commit giá trị mới vào store
-                this.$store.commit('SET_PROJECT_NAME', newValue);
-            }, 500),
-            immediate: true, // Gọi handler ngay từ lúc khởi tạo component để đảm bảo lắng nghe thay đổi ban đầu
+            get() { // Lấy giá trị projectName từ store
+                console.log('computed get projectName', this.getProjectName);
+                return this.getProjectName;
+            },
+            set(value) { // Cập nhật giá trị projectName trong store
+                console.log('computed set updateProjectName', value);
+                this.updateProjectName(value); // Gọi action để cập nhật giá trị projectName trong store
+            },
         },
-        colorSelected(newValue) {
-            // Thực hiện các hành động khi colorSelected thay đổi
-            // Commit giá trị mới vào store
-            this.$store.commit('SET_COLOR_SELECTED', newValue);
+        // Lấy giá trị colorSelected từ store và cập nhật giá trị colorSelected trong store
+        colorSelected: {
+            get() {
+                return this.getColorSelected;
+            },
+            set(value) {
+                this.updateColorSelected(value); // Gọi action để cập nhật giá trị colorSelected trong store
+            },
         },
+        // Lấy URL đã xử lý base64 từ store và cập nhật giá trị URL đã xử lý base64 trong store
+        uploadedImage: {
+            get() {
+                return this.getImageBase64;
+            },
+            set(value) {
+                this.updateImageBase64(value);
+            }
+        },
+        // Lấy thông tin file đã upload từ store và cập nhật giá trị thông tin file đã upload trong store
+        // getImageFileInfor: {
+        //     set(value) {
+        //         console.log('computed set updateImageFileInfor', value);
+        //         this.updateImageFileInfor(value);
+        //     }
+        // }
     },
 
     mounted() {
@@ -150,7 +180,21 @@ export default {
 
     },
     methods: {
+
+        // Tương tự với mapGetters và mapMutations nhưng thay vì lấy giá trị từ store thì sẽ gọi action để cập nhật giá trị trong store
+        // Khi render lại component thì giá trị trong store sẻ được lấy ra và hiển thị
+        // Các giá trị mới được update lại vào input (ProjectName và ColorSelected)
+        ...mapActions('project', ['updateProjectName', 'updateColorSelected', 'updateImageBase64', 'updateImageFileInfor']),
         //Xử lý lấy các chữ cái đầu của tên project, VD : Facebook => FB
+        /*
+            Ví dụ, nếu text là "project name", thì quá trình sẽ diễn ra như sau:
+            Tách text thành mảng words: ['project', 'name'].
+            Lấy chữ cái đầu tiên của mỗi từ: ['p', 'n'].
+            Kết hợp các chữ cái đầu tiên: 'pn'.
+            Chuyển thành chữ hoa: 'PN'.
+            Lấy 2 chữ cái đầu tiên: 'PN'.
+            Trường hợp text chỉ có 1 từ, ví dụ 'Facebook', thì kết quả sẽ là 'FB'.
+        */
         getInitials(text) {
             if (text) {
                 const words = text.split(' ');
@@ -171,15 +215,7 @@ export default {
 
             return '';
         },
-        /*
-            Ví dụ, nếu text là "project name", thì quá trình sẽ diễn ra như sau:
-            Tách text thành mảng words: ['project', 'name'].
-            Lấy chữ cái đầu tiên của mỗi từ: ['p', 'n'].
-            Kết hợp các chữ cái đầu tiên: 'pn'.
-            Chuyển thành chữ hoa: 'PN'.
-            Lấy 2 chữ cái đầu tiên: 'PN'.
-            Trường hợp text chỉ có 1 từ, ví dụ 'Facebook', thì kết quả sẽ là 'FB'.
-        */
+
         clearInput() {
             this.projectName = ''; // Xóa nội dung của input
             this.validateName();
@@ -221,23 +257,42 @@ export default {
                 return;
             }
 
-            // Tạo đối tượng FormData để gửi yêu cầu POST lên server với dữ liệu là file vừa chọn
-            const formData = new FormData();
+            //Lưu imageFileInfor vào store để bước cuối cùng lưu vào database
+            this.updateImageFileInfor(file);
 
-            // Thêm dữ liệu file vào formData với key là 'avatar' (tên phải trùng với tên của biến trong request)
-            // và value là 'file' vừa chọn
-            formData.append('avatar', file);
-            // Khi gửi yêu cầu POST, dữ liệu tệp hình ảnh được đóng gói trong đối tượng FormData
-            // và gửi đi qua một yêu cầu HTTP. Server sau đó có thể nhận dữ liệu này và xử lý nó
-            // Thông thường, server sẽ có một endpoint xử lý tải lên ảnh
-            axios.post('/api/projects', formData)
-                .then(response => {
-                    // Lưu URL của ảnh đã tải lên
-                    this.imageUrl = response.data.path;
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+            // Tạo một đối tượng FileReader để đọc dữ liệu từ file
+            const reader = new FileReader();
+
+            // Xử lý sự kiện khi đọc file thành công
+            reader.onload = () => {
+                // Lưu ảnh vào biến uploadedImage và hiển thị ảnh lại trên giao diện
+                // Ảnh được lưu dưới dạng base64 (một chuỗi dữ liệu ảnh được mã hóa dưới dạng chuỗi văn bản)
+                this.uploadedImage = reader.result;
+
+            };
+
+            // Đọc dữ liệu từ file
+            reader.readAsDataURL(file);
+
+            // console.log('handleFileUpload', file);
+
+            // // Tạo đối tượng FormData để gửi yêu cầu POST lên server với dữ liệu là file vừa chọn
+            // const formData = new FormData();
+
+            // // Thêm dữ liệu file vào formData với key là 'avatar' (tên phải trùng với tên của biến trong request)
+            // // và value là 'file' vừa chọn
+            // formData.append('avatar', file);
+            // // Khi gửi yêu cầu POST, dữ liệu tệp hình ảnh được đóng gói trong đối tượng FormData
+            // // và gửi đi qua một yêu cầu HTTP. Server sau đó có thể nhận dữ liệu này và xử lý nó
+            // // Thông thường, server sẽ có một endpoint xử lý tải lên ảnh
+            // axios.post('/api/projects', formData)
+            //     .then(response => {
+            //         // Lưu URL của ảnh đã tải lên
+            //         this.imageUrl = response.data.path;
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
         },
 
     },

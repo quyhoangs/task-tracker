@@ -32,3 +32,29 @@ function gravatar_url($email)
     ]);
     // example: https://gravatar.com/avatar/quyhoang@gmail.com?s=60&d=https://s3.amazonaws.com/laracasts/images/default-square-avatar.jpg
 }
+
+
+function createStatus($isActive, $order, $name, $color, $isCompleted)
+{
+    return [
+        'is_active' => $isActive,
+        'order' => $order,
+        'name' => $name,
+        'color' => $color,
+        'is_completed' => $isCompleted
+    ];
+}
+    /*
+                $table->string('template_name');
+            //1 field để chứa các status của template_status (json) nó bao gồm các trường sau: name, color, order , is_open, is_closed, is_done
+            $table->json('statuses');
+            */
+
+function createDefaultStatuses($templateName, $statuses)
+{
+    $defaultStatuses = [
+        'template_name' => $templateName,
+        'statuses' => $statuses
+    ];
+    return $defaultStatuses;
+}

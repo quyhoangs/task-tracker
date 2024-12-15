@@ -90,7 +90,7 @@
 import GuestLayout from '../layouts/GuestLayout.vue';
 import { mapActions } from 'vuex';
 
-import { getCsrfToken } from '../../src/apis/Csrf';
+import { getCsrfToken } from '../services/apis/Csrf.js';
 
 
 export default {

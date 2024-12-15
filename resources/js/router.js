@@ -6,7 +6,7 @@ import LoginLayout from './components/guest/pages/LoginLayout.vue';
 import GoogleCallback from './components/guest/pages/GoogleCallback.vue';
 import RegisterLayout from './components/guest/pages/RegisterLayout.vue';
 
-import MemberLayout from './components/member/layouts/MemberLayout.vue';
+// import DefaultLayout from './components/member/layouts/DefaultLayout.vue';
 import ProjectTask from './components/member/view/ProjectTask.vue';
 
 import PersonInfo from './components/member/view/Profile/PersonInfo.vue';
@@ -16,7 +16,7 @@ import LanguageRegion from './components/member/view/Profile/LanguageRegion.vue'
 import SessionHistory from './components/member/view/Profile/SessionHistory.vue';
 
 
-import authMiddleware from './components/middeware/auth.js';
+import authMiddleware from './components/guest/middeware/auth.js';
 
 const routes = [
 

@@ -9,17 +9,17 @@ import './bootstrap';
 
 import { createApp } from 'vue';
 import router from './router.js'
-import store from './../js/components/store/index.js';
+import store from '';
 // import store from './../js/components/store/auth-store.js';
 // import './axios-interceptor';
-import '../js/components/src/axios-interceptor.js';
+// import '../js/components/src/axios-interceptor.js';
 
-import MemberLayout from './components/member/layouts/MemberLayout.vue'
+import DefaultLayout from './components/guest/layouts/DefaultLayout.vue'
 require('./components/store/subscriber.js');
 
 // Attempt to login if token exists
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
-    createApp(MemberLayout)
+    createApp(DefaultLayout)
         .use(router)
         .use(store) // Sử dụng store Vuex
         .mount("#app")

@@ -10,6 +10,15 @@ require('mix-tailwindcss');
  | file for the application as well as bundling up all the JS files.
  |
  */
+//Dùng @ để trỏ tới thư mục gốc của ứng dụng Vue.js
+ const path = require('path');
+ mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'resources/js/components') // Đường dẫn tới thư mục gốc của ứng dụng Vue.js
+        }
+    }
+});
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()

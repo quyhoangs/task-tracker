@@ -26,42 +26,48 @@ class ProjectsController extends Controller
 
     public function stepsCreateProject(CreateProjectRequest $request)
     {
+
         DB::beginTransaction();
         try {
-            // Bước 1: Upload Avatar và Project Name
-             $this->__uploadAvatarProject($request);
+        // $project = auth()->user()->projects()->create($this->validateRequest());
+        // Bước 1: Upload Avatar và Project Name
+        //Trường hợp k có avatar thì sẽ lấy ColorAvatar mặc định
+        // key 'avatar' được set dưới vue js : formData.append('avatar', file);
 
-            // Bước 2: ProjectInfo
-            $this->__addProjectInfo($request);
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            // Nén ảnh với chất lượng tùy chỉnh và lưu vào thư mục public/images
+            // Chất lượng ảnh nén sẽ nằm trong khoảng từ 0 - 100 (Hiện tại là 80)
+            $compressedImage = Image::make($image)->encode('jpg', 80);
+            $compressedImage->save(storage_path('app/public/avatars/compressed_' . $image->hashName()));
 
-            // Bước 3: Custom Status
-            $this->__selectProjectStatus($request);
+            // Bạn cũng có thể lưu ảnh vào cơ sở dữ liệu hoặc thực hiện các hành động khác
 
-            // Bước 4: Invite Members
-            $this->__inviteMembersToProject($request);
+            return response()->json([
+                'message' => 'Image uploaded successfully.',
+                'path' => '/storage/avatars/compressed_' . $image->hashName(),
+            ]);
+        }
+
+            $project = auth()->user()->projects()->updateOrCreate([
+                    'id' => $request->input('id'),// Nếu có id thì sẽ update, không có hoặc null thì sẽ tạo mới
+                ],$request->all()
+            );
 
             DB::commit();
 
-            // Phản hồi với thông báo thành công
-            return response()->json(['message' => 'Dự án đã được tạo thành công'], 200);
+            return response()->json([
+                'message' => 'Project created sucsess',
+                'data' => $project
+        ], 200);
         } catch (\Exception $e) {
             DB::rollBack();
-
-            // Phản hồi với thông báo lỗi
-            return response()->json(['message' => 'Đã xảy ra lỗi khi tạo dự án'], 500);
+            return response()->json(['message' => 'An error occurred while creating the project',
+            'error' => $e->getMessage()
+        ], 500);
         }
 
-        // $project = auth()->user()->projects()->create($this->validateRequest());
 
-        // if ($tasks = request('tasks')) {
-        //     $project->addTasks($tasks);
-        // }
-
-        // if (request()->wantsJson()) {
-        //     return ['message' => $project->path()];
-        // }
-
-        // return redirect($project->path());
     }
 
     public function update(UpdateProjectRequest $request,Project $project){
@@ -94,41 +100,12 @@ class ProjectsController extends Controller
     protected function validateRequest()
     {
         return request()->validate([
+            //sometimes: Title chỉ cần được kiểm tra nếu nó tồn tại trong dữ liệu đầu vào.
+            // Nếu trường title tồn tại, nó phải được cung cấp (không được trống).
             'title' => 'sometimes|required',
             'description' => 'sometimes|required',
             'notes' => 'nullable'
         ]);
     }
 
-    //__uploadAvatar
-    private function __uploadAvatarProject($request)
-    {
-        // key 'avatar' được set dưới vue js : formData.append('avatar', file);
-        if ($request->hasFile('avatar')) {
-            $image = $request->file('avatar');
-
-            // // Thay đổi kích thước ảnh và lưu vào thư mục public/images
-            // $resizedImage = Image::make($image)->resize(800, 600);
-            // $resizedImage->save(storage_path('app/project/avatar/' . $image->hashName()));
-
-            // // Cắt ảnh và áp dụng bộ lọc xám trước khi lưu vào thư mục public/images
-            // $croppedImage = Image::make($image)->crop(300, 300)->greyscale();
-            // $croppedImage->save(storage_path('app/project/avatar/cropped_' . $image->hashName()));
-
-            // Nén ảnh với chất lượng tùy chỉnh và lưu vào thư mục public/images
-            // Chất lượng ảnh nén sẽ nằm trong khoảng từ 0 - 100 (Hiện tại là 80)
-            $compressedImage = Image::make($image)->encode('jpg', 80);
-            $compressedImage->save(storage_path('app/public/avatars/compressed_' . $image->hashName()));
-
-            // Bạn cũng có thể lưu ảnh vào cơ sở dữ liệu hoặc thực hiện các hành động khác
-
-            return response()->json([
-                'message' => 'Image uploaded successfully.',
-                'path' => '/storage/avatars/compressed_' . $image->hashName(),
-            ]);
-        }
-
-        return response()->json(['error' => 'Please choose an image before uploading.']);
-
-    }
 }

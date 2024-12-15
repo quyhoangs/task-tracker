@@ -73,4 +73,10 @@ class User extends Authenticatable
         return $this->hasMany(SocialIdentity::class);
      }
 
+    //1 User được phép quản lý nhiều TemplateStatuses
+    public function templateStatuses()
+    {
+        return $this->hasMany(TemplateStatuses::class);
+    }
+
 }

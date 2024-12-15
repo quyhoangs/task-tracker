@@ -19,7 +19,7 @@ class CreateProjectStatusesTable extends Migration
 
             $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('status_type')->default(ProjectStatus::CUSTOM);
+            $table->string('status_type');
             $table->boolean('is_active')->default(false);
             $table->integer('order');
             $table->string('name_status');

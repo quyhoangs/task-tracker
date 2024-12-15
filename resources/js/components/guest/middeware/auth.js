@@ -1,5 +1,5 @@
 // import authStore from '../store/auth-store.js';
-import store from '../store/index.js';
+import store from '../../store/index.js';
 // store.dispatch('auth/attempt'
 export default function auth(to, from, next) {
 
